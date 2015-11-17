@@ -9,6 +9,7 @@
 	<input type="password" name="password" id="password" value="{{user.getPassword()}}" placeholder="Entrez le mot de passe" class="form-control">
 	{{ q["role"] }}
 </div>
+
 <div class="form-group">
 	<input type="submit" value="Valider" class="btn btn-default validate">
 	<a class="btn btn-default cancel" href="{{url.get("Users")}}" data-ajax="{{ baseHref ~ "/index"}}">Annuler</a>
