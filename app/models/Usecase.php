@@ -222,4 +222,7 @@ class Usecase extends \Phalcon\Mvc\Model
     public function toString(){
     	return $this->nom." - ".$this->Projet." - ".$this->User;
     }
+    public function getId(){
+    	return $this->code;
+    }
 }
