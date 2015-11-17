@@ -5,5 +5,7 @@ class ProjectsController extends DefaultController{
 		parent::initialize();
 		$this->model="Projet";
 	}
+	
+	
 }
 
