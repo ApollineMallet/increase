@@ -12,6 +12,7 @@
 		</tbody>
 </table>
 <a class='btn btn-primary add' href='{{url.get(baseHref~"/frm")}}' data-ajax="{{ baseHref ~ "/frm/"}}">Ajouter...</a>
+<a class='btn btn-default cancel' href='{{url.get("index")}}' data-ajax="{{ baseHref ~ "/index"}}">Retour</a>
 {% if script_foot is defined %}
     {{ script_foot }}
 {% endif %}
