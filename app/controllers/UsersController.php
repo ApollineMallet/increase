@@ -1,5 +1,6 @@
 <?php
 
+
 use Ajax\bootstrap\html\html5\HtmlSelect;
 class UsersController extends DefaultController{
 	public function initialize(){
