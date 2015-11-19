@@ -20,6 +20,11 @@ class UsersController extends DefaultController{
 	
 
 
+	
+
+
+
+
 	public function projectsAction($id=null){
 
 		$user=$this->getInstance($id);
