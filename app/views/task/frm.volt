@@ -1,4 +1,4 @@
-	{{ form("Users/update", "method": "post", "name":"frmObject", "id":"frmObject") }}
+	{{ form("Taches/update", "method": "post", "name":"frmObject", "id":"frmObject") }}
 <fieldset>
 <legend>Ajouter/modifier un utilisateur</legend>
 <div class="alert alert-info">Utilisateur : {{user.toString()}}</div>
