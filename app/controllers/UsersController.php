@@ -35,7 +35,7 @@ class UsersController extends DefaultController{
 		$today = "20" . date("y-m-d");
 		// convertit la date d'aujourd'hui en secondes
 		$debut_ts = strtotime($today);
-		// instancie les arraylist utilent
+		// instancie les arraylist utiles
 		$NbJourAvantFinProjet = array();
 		$progressbar = array();
 		$pourcentprogressbar = array();
