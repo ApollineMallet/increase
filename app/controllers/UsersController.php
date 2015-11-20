@@ -91,7 +91,7 @@ class UsersController extends DefaultController{
 			}
 
 			// place la progressbar (avec comme id, l'id du projet) bootstrap dans l'arraylist $progressbar avec les variables calculées au dessus
-			$progressbar[$elt->getId()] = $this->jquery->bootstrap()->htmlProgressbar("pb5",$couleur,$avancement)->setStriped(true);
+			$progressbar[$elt->getId()] = $this->jquery->bootstrap()->htmlProgressbar("pb5",$couleur,$avancement)->setStriped(true)->setActive(true);
 			// concatene l'avancement du projet pour qu'il soit de la forme xy%
 			$xyz = round($avancement, 0, PHP_ROUND_HALF_ODD) . "%";
 			// place le % d'avancement du projet dans $pourcentprogressbar avec comme id, l'id du projet
