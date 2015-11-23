@@ -61,28 +61,29 @@ class UsersController extends DefaultController{
 				// on incrémente $totalpoids du poids de la usecase
 				$totalpoids = $totalpoids + $e->getPoids();
 			}
-
+			
 			// on calcul l'avancement du projet en %
 			$avancement = $var / $totalpoids;
 
 			// on calcul le tps total du projet en jour
 			$TpsTotal = round((strtotime($elt->getDateFinPrevue()) - strtotime($elt->getDateLancement())) / 86400);
 			// on calcul l'avanceent du projet en % en terme de jours
-			$cond = $nbjours / $TpsTotal;
+			$cond = ($nbjours / $TpsTotal)*100;
 
 			// on attribu une couleur à la variable $couleur en fonction de 
 			// l'avancement en % du projet en terme de travail accompli comparé à l'avancement en % en terme de jours du projet passé
-			if ($cond <= $avancement){
-				// si l'avancement est supérieur au % de tps passé
-				$couleur = "success";
+			if ($cond <= 0){
+				// si la date de fin de projet est dépassé
+				$couleur = "danger";
 			}
-			elseif ($cond > $avancement){
+			elseif ($cond < $avancement){
 				// si l'avancement est inférieur au % de tps passé
 				$couleur = "warning";
 			}
-			else{
-				// si la date de fin de projet est dépassé
-				$couleur = "danger";
+			elseif ($cond >= $avancement){
+				
+				// si l'avancement est supérieur au % de tps passé
+				$couleur = "success";
 			}
 
 			// place la progressbar (avec comme id, l'id du projet) bootstrap dans l'arraylist $progressbar avec les variables calculées au dessus
