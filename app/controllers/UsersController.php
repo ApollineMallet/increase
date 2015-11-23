@@ -22,9 +22,6 @@ class UsersController extends DefaultController{
 		$user=$this->getInstance($id);
 		$objects=call_user_func("Projet::find",array("idClient=".$user->getId()));
 		$this->view->setVars(array("user"=>$user, "objects"=>$objects));
-		
-		
-		
 	}
 }
 
