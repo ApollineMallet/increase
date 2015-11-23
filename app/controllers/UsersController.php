@@ -10,10 +10,8 @@ class UsersController extends DefaultController{
 
 	public function frmAction($id=NULL){
 		$user=$this->getInstance($id);
-		$select=new HtmlSelect("role","Rôle","Sélectionnez un rôle...");
-		$select->fromArray(array("admin","user","author"));
-		$select->setValue($user->getRole());
-		$select->compile($this->jquery,$this->view);
+		
+		
 		$this->view->setVars(array("user"=>$user,"siteUrl"=>$this->url->getBaseUri(),"baseHref"=>$this->dispatcher->getControllerName()));
 		parent::frmAction($id);
 	}
@@ -22,6 +20,8 @@ class UsersController extends DefaultController{
 	public function projectsAction($id=null){
 
 		$user=$this->getInstance($id);
+		$objects=call_user_func("Projet::find",array("idClient=".$user->getId()));
+		$this->view->setVars(array("user"=>$user, "objects"=>$objects));
 
 		// Sélectionne tous les projets du client
 		$projets=call_user_func("Projet::find",array("idClient=".$user->getId()));
@@ -96,6 +96,7 @@ class UsersController extends DefaultController{
 
 		// Passe toutes les variables nécessaires dans la vue
 
+
 		$this->view->setVars(array("user"=>$user, "objects"=>$projets, "NbJourAvantFinProjet"=>$NbJourAvantFinProjet, "progressbar"=>$progressbar, "pourcentprogressbar"=>$pourcentprogressbar,"siteUrl"=>$this->url->getBaseUri(),"baseHref"=>$this->dispatcher->getControllerName()));		
 
     
@@ -115,3 +116,4 @@ class UsersController extends DefaultController{
 		$this->view->setVars(array("pro"=>$projet, "user"=>$user));
 	}
 }
+

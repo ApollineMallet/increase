@@ -27,6 +27,13 @@ class ConnexionController extends DefaultController{
 	}
 	
 	public function connexionAction() {
+		$mail = $_POST['mail'];
+		$mdp = $_POST['mdp'];
+		$user=User::findFirst();
+		
+		if($user->getPassword()== $mdp) {
+			$this->session->set("user",$user);
+		}
 		
 	}
 	
