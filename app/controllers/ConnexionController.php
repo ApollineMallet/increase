@@ -14,7 +14,7 @@ class ConnexionController extends DefaultController{
 			$o=ord($chr);
 			if($o>127)
 				$o=$o-256;
-				elseif ($o<-127)
+			elseif ($o<-127)
 				$o=$o+256;
 				$hex_array[] = sprintf("%02x", $o);
 		}
@@ -44,6 +44,7 @@ class ConnexionController extends DefaultController{
 	
 	public function deconnexionAction() {
 		$this->session->destroy();
+		$this->dispatcher->forward(array("controller"=>"index", "action"=>"index"));
 	}
 	
 	

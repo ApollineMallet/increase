@@ -9,6 +9,7 @@ class DefaultController extends ControllerBase{
 		if($this->request->isAjax()){
 			$this->view->setRenderLevel(View::LEVEL_ACTION_VIEW);
 		}
+
 	}
     public function indexAction($message=NULL){
 	    	$msg="";
@@ -58,7 +59,29 @@ class DefaultController extends ControllerBase{
     	$this->jquery->getOnClick(".cancel","","#content",array("attr"=>"data-ajax"));
     	$this->jquery->compile($this->view);
     }
+    
+    
+    public function asAdminAction() {
+    	$user=User::findFirst("role='admin'");
+    	$this->session->set("user",$user);
+    	$this->response->redirect("index/index");
+    }
+    
 
+    public function asUserAction() {
+    	$user=User::findFirst("role='user'");
+    	$this->session->set("user",$user);
+    	$this->response->redirect("index/index");
+    }
+    
+
+    public function asAuthorAction() {
+    	$user=User::findFirst("role='author'");
+    	$this->session->set("user",$user);
+    	$this->response->redirect("index/index");
+    }
+    
+    
     /**
      * Affecte membre à membre les valeurs du tableau associatif $_POST aux membres de l'objet $object<br>
      * Prévoir une sur-définition de la méthode pour l'affectation des membres de type objet<br>
