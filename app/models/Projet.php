@@ -46,6 +46,25 @@ class Projet extends BaseModel
     protected $idClient;
 
     /**
+     *
+     * @var integer
+     */
+    protected $NbJourAvantFinProjet;
+
+ /**
+     * Method to set the value of field NbJourAvantFinProjet
+     *
+     * @param integer $NbJourAvantFinProjet
+     * @return $this
+     */
+    public function setNbJourAvantFinProjet($NbJourAvantFinProjet)
+    {
+        $this->NbJourAvantFinProjet = $NbJourAvantFinProjet;
+
+        return $this;
+    }
+
+    /**
      * Method to set the value of field id
      *
      * @param integer $id
@@ -137,6 +156,16 @@ class Projet extends BaseModel
     }
 
     /**
+     * Returns the value of field NbJourAvantFinProjet
+     *
+     * @return integer
+     */
+    public function getNbJourAvantFinProjet()
+    {
+        return $this->NbJourAvantFinProjet;
+    }
+
+     /**
      * Returns the value of field id
      *
      * @return integer

@@ -18,13 +18,34 @@ class UsersController extends DefaultController{
 		parent::frmAction($id);
 	}
 	
+
+
 	public function projectsAction($id=null){
 		$user=$this->getInstance($id);
 		$objects=call_user_func("Projet::find",array("idClient=".$user->getId()));
-		$this->view->setVars(array("user"=>$user, "objects"=>$objects));
-		
-		
-		
+
+		$today = "20" . date("y-m-d");
+		$debut_ts = strtotime($today);
+		$nbSecondes= 60*60*24;
+		$NbJourAvantFinProjet = array();
+		$flag = 0;
+		foreach ($objects as $elt) {
+			$fin_ts = strtotime($elt->getDateFinPrevue());
+			$diff = $fin_ts - $debut_ts;
+			$nbjours = round($diff / $nbSecondes );
+			$NbJourAvantFinProjet[$flag] = $nbjours;
+			$flag = $flag + 1;
+		}
+
+
+
+
+		$this->view->setVars(array("user"=>$user, "objects"=>$objects, "NbJourAvantFinProjet"=>$NbJourAvantFinProjet));		
+	}
+
+	
+
+	public function projectAction(){
+
 	}
 }
-
