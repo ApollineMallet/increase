@@ -4,4 +4,6 @@ class UseCasesController extends DefaultController{
 		parent::initialize();
 		$this->model="Usecase";
 	}
+	
+	
 }

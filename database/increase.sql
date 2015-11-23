@@ -67,9 +67,9 @@ CREATE TABLE IF NOT EXISTS `projet` (
 --
 
 INSERT INTO `projet` (`id`, `nom`, `description`, `dateLancement`, `dateFinPrevue`, `image`, `idClient`) VALUES
-(1, 'Increase', 'A Phalcon web application to manage the progress of projects, and improve communication with the customer', '2015-03-16', '2015-03-29', NULL, 1),
-(2, 'Open-beer', 'A free, public database, API and web application for beer information.', '2015-03-15', '2015-03-29', NULL, 1),
-(3, 'Essai', 'test&lt;html&gt;la suite', '2015-03-10', '2015-03-09', NULL, 1);
+(1, 'Increase', 'A Phalcon web application to manage the progress of projects, and improve communication with the customer', '2015-03-16', '2016-03-29', NULL, 1),
+(2, 'Open-beer', 'A free, public database, API and web application for beer information.', '2015-03-15', '2016-03-29', NULL, 1),
+(3, 'Essai', 'test&lt;html&gt;la suite', '2015-03-10', '2016-03-09', NULL, 1);
 
 -- --------------------------------------------------------
 
