@@ -19,6 +19,7 @@ class DefaultController extends ControllerBase{
     		$message->setTimerInterval($this->messageTimerInterval);
     		$msg=$this->_showDisplayedMessage($message);
     	}
+    	
     	$objects=call_user_func($this->model."::find");
     	$this->view->setVars(array("objects"=>$objects,"siteUrl"=>$this->url->getBaseUri(),"baseHref"=>$this->dispatcher-> getControllerName(),"model"=>$this->model,"msg"=>$msg));
     	$this->jquery->getOnClick(".update, .add","","#content",array("attr"=>"data-ajax"));
@@ -53,11 +54,13 @@ class DefaultController extends ControllerBase{
      */
     public function frmAction($id=NULL){
     	echo "A surdéfinir...<br>Sans oublier l'appel de la méthode parent en fin.";
-    	$this->jquery->postFormOnClick(".validate", $this->dispatcher->getControllerName()."/update", "frmObject","#content");
+    	$this->jquery->postFormOnClick(".validate", $this->dispatcher->getControllerName()."/update", "frmObject", "#content"); 	
     	$this->jquery->getOnClick(".cancel","","#content",array("attr"=>"data-ajax"));
     	$this->jquery->compile($this->view);
+    	
+ 
     }
-
+    
 
     /**
      * Affecte membre à membre les valeurs du tableau associatif $_POST aux membres de l'objet $object<br>
