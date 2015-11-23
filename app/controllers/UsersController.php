@@ -59,7 +59,7 @@ class UsersController extends DefaultController{
 			// on calcul le tps total du projet en jour
 			$TpsTotal = round((strtotime($elt->getDateFinPrevue()) - strtotime($elt->getDateLancement())) / 86400);
 			// on calcul l'avanceent du projet en % en terme de jours
-			$cond = ($nbjours / $TpsTotal)*100;
+			$cond = 100-(($nbjours / $TpsTotal)*100);
 
 			// on attribu une couleur à la variable $couleur en fonction de 
 			// l'avancement en % du projet en terme de travail accompli comparé à l'avancement en % en terme de jours du projet passé
@@ -67,11 +67,11 @@ class UsersController extends DefaultController{
 				// si la date de fin de projet est dépassé
 				$couleur = "danger";
 			}
-			elseif ($cond < $avancement){
+			elseif ($cond > $avancement){
 				// si l'avancement est inférieur au % de tps passé
 				$couleur = "warning";
 			}
-			elseif ($cond >= $avancement){
+			elseif ($cond <= $avancement){
 				
 				// si l'avancement est supérieur au % de tps passé
 				$couleur = "success";
@@ -92,6 +92,7 @@ class UsersController extends DefaultController{
 
     
     	$this->jquery->getOnClick(".open","","#content",array("attr"=>"data-ajax"));
+    	$this->jquery->getOnClick(".open","","#detailProject",array("projects/equipe/1"));
     	$this->jquery->compile($this->view);
     	$this->view->pick("users/projects");
 	}
@@ -101,7 +102,11 @@ class UsersController extends DefaultController{
 		$projet=call_user_func("Projet::find",array("id=".$id));
 		foreach ($projet as  $pr) {
 			$user=$this->getInstance($pr->getIdClient());
+
 		}
+
+
+
 
 
 		$this->view->setVars(array("pro"=>$projet, "user"=>$user));

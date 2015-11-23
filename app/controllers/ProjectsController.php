@@ -5,6 +5,10 @@ class ProjectsController extends DefaultController{
 		parent::initialize();
 		$this->model="Projet";
 	}
+
+	public function equipeAction($id=null){
+		echo $id;
+	}
 	
 	
 }
