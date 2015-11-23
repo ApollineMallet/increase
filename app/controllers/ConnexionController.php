@@ -7,7 +7,7 @@ class ConnexionController extends DefaultController{
 		parent::initialize();
 	}
 	
-	/*private function javaToPhpSha($str){
+	private function javaToPhpSha($str){
 		$k=hash("sha256", $str,true);
 		$hex_array = array();
 		foreach (str_split($k) as $chr) {
@@ -20,7 +20,7 @@ class ConnexionController extends DefaultController{
 		}
 		$key=implode('',$hex_array);
 		return $key;
-	}*/
+	}
 	
 	public function indexAction($id=NULL) {
 		
@@ -29,12 +29,21 @@ class ConnexionController extends DefaultController{
 	public function connexionAction() {
 		$mail = $_POST['mail'];
 		$mdp = $_POST['mdp'];
-		$user=User::findFirst();
+		$user=User::findFirst("mail='".$mail."'");
 		
-		if($user->getPassword()== $mdp) {
+		$password = $this->javaToPhpSha($mdp);
+		$userPass = $user->getPassword();
+		
+		if($userPass == $password) {
 			$this->session->set("user",$user);
 		}
 		
+		$this->response->redirect('index/index');
+		
+	}
+	
+	public function deconnexionAction() {
+		$this->session->destroy();
 	}
 	
 	

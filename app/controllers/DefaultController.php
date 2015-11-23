@@ -11,21 +11,21 @@ class DefaultController extends ControllerBase{
 		}
 	}
     public function indexAction($message=NULL){
-    	$msg="";
-    	if(isset($message)){
-    		if(is_string($message)){
-    			$message=new DisplayedMessage($message);
-    		}
-    		$message->setTimerInterval($this->messageTimerInterval);
-    		$msg=$this->_showDisplayedMessage($message);
-    	}
-    	
-    	$objects=call_user_func($this->model."::find");
-    	$this->view->setVars(array("objects"=>$objects,"siteUrl"=>$this->url->getBaseUri(),"baseHref"=>$this->dispatcher-> getControllerName(),"model"=>$this->model,"msg"=>$msg));
-    	$this->jquery->getOnClick(".update, .add","","#content",array("attr"=>"data-ajax"));
-    	$this->jquery->getOnClick(".delete","","#message",array("attr"=>"data-ajax"));
-    	$this->jquery->compile($this->view);
-    	$this->view->pick("main/index");
+	    	$msg="";
+	    	if(isset($message)){
+	    		if(is_string($message)){
+	    			$message=new DisplayedMessage($message);
+	    		}
+	    		$message->setTimerInterval($this->messageTimerInterval);
+	    		$msg=$this->_showDisplayedMessage($message);
+	    	}
+	    	
+	    	$objects=call_user_func($this->model."::find");
+	    	$this->view->setVars(array("objects"=>$objects,"siteUrl"=>$this->url->getBaseUri(),"baseHref"=>$this->dispatcher-> getControllerName(),"model"=>$this->model,"msg"=>$msg));
+	    	$this->jquery->getOnClick(".update, .add","","#content",array("attr"=>"data-ajax"));
+	    	$this->jquery->getOnClick(".delete","","#message",array("attr"=>"data-ajax"));
+	    	$this->jquery->compile($this->view);
+	    	$this->view->pick("main/index");
     }
 
     /**
@@ -57,10 +57,7 @@ class DefaultController extends ControllerBase{
     	$this->jquery->postFormOnClick(".validate", $this->dispatcher->getControllerName()."/update", "frmObject", "#content"); 	
     	$this->jquery->getOnClick(".cancel","","#content",array("attr"=>"data-ajax"));
     	$this->jquery->compile($this->view);
-    	
- 
     }
-    
 
     /**
      * Affecte membre à membre les valeurs du tableau associatif $_POST aux membres de l'objet $object<br>
