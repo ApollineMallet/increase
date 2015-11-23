@@ -104,3 +104,4 @@ class UsersController extends DefaultController{
 	public function projectAction(){
 
 	}
+}
