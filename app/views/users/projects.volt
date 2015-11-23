@@ -19,13 +19,14 @@
 			</td>
 
 			<td title="Ouvrir le projet." style="vertical-align:middle; text-align:center; width:18%;">
-				<a class='btn btn-success' href="{{url.get("users/project/") ~ object.getId()}}">
+				<a class='btn btn-success open' href='{{url.get("users/project/") ~ object.getId()}}' data-ajax='{{baseHref ~ "/project/" ~ object.getId()}}'>
 					Ouvrir...
 				</a>
 			</td>
-			
+
 			</tr>
 		{% endfor %}
 
 		</tbody>
 </table>
+{{script_foot}}
