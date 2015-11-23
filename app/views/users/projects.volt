@@ -29,4 +29,5 @@
 
 		</tbody>
 </table>
+
 {{script_foot}}

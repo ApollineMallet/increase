@@ -13,10 +13,12 @@ class UsersController extends DefaultController{
 		parent::frmAction($id);
 	}
 	
+
 	public function projectsAction($id=null){
 		$user=$this->getInstance($id);
 		$objects=call_user_func("Projet::find",array("idClient=".$user->getId()));
 		$this->view->setVars(array("user"=>$user, "objects"=>$objects));
+
 		// Sélectionne tous les projets du client
 		$projets=call_user_func("Projet::find",array("idClient=".$user->getId()));
 		// date d'aujourd'hui
@@ -58,6 +60,7 @@ class UsersController extends DefaultController{
 			$TpsTotal = round((strtotime($elt->getDateFinPrevue()) - strtotime($elt->getDateLancement())) / 86400);
 			// on calcul l'avanceent du projet en % en terme de jours
 			$cond = ($nbjours / $TpsTotal)*100;
+
 			// on attribu une couleur à la variable $couleur en fonction de 
 			// l'avancement en % du projet en terme de travail accompli comparé à l'avancement en % en terme de jours du projet passé
 			if ($cond <= 0){
@@ -81,18 +84,27 @@ class UsersController extends DefaultController{
 			$pourcentprogressbar[$elt->getId()] = $xyz;
 		}
 		// Passe toutes les variables nécessaires dans la vue
+
+
+
 		$this->view->setVars(array("user"=>$user, "objects"=>$projets, "NbJourAvantFinProjet"=>$NbJourAvantFinProjet, "progressbar"=>$progressbar, "pourcentprogressbar"=>$pourcentprogressbar,"siteUrl"=>$this->url->getBaseUri(),"baseHref"=>$this->dispatcher->getControllerName()));		
+
+
     
     	$this->jquery->getOnClick(".open","","#content",array("attr"=>"data-ajax"));
     	$this->jquery->compile($this->view);
     	$this->view->pick("users/projects");
 	}
 	
+
 	public function projectAction($id=null){
 		$projet=call_user_func("Projet::find",array("id=".$id));
 		foreach ($projet as  $pr) {
 			$user=$this->getInstance($pr->getIdClient());
 		}
+
+
 		$this->view->setVars(array("pro"=>$projet, "user"=>$user));
 	}
 }
+

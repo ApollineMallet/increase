@@ -61,13 +61,6 @@ class DefaultController extends ControllerBase{
  
     }
     
-  
-    
-    
-   
-   
- 
-
 
     /**
      * Affecte membre à membre les valeurs du tableau associatif $_POST aux membres de l'objet $object<br>
