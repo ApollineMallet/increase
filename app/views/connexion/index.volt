@@ -1,3 +1,4 @@
+{{msg}}
 <!DOCTYPE html>
 <html>
 {{ form("Connexion/connexion", "method": "post", "name":"frmObject", "id":"frmObject") }}

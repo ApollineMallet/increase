@@ -22,24 +22,33 @@ class ConnexionController extends DefaultController{
 		return $key;
 	}
 	
-	public function indexAction($id=NULL) {
-		
+	public function indexAction($msg=NULL) {
+		$this->view->setVars(array("msg"=>$msg->compile($this->jquery)));
 	}
 	
-	public function connexionAction() {
+	public function connexionAction($msg = null) {
 		$mail = $_POST['mail'];
 		$mdp = $_POST['mdp'];
-		$user=User::findFirst("mail='".$mail."'");
+		$user = User::findFirst("mail='".$mail."'");
 		
-		$password = $this->javaToPhpSha($mdp);
-		$userPass = $user->getPassword();
-		
-		if($userPass == $password) {
-			$this->session->set("user",$user);
+		if ($user != null) {
+			$password = $this->javaToPhpSha($mdp);
+			$userPass = $user->getPassword();
+			
+			if($userPass == $password) {
+				$this->session->set("user",$user);
+				$this->response->redirect('index/index');
+			}
+			else {
+				$msg = new DisplayedMessage("Il y a une erreur dans votre mail ou votre mot de passe.","danger");
+				$this->dispatcher->forward(array("controller"=>"connexion","action"=>"index","params"=>array($msg)));
+			}
 		}
-		
-		$this->response->redirect('index/index');
-		
+		else {
+			$msg = new DisplayedMessage("Il y a une erreur dans votre mail ou votre mot de passe.","danger");
+			$this->dispatcher->forward(array("controller"=>"connexion","action"=>"index","params"=>array($msg)));
+		}
+
 	}
 	
 	public function deconnexionAction() {
