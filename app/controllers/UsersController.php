@@ -6,7 +6,11 @@ class UsersController extends DefaultController{
 		$this->model="User";
 	}
 	public function frmAction($id=NULL){
-		$user=$this->getInstance($id);
+			$user=$this->getInstance($id);
+		$select=new HtmlSelect("role","Rôle","Sélectionnez un rôle...");
+		$select->fromArray(array("admin","user","author"));
+		$select->setValue($user->getRole());
+		$select->compile($this->jquery,$this->view);
 		
 		
 		$this->view->setVars(array("user"=>$user,"siteUrl"=>$this->url->getBaseUri(),"baseHref"=>$this->dispatcher->getControllerName()));

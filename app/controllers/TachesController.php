@@ -8,25 +8,30 @@ class TachesController extends DefaultController{
 		$this->model="Tache";
 		
 		
-
-	
 	}
 
 	public function frmAction($id=NULL){
-		$objects=call_user_func($this->model."::find");
 		
-// 		foreach ($taches as $tache){
-// 			$usecase=call_user_func("tache::find",array("id=".$tache->getUsecase()));
-			
-// 		}
+		$taches=call_user_func($this->model."::find", array("id=".$id));
+		//$taches=$this->getInstance($id);
+
+		$this->view->setVars(array("taches"=>$taches,"siteUrl"=>$this->url->getBaseUri(), "baseHref"=>$this->dispatcher->getControllerName()));
 		
-		$this->view->setVars(array("tache"=>$taches, "baseHref"=>$this->dispatcher->getControllerName()));
-		
-	
 		parent::frmAction($id);
 		
 	}
 	
+	
+	public function addAction($id=NULL){
+	
+		$taches=call_user_func($this->model."::find");
+		//$taches=$this->getInstance($id);
+		
+		$this->view->setVars(array("taches"=>$taches,"siteUrl"=>$this->url->getBaseUri(), "baseHref"=>$this->dispatcher->getControllerName()));
+	
+		parent::frmAction($id);
+	
+	}
 	
 }
 

@@ -1,6 +1,6 @@
 <?php
 
-class Message extends \Phalcon\Mvc\Model
+class Message extends BaseModel
 {
 
     /**

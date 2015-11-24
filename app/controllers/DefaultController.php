@@ -62,6 +62,9 @@ class DefaultController extends ControllerBase{
     }
     
     
+    
+   
+    
     public function asAdminAction() {
     	$user=User::findFirst("role='admin'");
     	$this->session->set("user",$user);
@@ -130,6 +133,7 @@ class DefaultController extends ControllerBase{
     			}catch(\Exception $e){
     				$msg=new DisplayedMessage("Impossible de modifier l'instance de ".$this->model,"danger");
     			}
+ 
     		}else{
     			try{
     				$object->save();

@@ -1,6 +1,6 @@
 <?php
 
-class Usecase extends \Phalcon\Mvc\Model
+class Usecase extends BaseModel
 {
 
     /**

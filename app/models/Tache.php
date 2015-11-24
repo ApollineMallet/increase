@@ -1,6 +1,6 @@
 <?php
 
-class Tache extends \Phalcon\Mvc\Model
+class Tache extends BaseModel
 {
 
     /**
