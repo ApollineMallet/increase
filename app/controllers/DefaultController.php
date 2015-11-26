@@ -207,5 +207,7 @@ class DefaultController extends ControllerBase{
     public function messageInfo($message,$timerInterval=0,$dismissable=true){
     	$this->_showMessage($message,"info",$timerInterval,$dismissable);
     }
+    
+    
 }
 

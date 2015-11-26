@@ -1,6 +1,6 @@
 <?php
 use Ajax\bootstrap\html\html5\HtmlSelect;
-
+use Phalcon\Mvc\View;
 class ConnexionController extends DefaultController{
 	
 	public function initialize(){
@@ -23,7 +23,12 @@ class ConnexionController extends DefaultController{
 	}
 	
 	public function indexAction($msg=NULL) {
-		$this->view->setVars(array("msg"=>$msg->compile($this->jquery)));
+		if(isset($msg)) {
+			$this->view->setVars(array("msg"=>$msg->compile($this->jquery)));
+		}
+		else {
+			$this->view->setVars(array("msg"=>""));
+		}
 	}
 	
 	public function connexionAction($msg = null) {
@@ -53,9 +58,10 @@ class ConnexionController extends DefaultController{
 	
 	public function deconnexionAction() {
 		$this->session->destroy();
-		$this->dispatcher->forward(array("controller"=>"index", "action"=>"index"));
+		
+		$this->response->redirect("index/index");
+		
 	}
-	
-	
+
 	
 }
