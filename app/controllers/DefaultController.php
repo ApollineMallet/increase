@@ -1,6 +1,7 @@
 <?php
 
 use Phalcon\Mvc\View;
+
 class DefaultController extends ControllerBase{
 	protected $model;
 	protected $messageTimerInterval=3000;
