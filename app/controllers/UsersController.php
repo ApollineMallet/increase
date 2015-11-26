@@ -63,7 +63,7 @@ class UsersController extends DefaultController{
 
 			// on attribu une couleur à la variable $couleur en fonction de 
 			// l'avancement en % du projet en terme de travail accompli comparé à l'avancement en % en terme de jours du projet passé
-			if ($cond <= 0){
+			if ($cond >= 100){
 				// si la date de fin de projet est dépassé
 				$couleur = "danger";
 			}
@@ -77,24 +77,19 @@ class UsersController extends DefaultController{
 				$couleur = "success";
 			}
 			// place la progressbar (avec comme id, l'id du projet) bootstrap dans l'arraylist $progressbar avec les variables calculées au dessus
-			$progressbar[$elt->getId()] = $this->jquery->bootstrap()->htmlProgressbar("pb5",$couleur,$avancement)->setStriped(true)->setActive(true);
-			// concatene l'avancement du projet pour qu'il soit de la forme xy%
-			$xyz = round($avancement, 0, PHP_ROUND_HALF_ODD) . "%";
-			// place le % d'avancement du projet dans $pourcentprogressbar avec comme id, l'id du projet
-			$pourcentprogressbar[$elt->getId()] = $xyz;
+			$progressbar[$elt->getId()] = $this->jquery->bootstrap()->htmlProgressbar("pb5",$couleur,floor($avancement))->setStriped(true)->setActive(true)->showcaption(true);
+			
 		}
+		
 		// Passe toutes les variables nécessaires dans la vue
-
-
-
-		$this->view->setVars(array("user"=>$user, "objects"=>$projets, "NbJourAvantFinProjet"=>$NbJourAvantFinProjet, "progressbar"=>$progressbar, "pourcentprogressbar"=>$pourcentprogressbar,"siteUrl"=>$this->url->getBaseUri(),"baseHref"=>$this->dispatcher->getControllerName()));		
+		$this->view->setVars(array("user"=>$user, "objects"=>$projets, "NbJourAvantFinProjet"=>$NbJourAvantFinProjet, "progressbar"=>$progressbar,"siteUrl"=>$this->url->getBaseUri(),"baseHref"=>$this->dispatcher->getControllerName()));		
 
 
     
     	$this->jquery->getOnClick(".open","","#content",array("attr"=>"data-ajax"));
-    	$this->jquery->getOnClick(".open","","#detailProject",array("projects/equipe/1"));
     	$this->jquery->compile($this->view);
     	$this->view->pick("users/projects");
+
 	}
 	
 
@@ -102,14 +97,12 @@ class UsersController extends DefaultController{
 		$projet=call_user_func("Projet::find",array("id=".$id));
 		foreach ($projet as  $pr) {
 			$user=$this->getInstance($pr->getIdClient());
-
 		}
-
-
-
-
-
 		$this->view->setVars(array("pro"=>$projet, "user"=>$user));
+
+		$this->jquery->getOnClick("#equipe","","#detailProject",array("attr"=>"data-ajax"));
+		$this->jquery->compile($this->view);
+    	$this->view->pick("users/project");
 	}
 }
 

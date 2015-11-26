@@ -10,7 +10,7 @@
 					{{object.getnom()}}
 			</td>
 
-			<td title="{{pourcentprogressbar[object.getId()]}}" style="vertical-align:middle; width:56%;">
+			<td style="vertical-align:middle; width:56%;">
 					{{progressbar[object.getId()]}}
 			</td>
 
