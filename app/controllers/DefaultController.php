@@ -30,7 +30,7 @@ class DefaultController extends ControllerBase{
 	    	$this->view->pick("main/index");
     }
 
-    /**
+    /**	
      * Retourne une instance de $model<br>
      * si $id est nul, un nouvel objet est retourné<br>
      * sinon l'objet retourné est celui chargé depuis la BDD à partir de l'id $id
