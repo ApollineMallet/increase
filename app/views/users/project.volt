@@ -38,7 +38,7 @@
 		</h4>
 		</a>
 
-		<div id='detailProject' style='background-color:#E2ECFF; padding:0px;'>
+		<div id='detailProject' style='padding:0px;'>
 		</div>
 
 		
