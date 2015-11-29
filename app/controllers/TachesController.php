@@ -20,9 +20,21 @@ class TachesController extends DefaultController {
 		
 		parent::frmAction ( $id );
 	}
+	public function showAction($id = NULL) {
+		$taches = call_user_func ( $this->model . "::find", array (
+				"id=" . $id 
+		) );
+		
+		$this->view->setVars ( array (
+				"taches" => $taches,
+				"siteUrl" => $this->url->getBaseUri (),
+				"baseHref" => $this->dispatcher->getControllerName () 
+		) );
+		
+		parent::frmAction ( $id );
+	}
 	public function addAction($id = NULL) {
 		$taches = call_user_func ( $this->model . "::find" );
-		// $taches=$this->getInstance($id);
 		
 		$this->view->setVars ( array (
 				"taches" => $taches,
