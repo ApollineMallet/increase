@@ -66,21 +66,21 @@ class DefaultController extends ControllerBase{
    
     
     public function asAdminAction() {
-    	$user=User::findFirst("role='admin'");
+    	$user=User::findFirst("idRole='3'");
     	$this->session->set("user",$user);
     	$this->response->redirect("index/index");
     }
     
 
     public function asUserAction() {
-    	$user=User::findFirst("role='user'");
+    	$user=User::findFirst("idRole='1'");
     	$this->session->set("user",$user);
     	$this->response->redirect("index/index");
     }
     
 
     public function asAuthorAction() {
-    	$user=User::findFirst("role='author'");
+    	$user=User::findFirst("idRole='2'");
     	$this->session->set("user",$user);
     	$this->response->redirect("index/index");
     }
