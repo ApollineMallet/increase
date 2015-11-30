@@ -22,7 +22,7 @@ class TachesController extends DefaultController {
 	}
 	public function showAction($id = NULL) {
 		if ($this->request->isAjax ()) {
-			$user = user::find ();
+			$user = User::find ();
 			$taches = call_user_func ( $this->model . "::find", array (
 					"id=" . $id 
 			) );
@@ -41,7 +41,7 @@ class TachesController extends DefaultController {
 			}
 			
 			foreach ( $IdDev as $name ) {
-				foreach ( $taches as $t ) {
+				foreach ( $user as $t ) {
 					if ($name == $t->getId ()) {
 						$NomDev [$t->getIdentite ()] = $t->getIdentite ();
 						$usecaseDev = call_user_func ( "usecase::find", array (
@@ -85,7 +85,8 @@ class TachesController extends DefaultController {
 		$this->view->setVars ( array (
 				"taches" => $taches,
 				"siteUrl" => $this->url->getBaseUri (),
-				"baseHref" => $this->dispatcher->getControllerName () 
+				"baseHref" => $this->dispatcher->getControllerName (),
+				"poid" => $PoidTotal 
 		) );
 		
 		parent::frmAction ( $id );

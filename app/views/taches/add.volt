@@ -7,16 +7,16 @@
 
 		
 		
-		<input type="hidden" name="id" id="id">
+	<input type="hidden" name="id" id="id">
 	<label>Libellé</label><input type="text" required="required" name="libelle" id="libelle" placeholder="Saisissez le libellé" class="form-control"><br>
-	<label>Date de début de tâche</label><input type="date" name="date" id="date" value="" placeholder="Entrez la date" class="form-control"><br>
+	<label>Date de début de tâche</label><input type="date" name="date" id="date" value="0" placeholder="0" class="form-control disabled"><br>
 		
-		<form class="form-inline">
-  <div class="form-group">
-    <label class="sr-only" for="poids" id="poids" name="poids"></label>
+	<form class="form-inline">
+  	<div class="form-group disabled	">
+    <label class="sr-only" for="poids" id="avancement" name="avancement"></label>
     <div class="input-group">
-      <div class="input-group-addon">Poids :</div>
-      <input type="text" class="form-control" id="poids" placeholder="">
+    <div disabled class="input-group-addon">Avancement :</div>
+    <input disabled type="text" class="form-control" id="avancement" value="0" placeholder="0% d'avancement">
     
     </div>
   </div>
