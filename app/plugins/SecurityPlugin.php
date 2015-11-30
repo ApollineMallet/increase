@@ -59,7 +59,8 @@ class SecurityPlugin extends Plugin {
 		);
 		
 		
-		
+		// https://docs.phalconphp.com/fr/latest/reference/tutorial-invo-2.html
+		// http://slamwi.kobject.net/slam4/php/phalcon/project/increase/todo?s[]=increase#liste_des_projets_d_un_client
 				
 	}
 	
