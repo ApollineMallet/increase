@@ -8,7 +8,7 @@
 		</div>
 		<div style='border:1px solid #5B81D8; margin-top:20px; border-radius:2px;'>
 			<h4 style='background-color:#A3C0FF; margin:0px; padding:10px 0 10px 15px;'>
-				Détails du projet
+				Details du projet
 			</h4>
 			<div style='background-color:#E2ECFF; padding:10px 40px 10px 40px'>
 				<h4 style='margin:0px;'>
@@ -24,7 +24,7 @@
 				</div>
 				<div style='display:inline-block; width:40%;'>
 					<h4 style='margin:0px;'>
-						Date de fin prévue : {{o.getDateFinPrevue()}}
+						Date de fin prevue : {{o.getDateFinPrevue()}}
 					</h4>
 				</div>
 
@@ -38,7 +38,7 @@
 		</h4>
 		</a>
 
-		<div id='detailProject' style='background-color:#E2ECFF; padding:0px;'>
+		<div id='detailProject' style='padding:0px;'>
 		</div>
 
 		

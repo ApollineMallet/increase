@@ -94,7 +94,9 @@ class UsersController extends DefaultController{
 	
 
 	public function projectAction($id=null){
-		$projet=call_user_func("Projet::find",array("id=".$id));
+    	if($this->request->isAjax()){
+    	
+    		$projet=call_user_func("Projet::find",array("id=".$id));
 		foreach ($projet as  $pr) {
 			$user=$this->getInstance($pr->getIdClient());
 		}
@@ -103,6 +105,11 @@ class UsersController extends DefaultController{
 		$this->jquery->getOnClick("#equipe","","#detailProject",array("attr"=>"data-ajax"));
 		$this->jquery->compile($this->view);
     	$this->view->pick("users/project");
+    	
+    	}else{
+    		throw new Exception("404 not found", 1);
+    		
+    	}
 	}
 }
 
