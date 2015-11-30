@@ -11,6 +11,7 @@ class ProjectsController extends DefaultController{
 			$user=User::find();
 			$usecase=Usecase::find(array("idProjet=".$id));
 			
+
 			$PoidsDev = array();
 			$IdDev = array();
 			$NomDev = array();
@@ -18,6 +19,7 @@ class ProjectsController extends DefaultController{
 			
 			$PoidTotal = 0;
 			$colorDev = 0;
+
 			foreach ($usecase as $uc) {
 			$IdDev[$uc->getIdDev()] = $uc->getIdDev();
 			$PoidTotal = $PoidTotal + $uc->getPoids();
@@ -46,9 +48,8 @@ class ProjectsController extends DefaultController{
 				}
 			}
 			
-	
-		
 			$this->view->setVars(array("dev"=>$NomDev, "poid"=>$PoidsDev, "color"=>$color));
+
 		}else{
 			throw new Exception("404 not found", 1);
 		}

@@ -11,4 +11,4 @@
 	
 	<center> <button class='btn btn-primary add' data-ajax="{{url.get("index")}}" style='width:225px;'> Me connecter </button> </center>
 </form>
-</html>
+</html> 

@@ -1,6 +1,7 @@
 <?php
 
 use Phalcon\Mvc\View;
+
 class DefaultController extends ControllerBase{
 	protected $model;
 	protected $messageTimerInterval=3000;
@@ -29,7 +30,7 @@ class DefaultController extends ControllerBase{
 	    	$this->view->pick("main/index");
     }
 
-    /**
+    /**	
      * Retourne une instance de $model<br>
      * si $id est nul, un nouvel objet est retourné<br>
      * sinon l'objet retourné est celui chargé depuis la BDD à partir de l'id $id
@@ -60,6 +61,9 @@ class DefaultController extends ControllerBase{
     	$this->jquery->compile($this->view);
     }
     
+    
+    
+   
     
     public function asAdminAction() {
     	$user=User::findFirst("role='admin'");
@@ -129,6 +133,7 @@ class DefaultController extends ControllerBase{
     			}catch(\Exception $e){
     				$msg=new DisplayedMessage("Impossible de modifier l'instance de ".$this->model,"danger");
     			}
+ 
     		}else{
     			try{
     				$object->save();
@@ -207,5 +212,7 @@ class DefaultController extends ControllerBase{
     public function messageInfo($message,$timerInterval=0,$dismissable=true){
     	$this->_showMessage($message,"info",$timerInterval,$dismissable);
     }
+    
+    
 }
 
