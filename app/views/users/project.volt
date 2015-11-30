@@ -30,18 +30,23 @@
 
 			</div>
 		</div>
-
-		<a id='equipe' style='border-top:1px solid #5B81D8; border-right:1px solid #5B81D8; border-left:1px solid #5B81D8; margin-top:20px; border-top-left-radius:2px; border-top-right-radius:2px; display:block; cursor:pointer;' data-ajax='{{"/projects/equipe/" ~ o.getId()}}'>
 		
-		<h4 style='background-color:#A3C0FF; margin:0px; padding:10px 0 10px 15px;'>
-			Equipe
-		</h4>
-		</a>
+		<div style='border:1px solid #5B81D8; margin-top:20px; border-radius:2px; display:block;'>
+			<a id='equipe' class="btn" style="display:block; padding:0px; text-align:left; border:none;" data-ajax='{{"/projects/equipe/" ~ o.getId()}}'>
+				<h4 style='background-color:#A3C0FF; margin:0px; padding:10px 0 10px 15px;'>
+					Equipe
+				</h4>
+			</a>
 
-		<div id='detailProject' style='padding:0px;'>
+			<div id='detailProject' style='padding:0px;'></div>
 		</div>
-
 		
+		<a id='btnMessages' class="btn" data-ajax='{{"/projects/messages/" ~ o.getId()}}' style='margin-top:20px; border:1px solid #5B81D8; width:35%; display:inline-block; border-radius:2px; background-color:#A3C0FF; cursor:pointer;'>
+			<h4 style='margin:0px; padding:0px;'>
+				{{nbmsg}} Messages...
+			</h4>
+		</a>
+		<div id='divMessages' style='padding:0px; margin-top:10px;'></div>
 
 	</div>
 {% endfor %}

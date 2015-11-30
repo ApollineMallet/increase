@@ -29,8 +29,7 @@ class ProjectsController extends DefaultController{
 				foreach ($user as $u){
 					if ($name == $u->getId()){
 						$NomDev[$u->getIdentite()] = $u->getIdentite();
-						$usecaseDev=call_user_func("usecase::find",array("idProjet=".$id, "idDev=".$NomDev[$u->getIdentite()]));
-						foreach ($usecaseDev as $ucD){
+						foreach ($usecase as $ucD){
 							if ($ucD->getIdDev() == $u->getId()){
 								$PoidsDev[$NomDev[$u->getIdentite()]] += $ucD->getPoids();
 							}
@@ -48,6 +47,7 @@ class ProjectsController extends DefaultController{
 				}
 			}
 			
+			
 			$this->view->setVars(array("dev"=>$NomDev, "poid"=>$PoidsDev, "color"=>$color));
 
 		}else{
@@ -55,6 +55,43 @@ class ProjectsController extends DefaultController{
 		}
 	}
 	
+	public function messagesAction($id=null){
+		$messageST=message::find("idProjet=".$id." and idFil is NULL");
+		$user=User::find();
+		
+		$color = array();
+		$emetteur = array();
+			
+		$colorDev = 0;
+		$nbmsg = 0;
+		
+		$msgs=Message::find(array("idProjet=".$id));
+		foreach ($msgs as $k){
+			$nbmsg = $nbmsg + 1;
+		}
+		
+		foreach ($messageST as $m){
+			if ($colorDev == 0) {
+				$color[$m->getId()] = "#E2ECFF";
+				$colorDev = 1;
+			}
+			else {
+				$color[$m->getId()] = "#A3C0FF";
+				$colorDev = 0;
+			}
+		}
+		
+		foreach ($messageST as $M){
+			foreach ($user as $U){
+				if ($M->getIdUser() == $U->getId()){
+				$emetteur[$M->getId()]= $U->getIdentite();
+				}
+			}
+			
+		}
+		
+		$this->view->setVars(array("msg"=>$messageST, "color"=>$color, "nbmsg"=>$nbmsg, "user"=>$emetteur));
+	}
 	
 }
 
