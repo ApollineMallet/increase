@@ -5,7 +5,7 @@ class ProjectsController extends DefaultController{
 		parent::initialize();
 		$this->model="Projet";
 	}
-
+	//****************************************************************************************************************************//
 	public function equipeAction($id=null){
 		if($this->request->isAjax()){
 			$user=User::find();
@@ -54,7 +54,7 @@ class ProjectsController extends DefaultController{
 			throw new Exception("404 not found", 1);
 		}
 	}
-	
+	//****************************************************************************************************************************//
 	public function messagesAction($id=null){
 		$messageST=message::find("idProjet=".$id." and idFil is NULL");
 		$user=User::find();
@@ -91,8 +91,37 @@ class ProjectsController extends DefaultController{
 		}
 		
 		$this->view->setVars(array("msg"=>$messageST, "color"=>$color, "nbmsg"=>$nbmsg, "user"=>$emetteur));
+		
+		
+		$this->jquery->getOnClick(".messagefil","","'#message'+$(self).attr('data-id')",array("attr"=>"data-ajax"));
+		
+		
+		$this->jquery->compile($this->view);
+		$this->view->pick("projects/messages");
 	}
-	
+	//****************************************************************************************************************************//
+	public function messagefilAction($id=null){
+		$contentmsg=Message::find("id=".$id);
+		$msgfil = Message::find("idFil=".$id);
+		$user = User::find();
+		
+		$usermsg = array();
+		
+		foreach ($contentmsg as $cm){
+			$content = $cm->getContent();
+		}
+		
+		foreach ($msgfil as $q){
+			foreach ($user as $u){
+				if ($q->getIdUser() == $u->getId()){
+					$usermsg[$q->getIdUser()] = $u->getIdentite();
+				}
+			}
+		}
+		
+		
+		$this->view->setVars(array("content"=>$content,"user"=>$usermsg,"msgfil"=>$msgfil));
+	}
 }
 
 

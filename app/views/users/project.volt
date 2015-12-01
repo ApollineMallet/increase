@@ -43,7 +43,7 @@
 		
 		<a id='btnMessages' class="btn" data-ajax='{{"/projects/messages/" ~ o.getId()}}' style='margin-top:20px; border:1px solid #5B81D8; width:35%; display:inline-block; border-radius:2px; background-color:#A3C0FF; cursor:pointer;'>
 			<h4 style='margin:0px; padding:0px;'>
-				{{nbmsg}} Messages...
+				<span class="glyphicon glyphicon-envelope"></span> {{nbmsg}} Messages...
 			</h4>
 		</a>
 		<div id='divMessages' style='padding:0px; margin-top:10px;'></div>
