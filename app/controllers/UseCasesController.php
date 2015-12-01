@@ -34,6 +34,29 @@ class UseCasesController extends DefaultController {
 		
 		parent::frmAction ( $id );
 	}
+	public function showAction($id = NULL) {
+		$usecase = Usecase::find ( array (
+				"code='" . $id . "'" 
+		) );
+		$users = User::find ();
+		
+		foreach ( $usecase as $t ) {
+			$avancement = $t->getAvancement ();
+		}
+		$pb = $this->jquery->bootstrap ()->htmlProgressbar ( "pb3", "info", $avancement )->setStriped ( true )->setActive ( true )->showcaption ( true );
+		
+		echo $pb->showcaption ( true );
+		$this->view->setVars ( array (
+				"usecase" => $usecase,
+				"users" => $users,
+				"siteUrl" => $this->url->getBaseUri (),
+				"baseHref" => $this->dispatcher->getControllerName (),
+				"avancement" => $avancement,
+				"pb" => $pb 
+		) );
+		
+		parent::frmAction ( $id );
+	}
 	public function addAction($id = NULL) {
 		$code = "";
 		
