@@ -6,7 +6,7 @@ class UsersController extends DefaultController{
 		$this->model="User";
 	}
 	public function frmAction($id=NULL){
-			$user=$this->getInstance($id);
+		$user=$this->getInstance($id);
 		$select=new HtmlSelect("role","Rôle","Sélectionnez un rôle...");
 		$select->fromArray(array("admin","user","author"));
 		$select->setValue($user->getRole());
@@ -20,8 +20,7 @@ class UsersController extends DefaultController{
 
 	public function projectsAction($id=null){
 		$user=$this->getInstance($id);
-		$objects=call_user_func("Projet::find",array("idClient=".$user->getId()));
-		$this->view->setVars(array("user"=>$user, "objects"=>$objects));
+		$objects=Projet::find(array("idClient=".$user->getId()));
 
 		// SÃ©lectionne tous les projets du client
 		$projets=call_user_func("Projet::find",array("idClient=".$user->getId()));
@@ -44,7 +43,8 @@ class UsersController extends DefaultController{
 			// place le nombre de jour restant dans l'arraylist $NbJourAvantFinProjet, avec comme id, l'id du projet
 			$NbJourAvantFinProjet[$elt->getId()] = $nbjours;
 			// SÃ©lectionne tous les usecases du projet
-			$usecase=call_user_func("UseCase::find",array("idProjet=".$elt->getId()));
+			
+			$usecase=usecase::find(array("idProjet=".$elt->getId()));
 			// instancie les variables
 			$var = 0;
 			$totalpoids = 0;
@@ -104,9 +104,19 @@ class UsersController extends DefaultController{
 		foreach ($projet as  $pr) {
 			$user=$this->getInstance($pr->getIdClient());
 		}
-		$this->view->setVars(array("pro"=>$projet, "user"=>$user));
+		
+		$nbmsg = 0;
+		$msgs=Message::find(array("idProjet=".$id));
+		foreach ($msgs as $k){
+			$nbmsg = $nbmsg + 1;
+		}
+		
+		
+		
+		$this->view->setVars(array("pro"=>$projet, "user"=>$user, "nbmsg"=>$nbmsg));
 
 		$this->jquery->getOnClick("#equipe","","#detailProject",array("attr"=>"data-ajax"));
+		$this->jquery->getOnClick("#btnMessages","","#divMessages",array("attr"=>"data-ajax"));
 		$this->jquery->compile($this->view);
     	$this->view->pick("users/project");
     	
