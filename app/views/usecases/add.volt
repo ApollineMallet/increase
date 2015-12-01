@@ -1,9 +1,9 @@
-	{{ form("Tache/insert", "method": "post", "name":"frmObject", "id":"frmObject") }}
+	{{ form("UsesCases/insert", "method": "post", "name":"frmObject", "id":"frmObject") }}
 <fieldset>
 
-<legend>Ajoutez une tâche</legend>
+<legend>Ajoutez une Usecase</legend>
 
-<div class="alert alert-info">Ajout d'une tâche</div>
+<div class="alert alert-info">Ajout d'une Usecase</div>
 
 		
 		
@@ -16,9 +16,7 @@
     <label class="sr-only" for="poids"></label>
     <div class="input-group">
     <div disabled class="input-group-addon">Avancement :</div>
-   
-    <input  type="text" class="form-control" id="avancement" name="avancement" value="0" placeholder="0% d'avancement">
-    <div disabled class="input-group-addon">%</div>
+    <input disabled type="text" class="form-control" id="avancement" name="avancement" value="0" placeholder="0% d'avancement">
     
     </div>
   </div>
@@ -26,11 +24,11 @@
 </form>
 
 <div class="form-group">
-  <label for="sel1">Définir le Usecase</label>
+  <label for="sel1">Code de l'UseCase</label>
   <select class="form-control" id="codeUseCase" name="codeUseCase">
-  {% for u in usecases %}
-    <option>{{u.getCode()}} :  {{u.getNom()}}</option>
-    {% endfor%}
+  {% for a in usecases %}
+    <option>{{a.getCode()}}</option>
+    {% endfor%}	
   </select>
 </div>
 
@@ -40,7 +38,7 @@
 	<a class="btn btn-default cancel" href="{{url.get("Index")}}" data-ajax="{{ baseHref ~ "/index"}}">Annuler</a>
 </div>
 
-	
+
 </fieldset>
 </form>
 {{ script_foot }}

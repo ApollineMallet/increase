@@ -7,86 +7,62 @@ class TachesController extends DefaultController {
 		$this->model = "Tache";
 	}
 	public function frmAction($id = NULL) {
-		$taches = call_user_func ( $this->model . "::find", array (
-				"id=" . $id 
-		) );
-		// $taches=$this->getInstance($id);
+		$tache = Tache::find ( "id=" . $id );
+		$usecases = Usecase::find ();
+		$avancement = "";
+		$variable = 0;
+		
+		foreach ( $tache as $ta ) {
+			$avancement += $ta->getAvancement ();
+			$variable += 1;
+		}
+		$result = $avancement / $variable;
 		
 		$this->view->setVars ( array (
-				"taches" => $taches,
+				"tache" => $tache,
 				"siteUrl" => $this->url->getBaseUri (),
-				"baseHref" => $this->dispatcher->getControllerName () 
+				"baseHref" => $this->dispatcher->getControllerName (),
+				"usescases" => $usecases 
 		) );
 		
 		parent::frmAction ( $id );
 	}
 	public function showAction($id = NULL) {
-		if ($this->request->isAjax ()) {
-			$user = User::find ();
-			$taches = call_user_func ( $this->model . "::find", array (
-					"id=" . $id 
-			) );
+		$tache = Tache::find ( "id=" . $id );
+		$usecases = Usecase::find ();
+		foreach ( $tache as $t ) {
 			
-			$PoidsDev = array ();
-			$IdDev = array ();
-			$NomDev = array ();
-			$color = array ();
-			
-			$PoidTotal = 0;
-			$colorDev = 0;
-			
-			foreach ( $taches as $ta ) {
-				$IdDev [$ta->getIdDev ()] = $ta->getIdDev ();
-				$PoidTotal = $PoidTotal + $ta->getPoids ();
-			}
-			
-			foreach ( $IdDev as $name ) {
-				foreach ( $user as $t ) {
-					if ($name == $t->getId ()) {
-						$NomDev [$t->getIdentite ()] = $t->getIdentite ();
-						$usecaseDev = call_user_func ( "usecase::find", array (
-								"idProjet=" . $id,
-								"idDev=" . $NomDev [$t->getIdentite ()] 
-						) );
-						foreach ( $usecaseDev as $ucD ) {
-							if ($ucD->getIdDev () == $t->getId ()) {
-								$PoidsDev [$NomDev [$t->getIdentite ()]] += $ucD->getPoids ();
-							}
-						}
-						$PoidsDev [$NomDev [$t->getIdentite ()]] = floor ( ($PoidsDev [$NomDev [$t->getIdentite ()]] / $PoidTotal) * 100 ) . "%";
-						if ($colorDev == 0) {
-							$color [$NomDev [$t->getIdentite ()]] = "#E2ECFF";
-							$colorDev = 1;
-						} else {
-							$color [$NomDev [$t->getIdentite ()]] = "#A3C0FF";
-							$colorDev = 0;
-						}
-					}
-				}
-			}
-			
-			$this->view->setVars ( array (
-					"taches" => $taches,
-					"siteUrl" => $this->url->getBaseUri (),
-					"baseHref" => $this->dispatcher->getControllerName (),
-					"dev" => $NomDev,
-					"poid" => $PoidsDev,
-					"color" => $color 
-			) );
-		} else {
-			throw new Exception ( "404 not found", 1 );
+			$avancement = $t->getAvancement ();
 		}
+		$pb = $this->jquery->bootstrap ()->htmlProgressbar ( "pb3", "info", $avancement )->setStriped ( true )->setActive ( true )->showcaption ( true );
+		
+		echo $pb->showcaption ( true );
+		
+		$this->view->setVars ( array (
+				"tache" => $tache,
+				"usecases" => $usecases,
+				"siteUrl" => $this->url->getBaseUri (),
+				"baseHref" => $this->dispatcher->getControllerName (),
+				"dev" => $NomDev,
+				"poid" => $PoidsDev,
+				"color" => $color,
+				"pb" => $pb 
+		) );
 		
 		parent::frmAction ( $id );
 	}
 	public function addAction($id = NULL) {
-		$taches = call_user_func ( $this->model . "::find" );
+		$tache = Tache::findFirst ();
+		$today = "20" . date ( "y-m-d" );
+		$usecases = Usecase::find ();
 		
 		$this->view->setVars ( array (
-				"taches" => $taches,
+				"tache" => $tache,
 				"siteUrl" => $this->url->getBaseUri (),
 				"baseHref" => $this->dispatcher->getControllerName (),
-				"poid" => $PoidTotal 
+				"poid" => $PoidTotal,
+				"today" => $today,
+				"usecases" => $usecases 
 		) );
 		
 		parent::frmAction ( $id );

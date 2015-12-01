@@ -2,7 +2,7 @@
 <fieldset>
 
 <legend>Modifiez les taches</legend>
-{% for a in taches %}
+{% for a in tache %}
 <div class="alert alert-info">Modification de la tache : {{a.getLibelle()}}</div>
 
 <div class="form-group">

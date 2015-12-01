@@ -2,19 +2,25 @@
 <fieldset>
 
 <legend>Visualisation d'une tâche</legend>
-{% for a in taches %}
+{% for a in tache %}
 <div class="alert alert-info">Visualisation de la tâche : {{a.getLibelle()}} | {{a.getCodeUseCase()}}</div>
-
+<div class="form-inline">
+<label>Avancement :</label>{{pb}}
+</div>
+<br>
+<div class="form-group">
+<label>Date de début de tâche :</label>
+{{a.getDate()}}
+</div>
 <div class="form-group">
 		<input type="hidden" name="id" id="id">
-	
-<td style="vertical-align:middle; width:56%;">
-					{{progressbar[a.getId()]}}
-			</td>
 
+<td style="vertical-align:middle; width:56%;">	
+			</td>
+				
 <div class="form-group">
-	<input type="submit" value="Valider" class="btn btn-default validate">
-	<a class="btn btn-default cancel" href="{{url.get("Index")}}" data-ajax="{{ baseHref ~ "/index"}}">Annuler</a>
+	
+	<a class="btn btn-default cancel" href="{{url.get("Index")}}" data-ajax="{{ baseHref ~ "/index"}}">Retour</a>
 </div>
 {% endfor %}
 
