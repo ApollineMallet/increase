@@ -17,7 +17,7 @@
     <div class="input-group">
       <div class="input-group-addon">Poids :</div>
       <input type="text" class="form-control" id="poids" placeholder="">
-      <div class="input-group-addon">%</div>
+    
     </div>
   </div>
 
