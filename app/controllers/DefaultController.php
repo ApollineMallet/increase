@@ -18,7 +18,7 @@ class DefaultController extends ControllerBase {
 			$message->setTimerInterval ( $this->messageTimerInterval );
 			$msg = $this->_showDisplayedMessage ( $message );
 		}
-		if ($this->model != "Tache") {
+		if ($this->model != "Usecase" & "Tache") {
 			
 			$show = "class='hidden'";
 		} else {

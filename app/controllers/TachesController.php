@@ -22,7 +22,7 @@ class TachesController extends DefaultController {
 				"tache" => $tache,
 				"siteUrl" => $this->url->getBaseUri (),
 				"baseHref" => $this->dispatcher->getControllerName (),
-				"usescases" => $usecases 
+				"usecases" => $usecases 
 		) );
 		
 		parent::frmAction ( $id );

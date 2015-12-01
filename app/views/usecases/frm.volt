@@ -11,12 +11,12 @@
 	<label>Changez les utilisateurs : </label>
 
 	<div class="form-group">
-  	<select class="form-control" id="identite" name="identite">
-  	
-    <option>{{a.getIddev()}}</option>
-    
-  </select>
-</div>
+  	<select class="form-control" id="identite" name="identite" value="">
+  	{% for u in users %}
+    <option>{{u.getIdentite()}}</option>
+	{% endfor %}
+  	</select>
+	</div>
 
 	<input type="submit" value="Valider" class="btn btn-default validate">
 	<a class="btn btn-default cancel" href="{{url.get("Index")}}" data-ajax="{{ baseHref ~ "/index"}}">Annuler</a>
