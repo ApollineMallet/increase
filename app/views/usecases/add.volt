@@ -8,15 +8,15 @@
 		
 		
 	<input type="hidden" name="id" id="id">
-	<label>Libellé</label><input type="text" required="required" name="libelle" id="libelle" placeholder="Saisissez le libellé" class="form-control"><br>
-	<label>Date de début de tâche</label><input type="date" name="date" id="date" value={{today}} class="form-control disabled"><br>
+	<label>Nom</label><input type="text" required="required" name="libelle" id="libelle" placeholder="Saisissez un nom" class="form-control"><br>
+	<label>Poids de la Usecase :</label><input type="text" required="required" name="poids" id="poids" placeholder="Saisissez un poids" class="form-control">
 		
 	<form class="form-inline">
-  	<div class="form-group disabled	">
-    <label class="sr-only" for="poids"></label>
+  	<div class="form-group disabled	"><br>
+    <label class="sr-only" for="avancement"></label>
     <div class="input-group">
     <div disabled class="input-group-addon">Avancement :</div>
-    <input disabled type="text" class="form-control" id="avancement" name="avancement" value="0" placeholder="0% d'avancement">
+    <input type="text" class="form-control" id="avancement" name="avancement" value="0" placeholder="0% d'avancement">
     
     </div>
   </div>
@@ -24,10 +24,10 @@
 </form>
 
 <div class="form-group">
-  <label for="sel1">Code de l'UseCase</label>
-  <select class="form-control" id="codeUseCase" name="codeUseCase">
-  {% for a in usecases %}
-    <option>{{a.getCode()}}</option>
+  <label for="sel1">Attribution de l'utilisateur :</label>
+  <select class="form-control" id="idDev" name="idDev">
+  {% for u in users %}
+    <option>{{u.getIdentite()}}</option>
     {% endfor%}	
   </select>
 </div>

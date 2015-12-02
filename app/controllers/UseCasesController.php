@@ -58,14 +58,14 @@ class UseCasesController extends DefaultController {
 		parent::frmAction ( $id );
 	}
 	public function addAction($id = NULL) {
-		$code = "";
-		
-		$usecases = Usecase::find ( array (
+		$usecase = Usecase::find ( array (
 				"code='" . $id . "'" 
 		) );
+		$users = User::find ();
 		
 		$this->view->setVars ( array (
-				"usecase" => $usecases,
+				"usecase" => $usecase,
+				"users" => $users,
 				"siteUrl" => $this->url->getBaseUri (),
 				"baseHref" => $this->dispatcher->getControllerName () 
 		) );

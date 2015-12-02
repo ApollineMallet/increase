@@ -9,21 +9,35 @@ class TachesController extends DefaultController {
 	public function frmAction($id = NULL) {
 		$tache = Tache::find ( "id=" . $id );
 		$usecases = Usecase::find ();
-		$avancement = "";
-		$variable = 0;
+		// $avancement = "";
+		// $variable = 0;
 		
-		foreach ( $tache as $ta ) {
-			$avancement += $ta->getAvancement ();
-			$variable += 1;
+		// foreach ( $tache as $ta ) {
+		// $avancement += $ta->getAvancement ();
+		// $variable += 1;
+		// }
+		// $result = $avancement / $variable;
+		
+		// $this->view->setVars ( array (
+		// "tache" => $tache,
+		// "siteUrl" => $this->url->getBaseUri (),
+		// "baseHref" => $this->dispatcher->getControllerName (),
+		// "usecases" => $usecases
+		// ) );
+		
+		try {
+			$avancement = 0;
+			$usecase = Usecase::findFirst ( "code='" . $object->getCodeUseCase () . "'" );
+			$taches = Tache::find ( "codeUseCase LIKE '" . $object->getCodeUseCase () . "'" );
+			foreach ( $taches as $t ) {
+				$avancement += $t->getAvancement ();
+			}
+			$avancement = $avancement / count ( $taches );
+			$usecase->setAvancement ( $avancement );
+			$usecase->save ();
+		} catch ( \Exception $e ) {
+			$msg = new DisplayedMessage ( "Impossible de modifier l'avancement de la  UseCase " . $usecase, "danger" );
 		}
-		$result = $avancement / $variable;
-		
-		$this->view->setVars ( array (
-				"tache" => $tache,
-				"siteUrl" => $this->url->getBaseUri (),
-				"baseHref" => $this->dispatcher->getControllerName (),
-				"usecases" => $usecases 
-		) );
 		
 		parent::frmAction ( $id );
 	}
