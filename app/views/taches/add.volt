@@ -1,4 +1,4 @@
-	{{ form("Tache/insert", "method": "post", "name":"frmObject", "id":"frmObject") }}
+	{{ form("Taches/insert", "method": "post", "name":"frmObject", "id":"frmObject") }}
 <fieldset>
 
 <legend>Ajoutez une tâche</legend>
@@ -29,7 +29,7 @@
   <label for="sel1">Définir le Usecase</label>
   <select class="form-control" id="codeUseCase" name="codeUseCase">
   {% for u in usecases %}
-    <option>{{u.getCode()}} :  {{u.getNom()}}</option>
+    <option value="{{u.getCode()}}">{{u.getCode()}} :  {{u.getNom()}}</option>
     {% endfor%}
   </select>
 </div>
