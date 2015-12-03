@@ -8,7 +8,6 @@ class DefaultController extends ControllerBase {
 			$this->view->setRenderLevel ( View::LEVEL_ACTION_VIEW );
 		}
 	}
-
 	public function indexAction($message = NULL) {
 		$msg = "";
 		$show = "";
@@ -20,12 +19,10 @@ class DefaultController extends ControllerBase {
 			$msg = $this->_showDisplayedMessage ( $message );
 		}
 		if ($this->model != "Usecase" & "Tache") {
-
 			$show = "class='hidden'";
 		} else {
 			$show = "";
 		}
-
 		$objects = call_user_func ( $this->model . "::find" );
 		$this->view->setVars ( array (
 				"objects" => $objects,
@@ -46,8 +43,8 @@ class DefaultController extends ControllerBase {
 	}
 	/**
 	 * Retourne une instance de $model<br>
-	 * si $id est nul, un nouvel objet est retourn√©<br>
-	 * sinon l'objet retourn√© est celui charg√© depuis la BDD √† partir de l'id $id
+	 * si $id est nul, un nouvel objet est retournÈ<br>
+	 * sinon l'objet retournÈ est celui chargÈ depuis la BDD ‡ partir de l'id $id
 	 *
 	 * @param string $id
 	 * @return multitype:$className
@@ -61,17 +58,16 @@ class DefaultController extends ControllerBase {
 		}
 		return $object;
 	}
-
 	/**
 	 * Affiche le formulaire d'ajout ou de modification d'une instance de $model<br>
-	 * L'instance est d√©finie √† partir de $id<br>
-	 * frm doit utiliser la m√©thode getInstance() pour obtenir l'instance √† ajouter ou √† modifier
+	 * L'instance est dÈfinie ‡ partir de $id<br>
+	 * frm doit utiliser la mÈthode getInstance() pour obtenir l'instance ‡ ajouter ou ‡ modifier
 	 *
 	 * @see DefaultController::getInstance()
 	 * @param string $id
 	 */
 	public function frmAction($id = NULL) {
-		echo "A surd√©finir...<br>Sans oublier l'appel de la m√©thode parent en fin.";
+		echo "A surdÈfinir...<br>Sans oublier l'appel de la mÈthode parent en fin.";
 		$this->jquery->postFormOnClick ( ".validate", $this->dispatcher->getControllerName () . "/update", "frmObject", "#content" );
 		$this->jquery->getOnClick ( ".cancel", "", "#content", array (
 				"attr" => "data-ajax"
@@ -93,11 +89,10 @@ class DefaultController extends ControllerBase {
 		$this->session->set( "user", $user );
 		$this->response->redirect( "index/index" );
 	}
-
 	/**
-	 * Affecte membre √† membre les valeurs du tableau associatif $_POST aux membres de l'objet $object<br>
-	 * Pr√©voir une sur-d√©finition de la m√©thode pour l'affectation des membres de type objet<br>
-	 * Cette m√©thode est utilis√©e update()
+	 * Affecte membre ‡ membre les valeurs du tableau associatif $_POST aux membres de l'objet $object<br>
+	 * PrÈvoir une sur-dÈfinition de la mÈthode pour l'affectation des membres de type objet<br>
+	 * Cette mÈthode est utilisÈe update()
 	 *
 	 * @see DefaultController::update()
 	 * @param multitype:$className $object
@@ -122,7 +117,7 @@ class DefaultController extends ControllerBase {
 	 * @param string $type
 	 *        	type du message (info, success, warning ou danger)
 	 * @param number $timerInterval
-	 *        	dur√©e en millisecondes d'affichage du message (0 pour que le message reste affich√©)
+	 *        	durÈe en millisecondes d'affichage du message (0 pour que le message reste affichÈ)
 	 * @param string $dismissable
 	 *        	si vrai, l'alert dispose d'une croix de fermeture
 	 */
@@ -130,10 +125,9 @@ class DefaultController extends ControllerBase {
 		$message = new DisplayedMessage ( $message, $type, $timerInterval, $dismissable, $visible );
 		$this->_showDisplayedMessage ( $message );
 	}
-
 	/**
-	 * Met √† jour √† partir d'un post une instance de $model<br>
-	 * L'affectation des membres de l'objet par le contenu du POST se fait par appel de la m√©thode setValuesToObject()
+	 * Met ‡ jour ‡ partir d'un post une instance de $model<br>
+	 * L'affectation des membres de l'objet par le contenu du POST se fait par appel de la mÈthode setValuesToObject()
 	 *
 	 * @see DefaultController::setValuesToObject()
 	 */
@@ -144,14 +138,14 @@ class DefaultController extends ControllerBase {
 			if ($_POST ["id"]) {
 				try {
 					$object->save ();
-					$msg = new DisplayedMessage ( $this->model . " `{$object->toString()}` mis √† jour" );
+					$msg = new DisplayedMessage ( $this->model . " `{$object->toString()}` mis ‡ jour" );
 				} catch ( \Exception $e ) {
 					$msg = new DisplayedMessage ( "Impossible de modifier l'instance de " . $this->model, "danger" );
 				}
 			} else {
 				try {
 					$object->save ();
-					$msg = new DisplayedMessage ( "Instance de " . $this->model . " `{$object->toString()}` ajout√©e" );
+					$msg = new DisplayedMessage ( "Instance de " . $this->model . " `{$object->toString()}` ajoutÈe" );
 				} catch ( \Exception $e ) {
 					$msg = new DisplayedMessage ( "Impossible d'ajouter l'instance de " . $this->model, "danger" );
 				}
@@ -189,7 +183,7 @@ class DefaultController extends ControllerBase {
 			$object = call_user_func ( $this->model . "::findfirst", $id );
 			if ($object !== NULL) {
 				$object->delete ();
-				$msg = new DisplayedMessage ( $this->model . " `{$object->toString()}` supprim√©(e)" );
+				$msg = new DisplayedMessage ( $this->model . " `{$object->toString()}` supprimÈ(e)" );
 			} else {
 				$msg = new DisplayedMessage ( $this->model . " introuvable", "warning" );
 			}
@@ -204,14 +198,13 @@ class DefaultController extends ControllerBase {
 				)
 		) );
 	}
-
 	/**
 	 * Affiche un message Alert bootstrap de type success
 	 *
 	 * @param string $message
 	 *        	texte du message
 	 * @param number $timerInterval
-	 *        	dur√©e en millisecondes d'affichage du message (0 pour que le message reste affich√©)
+	 *        	durÈe en millisecondes d'affichage du message (0 pour que le message reste affichÈ)
 	 * @param string $dismissable
 	 *        	si vrai, l'alert dispose d'une croix de fermeture
 	 */
@@ -224,7 +217,7 @@ class DefaultController extends ControllerBase {
 	 * @param string $message
 	 *        	texte du message
 	 * @param number $timerInterval
-	 *        	dur√©e en millisecondes d'affichage du message (0 pour que le message reste affich√©)
+	 *        	durÈe en millisecondes d'affichage du message (0 pour que le message reste affichÈ)
 	 * @param string $dismissable
 	 *        	si vrai, l'alert dispose d'une croix de fermeture
 	 */
@@ -237,7 +230,7 @@ class DefaultController extends ControllerBase {
 	 * @param string $message
 	 *        	texte du message
 	 * @param number $timerInterval
-	 *        	dur√©e en millisecondes d'affichage du message (0 pour que le message reste affich√©)
+	 *        	durÈe en millisecondes d'affichage du message (0 pour que le message reste affichÈ)
 	 * @param string $dismissable
 	 *        	si vrai, l'alert dispose d'une croix de fermeture
 	 */
@@ -250,7 +243,7 @@ class DefaultController extends ControllerBase {
 	 * @param string $message
 	 *        	texte du message
 	 * @param number $timerInterval
-	 *        	dur√©e en millisecondes d'affichage du message (0 pour que le message reste affich√©)
+	 *        	durÈe en millisecondes d'affichage du message (0 pour que le message reste affichÈ)
 	 * @param string $dismissable
 	 *        	si vrai, l'alert dispose d'une croix de fermeture
 	 */
@@ -258,4 +251,3 @@ class DefaultController extends ControllerBase {
 		$this->_showMessage ( $message, "info", $timerInterval, $dismissable );
 	}
 }
-

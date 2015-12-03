@@ -80,38 +80,38 @@ class SecurityPlugin extends Plugin {
 		// Les noms des controllers sont des ressources.
 		
 		$publicResources = array (
-			'connexion' => array ('index', 'connexion', 'deconnexion'),
-			'index' => array ('index'),
-			'default' => array ('asAdmin', 'asAuthor', 'asUser','index')
+			'Connexion' => array ('index', 'connexion', 'deconnexion'),
+			'Index' => array ('index'),
+			'Default' => array ('asAdmin', 'asAuthor', 'asUser','index')
 		);
 		foreach ($publicResources as $resource => $actions) {
 			$acl->addResource(new Resource($resource), $actions);
 		}
 		
 		$userResources = array (
-			'projects' => array ('index'),
-			'users' => array ('index','projects', 'project')
+			'Projects' => array ('index'),
+			'Users' => array ('index','projects', 'project')
 		);
 		foreach ($userResources as $resource => $actions) {
 			$acl->addResource(new Resource($resource), $actions);
 		}
 		
 		$authorResources = array (
-			'projects' => array ('index', 'equipe'),
-			'users' => array ('index','projects', 'project'),
-			'messages' => array ('index'),
-			'taches' => array('index', 'frm','show')
+			'Projects' => array ('index', 'equipe'),
+			'Users' => array ('index','projects', 'project'),
+			'Messages' => array ('index'),
+			'Taches' => array('index', 'frm','show')
 		);
 		foreach ($authorResources as $resource => $actions) {
 			$acl->addResource(new Resource($resource), $actions);
 		}
 		
 		$adminResources = array (
-			'projects' => array ('index', 'equipe'),
-			'users' => array ('index','projects', 'project'),
-			'messages' => array ('index'),
-			'taches' => array('index', 'frm','show'),
-			'useCases' => array ('index'),
+			'Projects' => array ('index', 'equipe'),
+			'Users' => array ('index','projects', 'project'),
+			'Messages' => array ('index'),
+			'Taches' => array('index', 'frm','show'),
+			'UseCases' => array ('index'),
 		);
 		foreach ($adminResources as $resource => $actions) {
 			$acl->addResource(new Resource($resource), $actions);
