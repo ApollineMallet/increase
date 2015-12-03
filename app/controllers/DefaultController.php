@@ -8,6 +8,7 @@ class DefaultController extends ControllerBase {
 			$this->view->setRenderLevel ( View::LEVEL_ACTION_VIEW );
 		}
 	}
+
 	public function indexAction($message = NULL) {
 		$msg = "";
 		$show = "";
@@ -19,10 +20,12 @@ class DefaultController extends ControllerBase {
 			$msg = $this->_showDisplayedMessage ( $message );
 		}
 		if ($this->model != "Usecase" & "Tache") {
+
 			$show = "class='hidden'";
 		} else {
 			$show = "";
 		}
+
 		$objects = call_user_func ( $this->model . "::find" );
 		$this->view->setVars ( array (
 				"objects" => $objects,
@@ -58,6 +61,7 @@ class DefaultController extends ControllerBase {
 		}
 		return $object;
 	}
+
 	/**
 	 * Affiche le formulaire d'ajout ou de modification d'une instance de $model<br>
 	 * L'instance est d�finie � partir de $id<br>
@@ -93,6 +97,7 @@ class DefaultController extends ControllerBase {
 		$this->session->set( "user", $user );
 		$this->response->redirect( "index" );
 	}
+
 	/**
 	 * Affecte membre � membre les valeurs du tableau associatif $_POST aux membres de l'objet $object<br>
 	 * Pr�voir une sur-d�finition de la m�thode pour l'affectation des membres de type objet<br>
@@ -129,6 +134,7 @@ class DefaultController extends ControllerBase {
 		$message = new DisplayedMessage ( $message, $type, $timerInterval, $dismissable, $visible );
 		$this->_showDisplayedMessage ( $message );
 	}
+
 	/**
 	 * Met � jour � partir d'un post une instance de $model<br>
 	 * L'affectation des membres de l'objet par le contenu du POST se fait par appel de la m�thode setValuesToObject()
@@ -202,6 +208,7 @@ class DefaultController extends ControllerBase {
 				)
 		) );
 	}
+
 	/**
 	 * Affiche un message Alert bootstrap de type success
 	 *
@@ -255,3 +262,4 @@ class DefaultController extends ControllerBase {
 		$this->_showMessage ( $message, "info", $timerInterval, $dismissable );
 	}
 }
+
