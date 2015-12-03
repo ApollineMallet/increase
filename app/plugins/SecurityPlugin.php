@@ -79,38 +79,47 @@ class SecurityPlugin extends Plugin {
 		// On définit les ressources pour chaque zone.
 		// Les noms des controllers sont des ressources.
 		
-		$publicResources = array (
-			'connexion' => array ('index', 'connexion', 'deconnexion'),
-			'index' => array ('index'),
-			'default' => array ('asAdmin', 'asAuthor', 'asUser','index', 'update', 'delete', 'frm'),
-			'projects' => array('index','equipe','messages','messagefil'),
-			'user' => array('projects', 'project')
+		/*$publicResources = array (
+			'Connexion' => array ('index', 'connexion', 'deconnexion'),
+			'Index' => array ('index'),
+			'Default' => array ('asAdmin', 'asAuthor', 'asUser','index', 'update', 'delete', 'frm'),
+			'Projects' => array('index','equipe','messages','messagefil'),
+			'Users' => array('index','projects', 'project')
 		);
 		foreach ($publicResources as $resource => $actions) {
 			$acl->addResource(new Resource($resource), $actions);
-		}
+		}*/
 		
 		$userResources = array (
-			'projects' => array ('index'),
-			'users' => array ('index','projects', 'project')
+			'Connexion' => array ('index', 'connexion', 'deconnexion'),
+			'index' => array ('index'),
+			'Default' => array ('asAdmin', 'asAuthor', 'asUser','index', 'update', 'delete', 'frm'),
+			'projects' => array('index','equipe','messages','messagefil'),
+			'users' => array('index','projects', 'project')
 		);
 		foreach ($userResources as $resource => $actions) {
 			$acl->addResource(new Resource($resource), $actions);
 		}
 		
 		$authorResources = array (
-			'projects' => array ('index', 'equipe'),
-			'users' => array ('index','projects', 'project'),
-			'messages' => array ('index'),
-			'taches' => array('index', 'frm','show')
+			'Connexion' => array ('index', 'connexion', 'deconnexion'),
+			'index' => array ('index'),
+			'Default' => array ('asAdmin', 'asAuthor', 'asUser','index', 'update', 'delete', 'frm'),
+			'projects' => array('index','equipe','messages','messagefil'),
+			'users' => array('index','projects', 'project'),
+			'Messages' => array ('index'),
+			'Taches' => array('index', 'frm','show')
 		);
 		foreach ($authorResources as $resource => $actions) {
 			$acl->addResource(new Resource($resource), $actions);
 		}
 		
 		$adminResources = array (
-			'projects' => array ('index', 'equipe'),
-			'users' => array ('index','projects', 'project'),
+			'Connexion' => array ('index', 'connexion', 'deconnexion'),
+			'index' => array ('index'),
+			'Default' => array ('asAdmin', 'asAuthor', 'asUser','index', 'update', 'delete', 'frm'),
+			'projects' => array('index','equipe','messages','messagefil'),
+			'users' => array('index','projects', 'project'),
 			'messages' => array ('index'),
 			'taches' => array('index', 'frm','show'),
 			'useCases' => array ('index'),
@@ -121,11 +130,12 @@ class SecurityPlugin extends Plugin {
 		
 		
 		// Tout le monde a accès aux ressources publiques :
-		foreach ($roles as $role) {
+		/*foreach ($roles as $role) {
 			foreach ($publicResources as $resource => $actions) {
 				$acl->allow($role->getName(), $resource, '*');
 			}
-		}
+		}*/
+		
 		// Accès des userResources uniquement aux users :
 		foreach ($userResources as $resource => $actions) {
 			foreach ($actions as $action) {
