@@ -6,6 +6,8 @@ class ProjectsController extends DefaultController {
 	}
 
 
+	//****************************************************************************************************************************//
+
 	public function equipeAction($id=null){
 		if($this->request->isAjax()){
 			$user=User::find();
@@ -26,17 +28,15 @@ class ProjectsController extends DefaultController {
 			}
 			
 
-			foreach ( $IdDev as $name ) {
-				foreach ( $user as $u ) {
-					if ($name == $u->getId ()) {
-						$NomDev [$u->getIdentite ()] = $u->getIdentite ();
-						$usecaseDev = call_user_func ( "usecase::find", array (
-								"idProjet=" . $id,
-								"idDev=" . $NomDev [$u->getIdentite ()] 
-						) );
-						foreach ( $usecaseDev as $ucD ) {
-							if ($ucD->getIdDev () == $u->getId ()) {
-								$PoidsDev [$NomDev [$u->getIdentite ()]] += $ucD->getPoids ();
+
+			foreach ($IdDev as $name){
+				foreach ($user as $u){
+					if ($name == $u->getId()){
+						$NomDev[$u->getIdentite()] = $u->getIdentite();
+						foreach ($usecase as $ucD){
+							if ($ucD->getIdDev() == $u->getId()){
+								$PoidsDev[$NomDev[$u->getIdentite()]] += $ucD->getPoids();
+
 
 							}
 						}
@@ -52,6 +52,7 @@ class ProjectsController extends DefaultController {
 				}
 			}
 			
+
 			
 			$this->view->setVars(array("dev"=>$NomDev, "poid"=>$PoidsDev, "color"=>$color));
 
@@ -127,6 +128,7 @@ class ProjectsController extends DefaultController {
 		
 		$this->view->setVars(array("content"=>$content,"user"=>$usermsg,"msgfil"=>$msgfil));
 	}
+
 }
 
 
