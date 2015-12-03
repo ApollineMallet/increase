@@ -61,6 +61,18 @@ class UseCasesController extends DefaultController {
 		$usecase = Usecase::find ( array (
 				"code='" . $id . "'" 
 		) );
+		$taches= Tache::find();
+	
+		$avancement = "";
+		$variable = 0;
+		
+		foreach ( $tache as $ta ) {
+			$avancement += $ta->getAvancement ();
+		
+			$variable += 1;
+		}
+		$result = $avancement / $variable;
+		
 		$users = User::find ();
 		
 		$this->view->setVars ( array (

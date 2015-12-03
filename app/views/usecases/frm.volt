@@ -4,6 +4,7 @@
 <legend>Modifiez une Usecase</legend>
 {% for a in usecase %}
 <div class="alert alert-info">Modification de la Usecase : {{a.getCode()}}</div>
+<div class="alert alert-info">Modification de la Usecase : {{avancementUC}}</div>
 
 <div class="form-group">
 	<label></label><input type="hidden" name="code" id="code" value="{{a.getCode()}}">

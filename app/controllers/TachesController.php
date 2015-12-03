@@ -9,21 +9,30 @@ class TachesController extends DefaultController {
 	public function frmAction($id = NULL) {
 		$tache = Tache::find ( "id=" . $id );
 		$usecases = Usecase::find ();
-		$avancement = "";
+		$avancementUC = "";
+		$avancementT = "";
 		$variable = 0;
-		
+			
 		foreach ( $tache as $ta ) {
-		$avancement += $ta->getAvancement ();
-		$variable += 1;
+				
+		$avancementT += $ta->getAvancement();
+
 		}
-		$result = $avancement / $variable;
+		foreach ($usecases as $uc){
+		$variable += 1;
+		$avancementUC = $avancementTA / $variable;
+		
+		}
 		
 		$this->view->setVars ( array (
 		"tache" => $tache,
 		"usecases" => $usecases,
 		"siteUrl" => $this->url->getBaseUri (),
 		"baseHref" => $this->dispatcher->getControllerName (),
-		"usecases" => $usecases
+		"usecases" => $usecases,
+		"avancementUC" =>$avancementUC,
+		"variable" =>$variable
+		
 		) );
 		
 		
