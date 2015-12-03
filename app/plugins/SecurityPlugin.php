@@ -95,7 +95,10 @@ class SecurityPlugin extends Plugin {
 			'index' => array ('index'),
 			'Default' => array ('asAdmin', 'asAuthor', 'asUser','index', 'update', 'delete', 'frm'),
 			'projects' => array('index','equipe','messages','messagefil'),
-			'users' => array('index','projects', 'project')
+			'users' => array('index','projects', 'project'),
+			'Messages' => array ('index'),
+			'Taches' => array('index', 'frm','show','add'),
+			'UseCases' => array ('index','add','show','frm'),
 		);
 		foreach ($userResources as $resource => $actions) {
 			$acl->addResource(new Resource($resource), $actions);
@@ -108,7 +111,8 @@ class SecurityPlugin extends Plugin {
 			'projects' => array('index','equipe','messages','messagefil'),
 			'users' => array('index','projects', 'project'),
 			'Messages' => array ('index'),
-			'Taches' => array('index', 'frm','show')
+			'Taches' => array('index', 'frm','show','add'),
+			'UseCases' => array ('index','add','show','frm'),
 		);
 		foreach ($authorResources as $resource => $actions) {
 			$acl->addResource(new Resource($resource), $actions);
@@ -121,8 +125,8 @@ class SecurityPlugin extends Plugin {
 			'projects' => array('index','equipe','messages','messagefil'),
 			'users' => array('index','projects', 'project'),
 			'Messages' => array ('index'),
-			'Taches' => array('index', 'frm','show'),
-			'UseCases' => array ('index'),
+			'Taches' => array('index', 'frm','show','add'),
+			'UseCases' => array ('index','add','show','frm'),
 		);
 		foreach ($adminResources as $resource => $actions) {
 			$acl->addResource(new Resource($resource), $actions);
