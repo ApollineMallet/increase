@@ -120,9 +120,9 @@ class SecurityPlugin extends Plugin {
 			'Default' => array ('asAdmin', 'asAuthor', 'asUser','index', 'update', 'delete', 'frm'),
 			'projects' => array('index','equipe','messages','messagefil'),
 			'users' => array('index','projects', 'project'),
-			'messages' => array ('index'),
-			'taches' => array('index', 'frm','show'),
-			'useCases' => array ('index'),
+			'Messages' => array ('index'),
+			'Taches' => array('index', 'frm','show'),
+			'UseCases' => array ('index'),
 		);
 		foreach ($adminResources as $resource => $actions) {
 			$acl->addResource(new Resource($resource), $actions);
