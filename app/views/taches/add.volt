@@ -1,4 +1,4 @@
-	{{ form("Tache/insert", "method": "post", "name":"frmObject", "id":"frmObject") }}
+	{{ form("Taches/insert", "method": "post", "name":"frmObject", "id":"frmObject") }}
 <fieldset>
 
 <legend>Ajoutez une tâche</legend>
@@ -23,7 +23,7 @@
     </div>
   </div>
 
-</form>
+
 
 <div class="form-group">
   <label for="sel1">Définir le Usecase</label>

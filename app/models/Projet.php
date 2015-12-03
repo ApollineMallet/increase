@@ -278,7 +278,7 @@ class Projet extends BaseModel
     }
 
     public function toString(){
-    	return $this->nom." (".$this->getClient().") ";
+    	return $this->nom;//." (".$this->getClient().") ";
     }
     
 }

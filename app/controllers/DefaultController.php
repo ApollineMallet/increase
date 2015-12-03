@@ -46,8 +46,8 @@ class DefaultController extends ControllerBase {
 	}
 	/**
 	 * Retourne une instance de $model<br>
-	 * si $id est nul, un nouvel objet est retourné<br>
-	 * sinon l'objet retourné est celui chargé depuis la BDD à partir de l'id $id
+	 * si $id est nul, un nouvel objet est retournï¿½<br>
+	 * sinon l'objet retournï¿½ est celui chargï¿½ depuis la BDD ï¿½ partir de l'id $id
 	 *
 	 * @param string $id
 	 * @return multitype:$className
@@ -64,40 +64,44 @@ class DefaultController extends ControllerBase {
 
 	/**
 	 * Affiche le formulaire d'ajout ou de modification d'une instance de $model<br>
-	 * L'instance est définie à partir de $id<br>
-	 * frm doit utiliser la méthode getInstance() pour obtenir l'instance à ajouter ou à modifier
+	 * L'instance est dï¿½finie ï¿½ partir de $id<br>
+	 * frm doit utiliser la mï¿½thode getInstance() pour obtenir l'instance ï¿½ ajouter ou ï¿½ modifier
 	 *
 	 * @see DefaultController::getInstance()
 	 * @param string $id
 	 */
+	
+
+	
 	public function frmAction($id = NULL) {
-		echo "A surdéfinir...<br>Sans oublier l'appel de la méthode parent en fin.";
+		echo "A surdï¿½finir...<br>Sans oublier l'appel de la mï¿½thode parent en fin.";
 		$this->jquery->postFormOnClick ( ".validate", $this->dispatcher->getControllerName () . "/update", "frmObject", "#content" );
-		$this->jquery->getOnClick ( ".cancel", "", "#content", array (
+		$this->jquery->getOnClick ( ".cancel","", "#content", array (
 				"attr" => "data-ajax"
 		) );
 		$this->jquery->compile ( $this->view );
+		$this->view->setVar("baseHref", $this->dispatcher-> getControllerName());
 	}
 	public function asAdminAction() {
 		$user = User::findFirst( "role='3'" );
 		$this->session->set( "user", $user );
-		$this->response->redirect( "index/index" );
+		$this->response->redirect( "index" );
 	}
 	public function asUserAction() {
 		$user = User::findFirst( "role='1'" );
 		$this->session->set( "user", $user );
-		$this->response->redirect( "index/index" );
+		$this->response->redirect( "index" );
 	}
 	public function asAuthorAction() {
 		$user = User::findFirst( "role='2'" );
 		$this->session->set( "user", $user );
-		$this->response->redirect( "index/index" );
+		$this->response->redirect( "index" );
 	}
 
 	/**
-	 * Affecte membre à membre les valeurs du tableau associatif $_POST aux membres de l'objet $object<br>
-	 * Prévoir une sur-définition de la méthode pour l'affectation des membres de type objet<br>
-	 * Cette méthode est utilisée update()
+	 * Affecte membre ï¿½ membre les valeurs du tableau associatif $_POST aux membres de l'objet $object<br>
+	 * Prï¿½voir une sur-dï¿½finition de la mï¿½thode pour l'affectation des membres de type objet<br>
+	 * Cette mï¿½thode est utilisï¿½e update()
 	 *
 	 * @see DefaultController::update()
 	 * @param multitype:$className $object
@@ -122,7 +126,7 @@ class DefaultController extends ControllerBase {
 	 * @param string $type
 	 *        	type du message (info, success, warning ou danger)
 	 * @param number $timerInterval
-	 *        	durée en millisecondes d'affichage du message (0 pour que le message reste affiché)
+	 *        	durï¿½e en millisecondes d'affichage du message (0 pour que le message reste affichï¿½)
 	 * @param string $dismissable
 	 *        	si vrai, l'alert dispose d'une croix de fermeture
 	 */
@@ -132,8 +136,8 @@ class DefaultController extends ControllerBase {
 	}
 
 	/**
-	 * Met à jour à partir d'un post une instance de $model<br>
-	 * L'affectation des membres de l'objet par le contenu du POST se fait par appel de la méthode setValuesToObject()
+	 * Met ï¿½ jour ï¿½ partir d'un post une instance de $model<br>
+	 * L'affectation des membres de l'objet par le contenu du POST se fait par appel de la mï¿½thode setValuesToObject()
 	 *
 	 * @see DefaultController::setValuesToObject()
 	 */
@@ -144,18 +148,33 @@ class DefaultController extends ControllerBase {
 			if ($_POST ["id"]) {
 				try {
 					$object->save ();
-					$msg = new DisplayedMessage ( $this->model . " `{$object->toString()}` mis à jour" );
+					$msg = new DisplayedMessage ( $this->model . " `{$object->toString()}` mis Ã  jour" );
 				} catch ( \Exception $e ) {
 					$msg = new DisplayedMessage ( "Impossible de modifier l'instance de " . $this->model, "danger" );
 				}
 			} else {
 				try {
 					$object->save ();
-					$msg = new DisplayedMessage ( "Instance de " . $this->model . " `{$object->toString()}` ajoutée" );
+					$msg = new DisplayedMessage ( "Instance de " . $this->model . " `{$object->toString()}` ajoutÃ©e" );
 				} catch ( \Exception $e ) {
 					$msg = new DisplayedMessage ( "Impossible d'ajouter l'instance de " . $this->model, "danger" );
 				}
 			}
+			
+			try {
+				$avancement = 0;
+				$usecase = Usecase::findFirst("code='".$object->getCodeUseCase()."'");
+				$taches = Tache::find("codeUseCase LIKE '".$object->getCodeUseCase()."'");
+				foreach ($taches as $tache){
+					$avancement += $tache->getAvancement();
+				}
+				$avancement = $avancement/count($taches);
+				$usecase->setAvancement($avancement);
+				$usecase->save();
+			}catch (\Exception $e){
+				$msg=new DisplayedMessage("Impossible de modifier l'avancement de la  UseCase ".$usecase,"danger");
+			}
+			
 			$this->dispatcher->forward ( array (
 					"controller" => $this->dispatcher->getControllerName (),
 					"action" => "index",
@@ -189,7 +208,7 @@ class DefaultController extends ControllerBase {
 			$object = call_user_func ( $this->model . "::findfirst", $id );
 			if ($object !== NULL) {
 				$object->delete ();
-				$msg = new DisplayedMessage ( $this->model . " `{$object->toString()}` supprimé(e)" );
+				$msg = new DisplayedMessage ( $this->model . " `{$object->toString()}` supprimÃ©(e)" );
 			} else {
 				$msg = new DisplayedMessage ( $this->model . " introuvable", "warning" );
 			}
@@ -211,7 +230,7 @@ class DefaultController extends ControllerBase {
 	 * @param string $message
 	 *        	texte du message
 	 * @param number $timerInterval
-	 *        	durée en millisecondes d'affichage du message (0 pour que le message reste affiché)
+	 *        	durï¿½e en millisecondes d'affichage du message (0 pour que le message reste affichï¿½)
 	 * @param string $dismissable
 	 *        	si vrai, l'alert dispose d'une croix de fermeture
 	 */
@@ -224,7 +243,7 @@ class DefaultController extends ControllerBase {
 	 * @param string $message
 	 *        	texte du message
 	 * @param number $timerInterval
-	 *        	durée en millisecondes d'affichage du message (0 pour que le message reste affiché)
+	 *        	durï¿½e en millisecondes d'affichage du message (0 pour que le message reste affichï¿½)
 	 * @param string $dismissable
 	 *        	si vrai, l'alert dispose d'une croix de fermeture
 	 */
@@ -237,7 +256,7 @@ class DefaultController extends ControllerBase {
 	 * @param string $message
 	 *        	texte du message
 	 * @param number $timerInterval
-	 *        	durée en millisecondes d'affichage du message (0 pour que le message reste affiché)
+	 *        	durï¿½e en millisecondes d'affichage du message (0 pour que le message reste affichï¿½)
 	 * @param string $dismissable
 	 *        	si vrai, l'alert dispose d'une croix de fermeture
 	 */
@@ -250,7 +269,7 @@ class DefaultController extends ControllerBase {
 	 * @param string $message
 	 *        	texte du message
 	 * @param number $timerInterval
-	 *        	durée en millisecondes d'affichage du message (0 pour que le message reste affiché)
+	 *        	durï¿½e en millisecondes d'affichage du message (0 pour que le message reste affichï¿½)
 	 * @param string $dismissable
 	 *        	si vrai, l'alert dispose d'une croix de fermeture
 	 */
