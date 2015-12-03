@@ -28,7 +28,7 @@ class SecurityPlugin extends Plugin {
 				$role = 'admin';
 			}
 		
-			
+			 
 			// On cherche le controller et l'action :
 			$controller = $dispatcher->getControllerName();
 			$action = $dispatcher->getActionName();

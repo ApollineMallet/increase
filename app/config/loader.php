@@ -17,3 +17,4 @@ $loader->registerDirs(
     	$config->application->pluginsDir
     )
 )->register();
+ 

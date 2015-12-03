@@ -105,7 +105,7 @@ class DefaultController extends ControllerBase {
 	protected function setValuesToObject(&$object) {
 		$object->assign ( $_POST );
 	}
-
+ 
 	/**
 	 * Affiche un message Alert bootstrap
 	 *

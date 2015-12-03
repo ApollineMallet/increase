@@ -137,7 +137,7 @@ class User extends BaseModel
     {
         return $this->identite;
     }
-
+ 
     /**
      * Returns the value of field role
      *

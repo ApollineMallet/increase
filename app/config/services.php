@@ -21,7 +21,7 @@ use Phalcon\Mvc\User\Plugin;
  * The FactoryDefault Dependency Injector automatically register the right services providing a full stack framework
  */
 $di = new FactoryDefault();
-
+ 
 
 $di->set('dispatcher', function() use ($di) {
 	// Création d'un evenement manager :
