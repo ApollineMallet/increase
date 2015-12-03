@@ -41,7 +41,7 @@ class SecurityPlugin extends Plugin {
 				$dispatcher->forward(
 					array(
 						'controller' => 'index',
-						'action' => 'index'
+						'action' => 'index',
 					)		
 				);
 	
