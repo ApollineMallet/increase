@@ -82,7 +82,9 @@ class SecurityPlugin extends Plugin {
 		$publicResources = array (
 			'connexion' => array ('index', 'connexion', 'deconnexion'),
 			'index' => array ('index'),
-			'default' => array ('asAdmin', 'asAuthor', 'asUser','index', 'update', 'delete', 'frm')
+			'default' => array ('asAdmin', 'asAuthor', 'asUser','index', 'update', 'delete', 'frm'),
+			'projects' => array('index','equipe','messages','messagefil'),
+			'user' => array('projects', 'project')
 		);
 		foreach ($publicResources as $resource => $actions) {
 			$acl->addResource(new Resource($resource), $actions);

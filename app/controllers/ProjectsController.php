@@ -4,20 +4,13 @@ class ProjectsController extends DefaultController {
 		parent::initialize ();
 		$this->model = "Projet";
 	}
-<<<<<<< HEAD
-	public function equipeAction($id = null) {
-		if ($this->request->isAjax ()) {
-			$user = User::find ();
-			$usecase = Usecase::find ( array (
-					"idProjet=" . $id 
-			) );
-=======
+
 	//****************************************************************************************************************************//
 	public function equipeAction($id=null){
 		if($this->request->isAjax()){
 			$user=User::find();
 			$usecase=Usecase::find(array("idProjet=".$id));
->>>>>>> origin/base
+
 			
 			$PoidsDev = array ();
 			$IdDev = array ();
@@ -32,19 +25,7 @@ class ProjectsController extends DefaultController {
 				$PoidTotal = $PoidTotal + $uc->getPoids ();
 			}
 			
-<<<<<<< HEAD
-			foreach ( $IdDev as $name ) {
-				foreach ( $user as $u ) {
-					if ($name == $u->getId ()) {
-						$NomDev [$u->getIdentite ()] = $u->getIdentite ();
-						$usecaseDev = call_user_func ( "usecase::find", array (
-								"idProjet=" . $id,
-								"idDev=" . $NomDev [$u->getIdentite ()] 
-						) );
-						foreach ( $usecaseDev as $ucD ) {
-							if ($ucD->getIdDev () == $u->getId ()) {
-								$PoidsDev [$NomDev [$u->getIdentite ()]] += $ucD->getPoids ();
-=======
+
 			foreach ($IdDev as $name){
 				foreach ($user as $u){
 					if ($name == $u->getId()){
@@ -52,7 +33,7 @@ class ProjectsController extends DefaultController {
 						foreach ($usecase as $ucD){
 							if ($ucD->getIdDev() == $u->getId()){
 								$PoidsDev[$NomDev[$u->getIdentite()]] += $ucD->getPoids();
->>>>>>> origin/base
+
 							}
 						}
 						$PoidsDev [$NomDev [$u->getIdentite ()]] = floor ( ($PoidsDev [$NomDev [$u->getIdentite ()]] / $PoidTotal) * 100 ) . "%";
@@ -67,17 +48,7 @@ class ProjectsController extends DefaultController {
 				}
 			}
 			
-<<<<<<< HEAD
-			$this->view->setVars ( array (
-					"dev" => $NomDev,
-					"poid" => $PoidsDev,
-					"color" => $color 
-			) );
-		} else {
-			throw new Exception ( "404 not found", 1 );
-		}
-	}
-=======
+
 			
 			$this->view->setVars(array("dev"=>$NomDev, "poid"=>$PoidsDev, "color"=>$color));
 
@@ -153,7 +124,7 @@ class ProjectsController extends DefaultController {
 		
 		$this->view->setVars(array("content"=>$content,"user"=>$usermsg,"msgfil"=>$msgfil));
 	}
->>>>>>> origin/base
+
 }
 
 
