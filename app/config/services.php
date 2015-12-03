@@ -3,17 +3,40 @@
 use Phalcon\DI\FactoryDefault;
 use Phalcon\Mvc\View;
 use Phalcon\Mvc\Url as UrlResolver;
+use Phalcon\Mvc\Url as UrlProvider;
 use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 use Phalcon\Mvc\View\Engine\Volt as VoltEngine;
 use Phalcon\Mvc\Model\Metadata\Memory as MetaDataAdapter;
+use Phalcon\Mvc\Model\Metadata\Memory as MetaData;
 use Phalcon\Session\Adapter\Files as SessionAdapter;
 use Ajax\JsUtils;
 use Ajax\Bootstrap;
+use Phalcon\Mvc\Dispatcher;
+use Phalcon\Events\Manager as EventsManager;
+use Phalcon\Security;
+use Phalcon\Flash\Session as FlashSession;
+use Phalcon\Mvc\User\Plugin;
 
 /**
  * The FactoryDefault Dependency Injector automatically register the right services providing a full stack framework
  */
 $di = new FactoryDefault();
+
+
+$di->set('dispatcher', function() use ($di) {
+	// Création d'un evenement manager :
+	$eventsManager = new EventsManager();
+	// Ecoute les events utilisant SecurityPlugin :
+	$eventsManager->attach('dispatch:beforeExecuteRoute', new SecurityPlugin);
+	$eventsManager->attach('dispatch:beforeException', new NotFoundPlugin);
+
+	$dispatcher = new Dispatcher();
+	// Assigne l'event au dispatcher :
+	$dispatcher->setEventsManager($eventsManager);
+
+	return $dispatcher;
+
+});
 
 /**
  * The URL component is used to generate all kind of urls in the application
@@ -89,3 +112,9 @@ $di->set("jquery",function(){
 	$jquery->bootstrap(new Bootstrap());//for Twitter Bootstrap
 	return $jquery;
 });
+
+
+
+
+
+

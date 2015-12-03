@@ -194,4 +194,17 @@ class User extends BaseModel
     	return $this->identite." (".$this->mail.") ";
     }
     
+    public function columnMap()
+    {
+    	// Keys are the real names in the table and
+    	// the values their names in the application
+    	return array(
+    			'idRole'       => 'role',
+    			'id'		=> 'id',
+    			'identite'=>'identite',
+    			'mail'=>'mail',
+    			'password'=>'password'
+    	);
+    }
+    
 }

@@ -79,19 +79,19 @@ class DefaultController extends ControllerBase {
 		$this->jquery->compile ( $this->view );
 	}
 	public function asAdminAction() {
-		$user = User::findFirst ( "role='3'" );
-		$this->session->set ( "user", $user );
-		$this->response->redirect ( "index/index" );
+		$user = User::findFirst( "role='3'" );
+		$this->session->set( "user", $user );
+		$this->response->redirect( "index/index" );
 	}
 	public function asUserAction() {
-		$user = User::findFirst ( "role='1'" );
-		$this->session->set ( "user", $user );
-		$this->response->redirect ( "index/index" );
+		$user = User::findFirst( "role='1'" );
+		$this->session->set( "user", $user );
+		$this->response->redirect( "index/index" );
 	}
 	public function asAuthorAction() {
-		$user = User::findFirst ( "role='2'" );
-		$this->session->set ( "user", $user );
-		$this->response->redirect ( "index/index" );
+		$user = User::findFirst( "role='2'" );
+		$this->session->set( "user", $user );
+		$this->response->redirect( "index/index" );
 	}
 
 	/**
