@@ -129,15 +129,17 @@ class SecurityPlugin extends Plugin {
 			$acl->addResource(new Resource($resource), $actions);
 		}
 		
-		
 		// Tout le monde a accès aux ressources publiques :
+
 		/*foreach ($roles as $role) {
 			foreach ($publicResources as $resource => $actions) {
 				$acl->allow($role->getName(), $resource, '*');
 			}
 		}*/
 		
+
 		// Accès des userResources uniquement aux users :
+
 		foreach ($userResources as $resource => $actions) {
 			foreach ($actions as $action) {
 				$acl->allow('user', $resource, $action);
