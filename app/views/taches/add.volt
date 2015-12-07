@@ -1,5 +1,5 @@
- {{ form("Tache/insert", "method": "post", "name":"frmObject",
-"id":"frmObject") }}
+{{ form("Taches/insert", "method": "post", "name":"frmObject", "id":"frmObject") }}
+
 <fieldset>
 
 	<legend>Ajoutez une tâche</legend>
@@ -30,12 +30,14 @@
 	</form>
 
 	<div class="form-group">
-		<label for="sel1">D�finir le Usecase</label> <select
-			class="form-control" id="codeUseCase" name="codeUseCase"> {%
-			for u in usecases %}
-			<option>{{u.getCode()}} : {{u.getNom()}}</option> {% endfor%}
-		</select>
+	  <label for="sel1">Définir le Usecase</label>
+	  <select class="form-control" id="codeUseCase" name="codeUseCase">
+	  {% for u in usecases %}
+	    <option value="{{u.getCode()}}">{{u.getCode()}} :  {{u.getNom()}}</option>
+	    {% endfor%}
+	  </select>
 	</div>
+
 
 	</div>
 	<div class="form-group">
@@ -43,7 +45,6 @@
 		<a class="btn btn-default cancel" href="{{url.get("
 			Index")}}" data-ajax="{{ baseHref ~ "/index"}}">Annuler</a>
 	</div>
-
 
 </fieldset>
 </form>

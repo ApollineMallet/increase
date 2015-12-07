@@ -7,11 +7,14 @@ use Phalcon\Mvc\User\Plugin;
 use Phalcon\Mvc\Dispatcher;
 use Phalcon\Acl\Adapter\Memory as AclList;
 class SecurityPlugin extends Plugin {
-	public function beforeExecuteRoute(Event $event, Dispatcher $dispatcher) {
-		
-		// On vérifie que l'internaute est connecté :
-		$auth = $this->session->get ( 'user' );
-		// Puis on définie son rôle :
+
+	
+	public function beforeExecuteRoute (Event $event, Dispatcher $dispatcher) {
+	
+		// On verifie que l'internaute est connectï¿½ :
+		$auth = $this->session->get('user');
+		// Puis on definie son rÃ´le :
+
 		if ($auth != null) {
 			$idRole = $auth->getRole ();
 			if ($idRole == "1") {
@@ -26,234 +29,112 @@ class SecurityPlugin extends Plugin {
 			$controller = $dispatcher->getControllerName ();
 			$action = $dispatcher->getActionName ();
 			
-			// On récupère la liste des ACL :
-			$acl = $this->getAcl ();
+
+			// On recupere la liste des ACL :
+			$acl = $this->getAcl();
 			
-			// On regarde si le rôle a accès au controller (resource) :
-			$allowed = $acl->isAllowed ( $role, $controller, $action );
+			// On regarde si le rï¿½le a accÃ¨s au controller (resource) :
+			$allowed = $acl->isAllowed($role, $controller, $action);
 			// ALLOW = 1
 			if ($allowed != Acl::ALLOW) {
-				// S'il n'a pas accès on renvoie à l'index :
-				$dispatcher->forward ( array (
+				// S'il n'a pas accï¿½s on renvoie Ã  l'index :
+				$dispatcher->forward(
+					array(
 						'controller' => 'index',
-						'action' => 'index' 
-				) );
+						'action' => 'index',
+					)		
+				);
+	
+
 				
-				// On retourne FAUX pour arrêter l'operation :
+				// On retourne FAUX pour arreter l'operation :
 				return false;
 			}
 		}
 	}
-	public function getAcl() {
-		// Création ACL :
-		$acl = new AclList ();
-		// L'action par défaut est egal à DENY (0) :
-		$acl->setDefaultAction ( Acl::DENY );
+
+	
+	
+	public function getAcl () {
+		// Creation ACL :
+		$acl = new AclList();
+		// L'action par defaut est egal Ã  DENY (0) :
+		$acl->setDefaultAction(Acl::DENY);
 		
-		// Enregistre trois rôles :
+		//Enregistre trois rÃ´les :
+
 		$roles = array (
 				'user' => new Role ( 'user' ),
 				'author' => new Role ( 'author' ),
 				'admin' => new Role ( 'admin' ) 
 		);
 		
-		// Pour chaque rôle, je l'ajoute dans l'AclList
-		foreach ( $roles as $role ) {
-			$acl->addRole ( $role );
+
+		// Pour chaque rÃ´le, je l'ajoute dans l'AclList
+		foreach ($roles as $role) {
+			$acl->addRole($role);
+
 		}
 		
-		// On définit les ressources pour chaque zone.
+		// On definit les ressources pour chaque zone.
 		// Les noms des controllers sont des ressources.
 		
-		/*
-		 * $publicResources = array (
-		 * 'Connexion' => array ('index', 'connexion', 'deconnexion'),
-		 * 'Index' => array ('index'),
-		 * 'Default' => array ('asAdmin', 'asAuthor', 'asUser','index', 'update', 'delete', 'frm'),
-		 * 'Projects' => array('index','equipe','messages','messagefil'),
-		 * 'Users' => array('index','projects', 'project')
-		 * );
-		 * foreach ($publicResources as $resource => $actions) {
-		 * $acl->addResource(new Resource($resource), $actions);
-		 * }
-		 */
-		
+
 		$userResources = array (
-				'Connexion' => array (
-						'index',
-						'connexion',
-						'deconnexion' 
-				),
-				'index' => array (
-						'index' 
-				),
-				'Default' => array (
-						'asAdmin',
-						'asAuthor',
-						'asUser',
-						'index',
-						'update',
-						'delete',
-						'frm',
-						'_delete' 
-				),
-				'projects' => array (
-						'index',
-						'equipe',
-						'messages',
-						'messagefil',
-						'newmessage'
-				),
-				'users' => array (
-						'index',
-						'projects',
-						'project',
-						'newmessage'
-				),
-				'Messages' => array (
-						'index',
-						'update',
-						'insert',
-						'newmessage'
-				),
-				'Taches' => array (
-						'index',
-						'frm',
-						'show',
-						'add' 
-				),
-				'UseCases' => array (
-						'index',
-						'add',
-						'show',
-						'frm' 
-				) 
+			'Connexion' => array ('index', 'connexion', 'deconnexion'),
+			'index' => array ('index'),
+			'Default' => array ('asAdmin', 'asAuthor', 'asUser','index', 'update', 'delete', 'frm', '_delete'),
+			'projects' => array('index','equipe','messages','messagefil'),
+			'users' => array('index','projects', 'project'),
+			'Messages' => array ('index'),
+			'Taches' => array('index', 'frm','show','add', 'update', 'delete', '_delete'),
+			'UseCases' => array ('index','add','show','frm')
+
 		);
+		
 		foreach ( $userResources as $resource => $actions ) {
 			$acl->addResource ( new Resource ( $resource ), $actions );
 		}
 		
 		$authorResources = array (
-				'Connexion' => array (
-						'index',
-						'connexion',
-						'deconnexion' 
-				),
-				'index' => array (
-						'index' 
-				),
-				'Default' => array (
-						'asAdmin',
-						'asAuthor',
-						'asUser',
-						'index',
-						'update',
-						'delete',
-						'frm',
-						'_delete' 
-				),
-				'projects' => array (
-						'index',
-						'equipe',
-						'messages',
-						'messagefil',
-						'newmessage'
-				),
-				'users' => array (
-						'index',
-						'projects',
-						'project',
-						'newmessage'
-				),
-				'Messages' => array (
-						'index',
-						'newmessage'
-				),
-				'Taches' => array (
-						'index',
-						'frm',
-						'show',
-						'add' 
-				),
-				'UseCases' => array (
-						'index',
-						'add',
-						'show',
-						'frm' 
-				) 
+			'Connexion' => array ('index', 'connexion', 'deconnexion'),
+			'index' => array ('index'),
+			'Default' => array ('asAdmin', 'asAuthor', 'asUser','index', 'update', 'delete', 'frm', '_delete'),
+			'projects' => array('index','equipe','messages','messagefil'),
+			'users' => array('index','projects', 'project'),
+			'Messages' => array ('index'),
+			'Taches' => array('index', 'frm','show','add','update', 'delete', '_delete'),
+			'UseCases' => array ('index','add','show','frm')
+
 		);
+		
 		foreach ( $authorResources as $resource => $actions ) {
 			$acl->addResource ( new Resource ( $resource ), $actions );
 		}
 		
 		$adminResources = array (
-				'Connexion' => array (
-						'index',
-						'connexion',
-						'deconnexion' 
-				),
-				'index' => array (
-						'index' 
-				),
-				'Default' => array (
-						'asAdmin',
-						'asAuthor',
-						'asUser',
-						'index',
-						'update',
-						'delete',
-						'frm',
-						'_delete' 
-				),
-				'projects' => array (
-						'index',
-						'equipe',
-						'messages',
-						'messagefil',
-						'newmessage'
-				),
-				'users' => array (
-						'index',
-						'projects',
-						'project',
-						'newmessage'
-				),
-				'Messages' => array (
-						'index',
-						'newmessage' 
-				),
-				'Taches' => array (
-						'index',
-						'frm',
-						'show',
-						'add' 
-				),
-				'UseCases' => array (
-						'index',
-						'add',
-						'show',
-						'frm' 
-				) 
+			'Connexion' => array ('index', 'connexion', 'deconnexion'),
+			'index' => array ('index'),
+			'Default' => array ('asAdmin', 'asAuthor', 'asUser','index', 'update', 'delete', 'frm', '_delete'),
+			'projects' => array('index','equipe','messages','messagefil'),
+			'users' => array('index','projects', 'project'),
+			'Messages' => array ('index'),
+			'Taches' => array('index', 'frm','show','add', 'update', 'delete', '_delete'),
+			'UseCases' => array ('index','add','show','frm')
+
 		);
 		foreach ( $adminResources as $resource => $actions ) {
 			$acl->addResource ( new Resource ( $resource ), $actions );
 		}
-		
-		// Tout le monde a accès aux ressources publiques :
-		
-		/*
-		 * foreach ($roles as $role) {
-		 * foreach ($publicResources as $resource => $actions) {
-		 * $acl->allow($role->getName(), $resource, '*');
-		 * }
-		 * }
-		 */
-		
-		// Accès des userResources uniquement aux users :
-		
-		foreach ( $userResources as $resource => $actions ) {
-			foreach ( $actions as $action ) {
-				$acl->allow ( 'user', $resource, $action );
+
+				
+
+		// AccÃ¨s des userResources uniquement aux users :
+
+		foreach ($userResources as $resource => $actions) {
+			foreach ($actions as $action) {
+				$acl->allow('user', $resource, $action);
+
 			}
 		}
 		// Pour author :
