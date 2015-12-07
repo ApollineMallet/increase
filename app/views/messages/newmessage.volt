@@ -10,7 +10,6 @@
 			<input type="hidden" name="idProjet" id="idProjet" value="{{id}}">
 			<input type="hidden" name="idUser" id="idUser" value="1">
 			
-			<input type="text" name="idFil" id="idFil" value="{{user}}">
 			
 			<div class="form-group">
 				<input type="submit" value="Valider" class="btn btn-default validate" style='margin-top: 25px; border: 1px solid #5B81D8; width: 100%; display: block; border-radius: 2px; background-color: #A3C0FF; cursor: pointer;'>

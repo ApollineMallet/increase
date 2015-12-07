@@ -32,10 +32,10 @@
 					required="required"
 					style="width: 100%; max-width: 100%; border-radius: 2px;"></textarea>
 					
-				<input type="hidden" name="date" id="date" value="{{today}}">
-				<input type="hidden" name="idFil" id="idFil" value="2">
-				<input type="hidden" name="idProjet" id="idProjet" value="1">
-				<input type="hidden" name="idUser" id="idUser" value="1">
+				<input type="text" name="date" id="date" value="{{today}}">
+				<input type="text" name="idFil" id="idFil" value="{{idmsgparent}}">
+				<input type="text" name="idProjet" id="idProjet" value="{{idp}}">
+				<input type="text" name="idUser" id="idUser" value="1">
 				
 				<div class="form-group">
 					<input type="submit" value="Valider"

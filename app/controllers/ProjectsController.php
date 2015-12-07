@@ -117,6 +117,7 @@ class ProjectsController extends DefaultController {
 		
 		foreach ( $contentmsg as $cm ) {
 			$content = $cm->getContent ();
+			$idp = $cm->getIdProjet();
 		}
 		
 		foreach ( $msgfil as $q ) {
@@ -133,7 +134,9 @@ class ProjectsController extends DefaultController {
 				"content" => $content,
 				"user" => $usermsg,
 				"msgfil" => $msgfil,
-				"today" => $today
+				"today" => $today,
+				"idmsgparent" => $id,
+				"idp" => $idp
 		) );
 	}
 }

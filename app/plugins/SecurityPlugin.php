@@ -86,7 +86,7 @@ class SecurityPlugin extends Plugin {
 			'Default' => array ('asAdmin', 'asAuthor', 'asUser','index', 'update', 'delete', 'frm', '_delete'),
 			'projects' => array('index','equipe','messages','messagefil'),
 			'users' => array('index','projects', 'project'),
-			'Messages' => array ('index'),
+			'Messages' => array ('index','newmessage'),
 			'Taches' => array('index', 'frm','show','add', 'update', 'delete', '_delete'),
 			'UseCases' => array ('index','add','show','frm')
 
@@ -102,7 +102,7 @@ class SecurityPlugin extends Plugin {
 			'Default' => array ('asAdmin', 'asAuthor', 'asUser','index', 'update', 'delete', 'frm', '_delete'),
 			'projects' => array('index','equipe','messages','messagefil'),
 			'users' => array('index','projects', 'project'),
-			'Messages' => array ('index'),
+			'Messages' => array ('index','newmessage'),
 			'Taches' => array('index', 'frm','show','add','update', 'delete', '_delete'),
 			'UseCases' => array ('index','add','show','frm')
 
@@ -118,7 +118,7 @@ class SecurityPlugin extends Plugin {
 			'Default' => array ('asAdmin', 'asAuthor', 'asUser','index', 'update', 'delete', 'frm', '_delete'),
 			'projects' => array('index','equipe','messages','messagefil'),
 			'users' => array('index','projects', 'project'),
-			'Messages' => array ('index'),
+			'Messages' => array ('index','newmessage'),
 			'Taches' => array('index', 'frm','show','add', 'update', 'delete', '_delete'),
 			'UseCases' => array ('index','add','show','frm')
 
