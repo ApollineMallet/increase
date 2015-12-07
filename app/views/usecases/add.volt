@@ -1,14 +1,15 @@
 	{{ form("UsesCases/update", "method": "post", "name":"frmObject", "id":"frmObject") }}
 <fieldset>
 	
-		
+	 	
 		<legend>Ajoutez une Usecase</legend>
 	
 		<div class="alert alert-info">Ajout d'une Usecase</div>
 
 <div class="form-group">
-			  
-		<label>Nom</label><input type="text" required="required" name="libelle" id="libelle" placeholder="Saisissez un nom" class="form-control"/><br>
+		<label>Code Usecase</label><input type="text" required="required" name="code" id="code" placeholder="" class="form-control" value="X-UC-Y"/><br>
+	 
+		<label>Nom</label><input type="text" required="required" name="nom" id="nom" placeholder="Saisissez un nom" class="form-control"/><br>
 		<label>Poids de la Usecase :</label><input type="text" required="required" name="poids" id="poids" placeholder="Saisissez un poids" class="form-control"/>
 				
 			<form class="form-inline">
@@ -22,13 +23,9 @@
 		   
 </div>
 
-<div class="form-group">
- 
-		<label>Code Usecase</label><input type="text" required="required" name="code" id="code" placeholder="Saisissez un code (I-UC-")" class="form-control" value=""/><br>
-	
-</div>	
 		<div class="form-group">
 		 		<label for="identite">Ajouter l'utilisateur</label>
+		 		
 				<select class="form-control" id="idDev" name="idDev">
 				  {% for u in users %}
 				    <option value="{{u.getId()}}">{{u.getIdentite()}} :  {{u.getId()}}</option>
@@ -54,7 +51,6 @@
 			<input type="submit" value="Valider" class="btn btn-primary validate">
 			<a class="btn btn-default cancel" href="{{url.get("Index")}}" data-ajax="{{ baseHref ~ "/index"}}">Annuler</a>
 		</div>
-
 
 
 </fieldset>

@@ -6,6 +6,52 @@ class ProjectsController extends DefaultController {
 	}
 	
 	// ****************************************************************************************************************************//
+	
+	public function frmAction($id = NULL) {
+		$projet = Projet::find ( "id=" . $id );
+		$usecases = Usecase::find ();
+		$users = User::find();
+	
+	
+		$this->view->setVars ( array (
+				"projet" => $projet,
+				"siteUrl" => $this->url->getBaseUri (),
+				"baseHref" => $this->dispatcher->getControllerName (),
+				"usecases" => $usecases,
+				"users" => $users
+	
+	
+		) );
+	
+		parent::frmAction ( $id );
+	}
+	
+	
+	
+	public function addAction($id = NULL) {
+		$usecase = Usecase::findFirst ();
+		$users= User::find();
+		$projet= Projet::find();
+		$today = "20" . date ( "y-m-d" );
+	
+	
+	
+		$this->view->setVars ( array (
+				"projet" => $projet,
+				"users" => $users,
+				"siteUrl" => $this->url->getBaseUri (),
+				"baseHref" => $this->dispatcher->getControllerName () ,
+				"projet" =>$projet,
+				"today" => $today,
+				"code" =>$code
+				
+	
+		) );
+	
+		parent::frmAction ( $id );
+	}
+	
+	
 	public function equipeAction($id = null) {
 		if ($this->request->isAjax ()) {
 			$user = User::find ();
