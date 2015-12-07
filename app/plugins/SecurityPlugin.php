@@ -7,29 +7,29 @@ use Phalcon\Mvc\User\Plugin;
 use Phalcon\Mvc\Dispatcher;
 use Phalcon\Acl\Adapter\Memory as AclList;
 class SecurityPlugin extends Plugin {
+
 	
 	public function beforeExecuteRoute (Event $event, Dispatcher $dispatcher) {
 	
 		// On verifie que l'internaute est connect� :
 		$auth = $this->session->get('user');
 		// Puis on definie son rôle :
+
 		if ($auth != null) {
-			$idRole = $auth->getRole();
+			$idRole = $auth->getRole ();
 			if ($idRole == "1") {
 				$role = 'user';
-			}
-			else if ($idRole == "2") {
+			} else if ($idRole == "2") {
 				$role = 'author';
-			}
-			else if ($idRole == "3") {
+			} else if ($idRole == "3") {
 				$role = 'admin';
 			}
-		
-			 
-			// On cherche le controller et l'action :
-			$controller = $dispatcher->getControllerName();
-			$action = $dispatcher->getActionName();
 			
+			// On cherche le controller et l'action :
+			$controller = $dispatcher->getControllerName ();
+			$action = $dispatcher->getActionName ();
+			
+
 			// On recupere la liste des ACL :
 			$acl = $this->getAcl();
 			
@@ -45,13 +45,14 @@ class SecurityPlugin extends Plugin {
 					)		
 				);
 	
+
 				
 				// On retourne FAUX pour arreter l'operation :
 				return false;
-				
 			}
 		}
 	}
+
 	
 	
 	public function getAcl () {
@@ -61,33 +62,38 @@ class SecurityPlugin extends Plugin {
 		$acl->setDefaultAction(Acl::DENY);
 		
 		//Enregistre trois rôles :
+
 		$roles = array (
-				'user' => new Role('user'),
-				'author' => new Role('author'),
-				'admin' => new Role('admin')
+				'user' => new Role ( 'user' ),
+				'author' => new Role ( 'author' ),
+				'admin' => new Role ( 'admin' ) 
 		);
 		
+
 		// Pour chaque rôle, je l'ajoute dans l'AclList
 		foreach ($roles as $role) {
 			$acl->addRole($role);
+
 		}
-	
 		
 		// On definit les ressources pour chaque zone.
 		// Les noms des controllers sont des ressources.
 		
+
 		$userResources = array (
 			'Connexion' => array ('index', 'connexion', 'deconnexion'),
 			'index' => array ('index'),
 			'Default' => array ('asAdmin', 'asAuthor', 'asUser','index', 'update', 'delete', 'frm', '_delete'),
 			'projects' => array('index','equipe','messages','messagefil'),
 			'users' => array('index','projects', 'project'),
-			'Messages' => array ('index'),
+			'Messages' => array ('index','newmessage'),
 			'Taches' => array('index', 'frm','show','add', 'update', 'delete', '_delete'),
 			'UseCases' => array ('index','add','show','frm')
+
 		);
-		foreach ($userResources as $resource => $actions) {
-			$acl->addResource(new Resource($resource), $actions);
+		
+		foreach ( $userResources as $resource => $actions ) {
+			$acl->addResource ( new Resource ( $resource ), $actions );
 		}
 		
 		$authorResources = array (
@@ -96,12 +102,14 @@ class SecurityPlugin extends Plugin {
 			'Default' => array ('asAdmin', 'asAuthor', 'asUser','index', 'update', 'delete', 'frm', '_delete'),
 			'projects' => array('index','equipe','messages','messagefil'),
 			'users' => array('index','projects', 'project'),
-			'Messages' => array ('index'),
+			'Messages' => array ('index','newmessage'),
 			'Taches' => array('index', 'frm','show','add','update', 'delete', '_delete'),
 			'UseCases' => array ('index','add','show','frm')
+
 		);
-		foreach ($authorResources as $resource => $actions) {
-			$acl->addResource(new Resource($resource), $actions);
+		
+		foreach ( $authorResources as $resource => $actions ) {
+			$acl->addResource ( new Resource ( $resource ), $actions );
 		}
 		
 		$adminResources = array (
@@ -110,13 +118,15 @@ class SecurityPlugin extends Plugin {
 			'Default' => array ('asAdmin', 'asAuthor', 'asUser','index', 'update', 'delete', 'frm', '_delete'),
 			'projects' => array('index','equipe','messages','messagefil'),
 			'users' => array('index','projects', 'project'),
-			'Messages' => array ('index'),
+			'Messages' => array ('index','newmessage'),
 			'Taches' => array('index', 'frm','show','add', 'update', 'delete', '_delete'),
 			'UseCases' => array ('index','add','show','frm')
+
 		);
-		foreach ($adminResources as $resource => $actions) {
-			$acl->addResource(new Resource($resource), $actions);
+		foreach ( $adminResources as $resource => $actions ) {
+			$acl->addResource ( new Resource ( $resource ), $actions );
 		}
+
 				
 
 		// Accès des userResources uniquement aux users :
@@ -124,23 +134,21 @@ class SecurityPlugin extends Plugin {
 		foreach ($userResources as $resource => $actions) {
 			foreach ($actions as $action) {
 				$acl->allow('user', $resource, $action);
+
 			}
 		}
 		// Pour author :
-		foreach ($authorResources as $resource => $actions) {
-			foreach ($actions as $action) {
-				$acl->allow('author', $resource, $action);
+		foreach ( $authorResources as $resource => $actions ) {
+			foreach ( $actions as $action ) {
+				$acl->allow ( 'author', $resource, $action );
 			}
 		}
 		// Pour admin :
-		foreach ($adminResources as $resource => $actions) {
-			foreach ($actions as $action) {
-				$acl->allow('admin', $resource, $action);
+		foreach ( $adminResources as $resource => $actions ) {
+			foreach ( $actions as $action ) {
+				$acl->allow ( 'admin', $resource, $action );
 			}
 		}
 		return $acl;
-				
 	}
-	
-	
 }

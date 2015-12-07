@@ -8,7 +8,6 @@ class DefaultController extends ControllerBase {
 			$this->view->setRenderLevel ( View::LEVEL_ACTION_VIEW );
 		}
 	}
-
 	public function indexAction($message = NULL) {
 		$msg = "";
 		$show = "";
@@ -20,12 +19,12 @@ class DefaultController extends ControllerBase {
 			$msg = $this->_showDisplayedMessage ( $message );
 		}
 		if ($this->model != "Usecase" & "Tache") {
-
+			
 			$show = "class='hidden'";
 		} else {
 			$show = "";
 		}
-
+		
 		$objects = call_user_func ( $this->model . "::find" );
 		$this->view->setVars ( array (
 				"objects" => $objects,
@@ -33,13 +32,13 @@ class DefaultController extends ControllerBase {
 				"baseHref" => $this->dispatcher->getControllerName (),
 				"model" => $this->model,
 				"msg" => $msg,
-				"show" => $show
+				"show" => $show 
 		) );
 		$this->jquery->getOnClick ( ".update, .add", "", "#content", array (
-				"attr" => "data-ajax"
+				"attr" => "data-ajax" 
 		) );
 		$this->jquery->getOnClick ( ".delete", "", "#message", array (
-				"attr" => "data-ajax"
+				"attr" => "data-ajax" 
 		) );
 		$this->jquery->compile ( $this->view );
 		$this->view->pick ( "main/index" );
@@ -49,7 +48,7 @@ class DefaultController extends ControllerBase {
 	 * si $id est nul, un nouvel objet est retourn�<br>
 	 * sinon l'objet retourn� est celui charg� depuis la BDD � partir de l'id $id
 	 *
-	 * @param string $id
+	 * @param string $id        	
 	 * @return multitype:$className
 	 */
 	public function getInstance($id = NULL) {
@@ -61,14 +60,14 @@ class DefaultController extends ControllerBase {
 		}
 		return $object;
 	}
-
+	
 	/**
 	 * Affiche le formulaire d'ajout ou de modification d'une instance de $model<br>
 	 * L'instance est d�finie � partir de $id<br>
 	 * frm doit utiliser la m�thode getInstance() pour obtenir l'instance � ajouter ou � modifier
 	 *
 	 * @see DefaultController::getInstance()
-	 * @param string $id
+	 * @param string $id        	
 	 */
 	
 
@@ -76,8 +75,10 @@ class DefaultController extends ControllerBase {
 	public function frmAction($id = NULL) {
 		echo "A surd�finir...<br>Sans oublier l'appel de la m�thode parent en fin.";
 		$this->jquery->postFormOnClick ( ".validate", $this->dispatcher->getControllerName () . "/update", "frmObject", "#content" );
-		$this->jquery->getOnClick ( ".cancel","", "#content", array (
-				"attr" => "data-ajax"
+
+		$this->jquery->getOnClick ( ".cancel", "", "#content", array (
+				"attr" => "data-ajax" 
+
 		) );
 		$this->jquery->compile ( $this->view );
 		$this->view->setVar("baseHref", $this->dispatcher-> getControllerName());
@@ -96,24 +97,25 @@ class DefaultController extends ControllerBase {
 		$user = User::findFirst( "role='2'" );
 		$this->session->set( "user", $user );
 		$this->response->redirect( "index" );
-	}
 
+	}
+	
 	/**
 	 * Affecte membre � membre les valeurs du tableau associatif $_POST aux membres de l'objet $object<br>
 	 * Pr�voir une sur-d�finition de la m�thode pour l'affectation des membres de type objet<br>
 	 * Cette m�thode est utilis�e update()
 	 *
 	 * @see DefaultController::update()
-	 * @param multitype:$className $object
+	 * @param multitype:$className $object        	
 	 */
 	protected function setValuesToObject(&$object) {
 		$object->assign ( $_POST );
 	}
- 
+	
 	/**
 	 * Affiche un message Alert bootstrap
 	 *
-	 * @param DisplayedMessage $message
+	 * @param DisplayedMessage $message        	
 	 */
 	public function _showDisplayedMessage($message) {
 		return $message->compile ( $this->jquery );
@@ -134,7 +136,7 @@ class DefaultController extends ControllerBase {
 		$message = new DisplayedMessage ( $message, $type, $timerInterval, $dismissable, $visible );
 		$this->_showDisplayedMessage ( $message );
 	}
-
+	
 	/**
 	 * Met � jour � partir d'un post une instance de $model<br>
 	 * L'affectation des membres de l'objet par le contenu du POST se fait par appel de la m�thode setValuesToObject()
@@ -166,8 +168,8 @@ class DefaultController extends ControllerBase {
 					"controller" => $this->dispatcher->getControllerName (),
 					"action" => "index",
 					"params" => array (
-							$msg
-					)
+							$msg 
+					) 
 			) );
 		}
 	}
@@ -180,7 +182,7 @@ class DefaultController extends ControllerBase {
 		$btCancel = $bs->htmlButton ( "btCancel", "Annuler" )->setSize ( "btn-sm" );
 		$btCancel->onClick ( "$('#message').html('');" );
 		$this->view->setVars ( array (
-				"object" => $object
+				"object" => $object 
 		) );
 		$this->view->pick ( "main/delete" );
 		$this->jquery->compile ( $this->view );
@@ -188,7 +190,7 @@ class DefaultController extends ControllerBase {
 	/**
 	 * Supprime l'instance dont l'id est $id dans la BDD
 	 *
-	 * @param int $id
+	 * @param int $id        	
 	 */
 	public function _deleteAction($id) {
 		try {
@@ -206,11 +208,11 @@ class DefaultController extends ControllerBase {
 				"controller" => $this->dispatcher->getControllerName (),
 				"action" => "index",
 				"params" => array (
-						$msg
-				)
+						$msg 
+				) 
 		) );
 	}
-
+	
 	/**
 	 * Affiche un message Alert bootstrap de type success
 	 *

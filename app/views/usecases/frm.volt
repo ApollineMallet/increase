@@ -1,4 +1,4 @@
-	{{ form("UseCases/update", "method": "post", "name":"frmObject", "id":"frmObject") }}
+{{ form("UseCases/update", "method": "post", "name":"frmObject", "id":"frmObject") }}
 <fieldset>
 
 <legend>Modifiez les Usecases</legend>
@@ -26,6 +26,7 @@
 </div>
 
 {% endfor %}
+
 
 </fieldset>
 </form>

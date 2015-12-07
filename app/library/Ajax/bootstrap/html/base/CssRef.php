@@ -7,12 +7,12 @@ use Ajax\service\PhalconUtils;
 
 /**
  * Default HTML values for Twitter Bootstrap HTML components
+ * 
  * @author jc
  * @version 1.001
  */
 class CssRef {
-	const CSS_DEFAULT="-default", CSS_PRIMARY="-primary", CSS_SUCCESS="-success", CSS_INFO="-info", CSS_WARNING="-warning", CSS_DANGER="-danger", CSS_LINK="-link";
-
+	const CSS_DEFAULT = "-default", CSS_PRIMARY = "-primary", CSS_SUCCESS = "-success", CSS_INFO = "-info", CSS_WARNING = "-warning", CSS_DANGER = "-danger", CSS_LINK = "-link";
 	public static function buttonStyles() {
 		return array (
 				"btn-default",
@@ -21,59 +21,53 @@ class CssRef {
 				"btn-info",
 				"btn-warning",
 				"btn-danger",
-				"btn-link"
+				"btn-link" 
 		);
 	}
-
-	public static function Styles($prefix="btn") {
+	public static function Styles($prefix = "btn") {
 		return array (
-				$prefix."-default",
-				$prefix."-primary",
-				$prefix."-success",
-				$prefix."-info",
-				$prefix."-warning",
-				$prefix."-danger"
+				$prefix . "-default",
+				$prefix . "-primary",
+				$prefix . "-success",
+				$prefix . "-info",
+				$prefix . "-warning",
+				$prefix . "-danger" 
 		);
 	}
-
-	public static function sizes($prefix="btn") {
+	public static function sizes($prefix = "btn") {
 		return array (
-				$prefix."-lg",
+				$prefix . "-lg",
 				"",
-				$prefix."-sm",
-				$prefix."-xs"
+				$prefix . "-sm",
+				$prefix . "-xs" 
 		);
 	}
-
 	public static function position() {
 		return array (
 				"top",
 				"left",
 				"right",
 				"bottom",
-				"auto"
+				"auto" 
 		);
 	}
-
-	public static function alignment($prefix="") {
+	public static function alignment($prefix = "") {
 		return array (
-				$prefix."",
-				$prefix."left",
-				$prefix."right",
-				$prefix."vertical",
-				$prefix."justified"
+				$prefix . "",
+				$prefix . "left",
+				$prefix . "right",
+				$prefix . "vertical",
+				$prefix . "justified" 
 		);
 	}
-
 	public static function navbarZoneClasses() {
 		return array (
 				"navbar-nav",
 				"navbar-left",
 				"navbar-right",
-				"navbar-form"
+				"navbar-form" 
 		);
 	}
-
 	public static function glyphIcons() {
 		return array (
 				"glyphicon-asterisk",
@@ -334,30 +328,31 @@ class CssRef {
 				"glyphicon-menu-left",
 				"glyphicon-menu-right",
 				"glyphicon-menu-down",
-				"glyphicon-menu-up"
+				"glyphicon-menu-up" 
 		);
 	}
-
+	
 	/**
 	 * return a valid style
 	 * avaible values : "default","primary","success","info","warning","danger"
-	 * @param string|int $cssStyle
+	 * 
+	 * @param string|int $cssStyle        	
 	 * @return string
 	 */
 	public static function getStyle($cssStyle, $prefix) {
-		if (is_int($cssStyle)) {
-			$styles=CssRef::Styles($prefix);
-			if ($cssStyle<sizeof($styles)&&$cssStyle>=0) {
-				return CssRef::styles($prefix)[$cssStyle];
+		if (is_int ( $cssStyle )) {
+			$styles = CssRef::Styles ( $prefix );
+			if ($cssStyle < sizeof ( $styles ) && $cssStyle >= 0) {
+				return CssRef::styles ( $prefix ) [$cssStyle];
 			} else {
-				throw new \Exception("La valeur passée a propriété `Style` ne fait pas partie des valeurs possibles : index '".$cssStyle."' inexistant");
+				throw new \Exception ( "La valeur passée a propriété `Style` ne fait pas partie des valeurs possibles : index '" . $cssStyle . "' inexistant" );
 			}
 		}
-		if (PhalconUtils::startsWith($cssStyle, "-")===true) {
-			$cssStyle=substr($cssStyle, 1);
+		if (PhalconUtils::startsWith ( $cssStyle, "-" ) === true) {
+			$cssStyle = substr ( $cssStyle, 1 );
 		}
-		if (PhalconUtils::startsWith($cssStyle, $prefix)===false) {
-			$cssStyle=$prefix."-".$cssStyle;
+		if (PhalconUtils::startsWith ( $cssStyle, $prefix ) === false) {
+			$cssStyle = $prefix . "-" . $cssStyle;
 		}
 		return $cssStyle;
 	}
