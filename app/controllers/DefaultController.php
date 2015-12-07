@@ -161,20 +161,7 @@ class DefaultController extends ControllerBase {
 				}
 			}
 			
-			try {
-				$avancement = 0;
-				$usecase = Usecase::findFirst("code='".$object->getCodeUseCase()."'");
-				$taches = Tache::find("codeUseCase LIKE '".$object->getCodeUseCase()."'");
-				foreach ($taches as $tache){
-					$avancement += $tache->getAvancement();
-				}
-				$avancement = $avancement/count($taches);
-				$usecase->setAvancement($avancement);
-				$usecase->save();
-			}catch (\Exception $e){
-				$msg=new DisplayedMessage("Impossible de modifier l'avancement de la  UseCase ".$usecase,"danger");
-			}
-			
+		
 			$this->dispatcher->forward ( array (
 					"controller" => $this->dispatcher->getControllerName (),
 					"action" => "index",

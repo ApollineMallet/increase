@@ -7,6 +7,7 @@
 
 <div class="form-group">
 	<label></label><input type="hidden" name="id" id="id" value="{{a.getId()}}">
+	
 	<label>Changez le libelle :</label><input type="text" name="libelle" id="libelle" value="{{a.getLibelle()}}" placeholder="Entrez le libelle" class="form-control"><br>
 	<label>Changez la date :</label><input type="date" name="date" id="date" value="{{a.getDate()}}" placeholder="Entrez le libelle" class="form-control"><br>
 	<label>Changez l'avancement (en %) :</label><input type="text" name="avancement" id="avancement" value="{{a.getAvancement()}}" placeholder="Changez l'avancement" class="form-control"><br>

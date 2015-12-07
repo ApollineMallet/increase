@@ -48,18 +48,29 @@ class UseCasesController extends DefaultController {
 		parent::frmAction ( $id );
 	}
 	public function addAction($id = NULL) {
-		$usecase = Usecase::find ( array (
-				"code='" . $id . "'" 
-		) );
-		$taches= Tache::find();
+		$usecase = Usecase::findFirst (
+		 );
+				$users= User::find();
+				$projet= Projet::find();
 			
 		$this->view->setVars ( array (
 				"usecase" => $usecase,
 				"users" => $users,
 				"siteUrl" => $this->url->getBaseUri (),
-				"baseHref" => $this->dispatcher->getControllerName () 
+				"baseHref" => $this->dispatcher->getControllerName () ,
+				"projet" =>$projet
+				
 		) );
 		
 		parent::frmAction ( $id );
 	}
-}
+
+
+	
+	}	
+	
+	
+
+
+
+

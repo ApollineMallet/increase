@@ -1,4 +1,3 @@
-
 	{{ form("UseCases/update", "method": "post", "name":"frmObject", "id":"frmObject") }}
 <fieldset>
 
@@ -8,12 +7,13 @@
 
 <div class="form-group">
 	<label></label><input type="hidden" name="code" id="code" value="{{a.getCode()}}">
+	<label></label><input type="hidden" name="idProjet" id="idProjet" value="{{a.getIdProjet()}}">
 	<label>Changez le libelle :</label><input type="text" name="nom" id="nom" value="{{a.getNom()}}" placeholder="Entrez le nom" class="form-control"><br>
 	<label>Changez le poids :</label><input type="text" name="poids" id="poids" value="{{a.getPoids()}}" placeholder="Entrez le poids" class="form-control">
 	<label for="identite">Changez l'utilisateur</label>
 	<select class="form-control" id="idDev" name="idDev">
 		  {% for u in users %}
-		    <option value="{{a.getIdDev()}}">{{u.getUser().getIdentite()}} :  {{u.getId()}}</option>
+		    <option value="{{u.getId()}}">{{u.getIdentite()}} :  {{u.getId()}}</option>
 		  {% endfor%}
 	</select>
 
