@@ -1,23 +1,17 @@
 <?php
-class MessagesController extends DefaultController{
-	public function initialize(){
-		parent::initialize();
-		$this->model="Message";
+class MessagesController extends DefaultController {
+	public function initialize() {
+		parent::initialize ();
+		$this->model = "Message";
 	}
 	
-	public function messagefilAction($id = NULL) {
-		$message = Message::findFirst ();
-	
-	
-	
+	public function newmessageAction($id = null){
+		$today = date ( "Y-m-d H:i:s" );
+		
 		$this->view->setVars ( array (
-				"message" => $message,
-				"siteUrl" => $this->url->getBaseUri (),
-				"baseHref" => $this->dispatcher->getControllerName (),
-	
-		) );
-	
-		parent::frmAction ( $id );
-	}
+				"today" => $today,
+				"id" => $id,
+				"user" => $this->session->get("user")
+		));
 	}
 }

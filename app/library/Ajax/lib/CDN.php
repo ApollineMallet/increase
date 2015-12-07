@@ -6,8 +6,8 @@ return array (
 						"versions" => array (
 								"2.1.4",
 								"2.1.3",
-								"1.11.2"
-						)
+								"1.11.2" 
+						) 
 				),
 				"Google" => array (
 						"url" => "https://ajax.googleapis.com/ajax/libs/jquery/%version%/jquery.min.js",
@@ -16,9 +16,9 @@ return array (
 								"2.1.3",
 								"2.1.1",
 								"2.1.0",
-								"1.8.3"
-						)
-				)
+								"1.8.3" 
+						) 
+				) 
 		),
 		"JQueryUI" => array (
 				"MaxCDN" => array (
@@ -28,7 +28,7 @@ return array (
 								"1.11.4",
 								"1.11.3",
 								"1.11.2",
-								"1.10.4"
+								"1.10.4" 
 						),
 						"themes" => array (
 								"black-tie",
@@ -54,8 +54,8 @@ return array (
 								"trontastic",
 								"ui-darkness",
 								"ui-lightness",
-								"vader"
-						)
+								"vader" 
+						) 
 				),
 				"Google" => array (
 						"core" => "https://ajax.googleapis.com/ajax/libs/jqueryui/%version%/jquery-ui.min.js",
@@ -67,7 +67,7 @@ return array (
 								"1.11.1",
 								"1.11.0",
 								"1.10.4",
-								"1.10.0"
+								"1.10.0" 
 						),
 						"themes" => array (
 								"black-tie",
@@ -93,18 +93,18 @@ return array (
 								"trontastic",
 								"ui-darkness",
 								"ui-lightness",
-								"vader"
-						)
-				)
+								"vader" 
+						) 
+				) 
 		),
 		"Bootstrap" => array (
 				"MaxCDN" => array (
 						"core" => "http://maxcdn.bootstrapcdn.com/bootstrap/%version%/js/bootstrap.min.js",
 						"css" => "http://maxcdn.bootstrapcdn.com/bootstrap/%version%/css/bootstrap.min.css",
 						"versions" => array (
-								"3.3.5"
+								"3.3.5" 
 						),
-						"themes" => array ()
-				)
-		)
+						"themes" => array () 
+				) 
+		) 
 );

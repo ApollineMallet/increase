@@ -9,12 +9,11 @@ use Phalcon\Forms\Element\Text;
 /**
  *
  * @author jc
- *
+ *        
  */
 class PhBsText extends PhBsElement {
-
-	public function __construct($name, array $attributes=null) {
-		parent::__construct($name, $attributes);
-		$this->renderer=new PhBsRenderer(new Text($name, $attributes), new HtmlInput($name));
+	public function __construct($name, array $attributes = null) {
+		parent::__construct ( $name, $attributes );
+		$this->renderer = new PhBsRenderer ( new Text ( $name, $attributes ), new HtmlInput ( $name ) );
 	}
 }
