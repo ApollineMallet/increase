@@ -1,17 +1,152 @@
+<div class="container">
+
 <link rel="icon" type="image/png" href="assets/img/favicon.ico" />
-<h1>Congratulations!</h1>
-{{user}}
-<p>You're now flying with Phalcon. Great things are about to happen!</p>
 
-<p>You can now install <a href="http://phalcon-jquery.kobject.net" target="new">phalcon-jQuery</a> for flying even faster.</p>
-<a class="btn btn-default" href="{{url.get("Users")}}" data-ajax="Users">Utilisateurs</a>&nbsp;
-<a class="btn btn-primary" href="{{url.get("Projects")}}" data-ajax="Projects">Projets</a>&nbsp;
-<a class="btn btn-success" href="{{url.get("UseCases")}}" data-ajax="UseCases">UseCases</a>&nbsp;
-<a class="btn btn-info" href="{{url.get("Taches")}}" data-ajax="Taches">Tâches</a>&nbsp;
-<a class="btn btn-warning" href="{{url.get("Messages")}}" data-ajax="Messages">Messages</a>&nbsp;
-
-
-<div class="btn-group">
+ <div class="row col-xs-12 col-sm-6 col-md-2 col-lg-11">
+  		{% if user != null %}
+         <div class="alert align-center  alert-info" role="alert">{{user}}</div>
+         {% endif %}
+        </div>
+	
+    <div class="row boutons">
+        <div class="col-xs-12 col-sm-6 col-md-2 col-lg-3">
+       		
+        
+            <div class="box">
+            
+                <div class="icon">
+                
+                    <div class="image"><span class="glyphicon glyphicon-list-alt btn-lg white"></span></div>
+                    <div class="info">
+                        <h3 class="title">Tâches</h3>
+                        <p>
+                           Tâches correspondant aux Usecases des projets.
+                        </p>
+                        <div class="more">
+                        <a class="btn btn-default" href="{{url.get("Taches")}}" data-ajax="Taches">Tâches</a>&nbsp;
+                           
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="space"></div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-2 col-lg-3">
+            <div class="box">
+                <div class="icon">
+                    <div class="image"><span class="glyphicon glyphicon-envelope btn-lg white"></span></div>
+                    <div class="info">
+                        <h3 class="title">Messages</h3>
+                        <p>
+                          Les messages relatifs aux projets	
+                        </p>
+                        <div class="more">
+                            <a class="btn btn-default" href="{{url.get("Messages")}}" data-ajax="Messages">Messages</a>&nbsp;
+                        </div>
+                    </div>
+                </div>
+                <div class="space"></div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+            <div class="box">
+                <div class="icon">
+                    <div class="image"><span class="glyphicon glyphicon-pencil btn-lg white"></span></div>
+                    <div class="info">
+                        <h3 class="title">Usecases</h3>
+                        <p>
+                         Les différentes usescases et leur progression.   
+                        </p>
+                        <div class="more">
+                           <a class="btn btn-default" href="{{url.get("UseCases")}}" data-ajax="UseCases">UseCases</a>&nbsp;
+                        </div>
+                    </div>
+                </div>
+                <div class="space"></div>
+            </div>
+        </div>
+     </div>
+    
+     <div class="row boutons">
+        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+            <div class="box">
+                <div class="icon">
+                    <div class="image"><span class="glyphicon glyphicon-play-circle btn-lg white"></span></div>
+                    <div class="info">
+                        <h3 class="title">Projets</h3>
+                        <p>
+                        Tous vos projets Increase.   
+                        </p>
+                        <div class="more">
+                           <a class="btn btn-default" href="{{url.get("Projects")}}" data-ajax="Projects">Projets</a>&nbsp;
+                        </div>
+                    </div>
+                </div>
+                <div class="space"></div>
+            </div>
+        </div>
+        
+       
+         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+            <div class="box">
+                <div class="icon">
+                    <div class="image"><span class="glyphicon glyphicon-user btn-lg white"></span></div>
+                    <div class="info">
+                        <h3 class="title">Utilisateurs</h3>
+                        <p>
+                        Les différents utilisateurs. 
+                        </p>
+                        <div class="more">
+                          <a class="btn btn-default" href="{{url.get("Users")}}" data-ajax="Users">Utilisateurs</a>&nbsp;
+                        </div>
+                    </div>
+                </div>
+                <div class="space"></div>
+            </div>
+        </div>
+        
+         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+            <div class="box">
+                <div class="icon">
+                    <div class="imageCo"><span class="glyphicon glyphicon-off btn-lg white"></span></div>
+                    {% if user == null %}
+                    <div class="info">
+                        <h3 class="title">Connexion</h3>
+                        <p>
+ 
+							 
+						    Connectez-vous
+                        </p>
+                        <div class="more">
+                          <a class="btn btn-default" href="{{url.get("Connexion")}}" data-ajax="Connexion">Connexion</a>&nbsp;
+                        </div>
+                    </div>
+                    
+                    {% else %}
+                    
+                    <div class="info">
+                        <h3 class="title">Deconnexion</h3>
+                        <p>
+ 
+						
+						    Deconnectez-vous.
+                        </p>
+                        <div class="more">
+                          <a class="btn btn-default" href="{{url.get("Connexion")}}" data-ajax="Connexion/deconnexion">Déconnexion</a>
+							&nbsp;
+                        </div>
+                    </div>
+                    {% endif %}
+                      
+                    
+                </div>
+                <div class="space"></div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="btn-group">
 	<button type="button" class="btn btn-'.$style.' dropdown-toggle"
 		data-toggle="dropdown" aria-expanded="false">
 		Connexion en tant que... <span class="caret"></span>
@@ -25,11 +160,11 @@
 				class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Auteur</a></li>
 	</ul>
 </div>
+    
+    
+    </div>
 
-{% if user == null %}
-<a class="btn btn-warning" href="{{url.get("
-	Connexion")}}" data-ajax="Connexion">Connexion</a>
-&nbsp; {% else %}
-<a class="btn btn-warning" href="{{url.get("
-	Connexion")}}" data-ajax="Connexion/deconnexion">Déconnexion</a>
-&nbsp; {% endif %} {{ script_foot }}
+
+
+ {{ script_foot }}
+

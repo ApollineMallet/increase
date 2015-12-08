@@ -13,7 +13,7 @@ javascript_include('js/bootstrap.min.js') }}
 	<div class="bs-docs-header">
 		<div class="container">
 			<div class="header">
-				<h1>Increase</h1>
+				<h1>Increase - Triple a</h1>
 				<p>Manage the progress of your projects, improve communication
 					with customers.</p>
 			</div>
@@ -22,7 +22,7 @@ javascript_include('js/bootstrap.min.js') }}
 	<div class="container">
 		<ol class="breadcrumb">
 			<li><a href="{{url.get("index")}}"><span
-					class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp;Home</a></li>
+					class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp;Accueil</a></li>
 		</ol>
 		<div class="content">
 			<div id="message"></div>

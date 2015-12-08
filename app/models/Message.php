@@ -239,4 +239,16 @@ class Message extends BaseModel {
 	public function toString() {
 		return $this->objet . " - " . $this->Projet;
 	}
+	
+	public function getImportant(){
+	
+		return $this->id();
+	
+	}
+	public function User(){
+	
+		return $this->User;
+	
+	}
+	
 }

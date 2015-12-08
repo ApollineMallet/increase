@@ -20,6 +20,9 @@
 			type="text" name="description" id="description" value="{{p.getDescription()}}"
 			placeholder="Entrez une description" class="form-control"><br>	
 			
+			
+			
+			
 			<label for="identite">Changez l'utilisateur</label>
 	<select class="form-control" id="idClient" name="idClient">
 		  {% for u in users %}

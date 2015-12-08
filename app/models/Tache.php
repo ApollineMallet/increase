@@ -176,4 +176,15 @@ class Tache extends BaseModel {
 	public function toString() {
 		return $this->libelle;
 	}
+	
+	public function getImportant(){
+	
+		return $this->codeUseCase;
+	
+	}
+	public function User(){
+	
+		return $this->User;
+	
+	}
 }

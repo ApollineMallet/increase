@@ -207,9 +207,22 @@ class Usecase extends BaseModel {
 		return parent::findFirst ( $parameters );
 	}
 	public function toString() {
-		return $this->nom . " - " . $this->Projet . " - " . $this->User;
+		return $this->nom . " - " . $this->Projet . " - " ;
+	}
+	
+	public function User(){
+		
+		return $this->User;
+		
 	}
 	public function getId() {
 		return $this->code;
 	}
+	
+	public function getImportant(){
+		
+		return $this->idProjet;
+		
+	}
+	
 }

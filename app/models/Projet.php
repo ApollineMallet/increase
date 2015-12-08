@@ -263,4 +263,16 @@ class Projet extends BaseModel {
 	public function toString() {
 		return $this->nom . " (" . $this->getClient () . ") ";
 	}
+	
+	public function getImportant(){
+	
+		return $this->id();
+	
+	}
+	public function User(){
+	
+		return $this->User;
+	
+	}
+	
 }

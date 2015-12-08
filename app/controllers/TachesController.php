@@ -48,6 +48,10 @@ class TachesController extends DefaultController {
 		
 		parent::frmAction ( $id );
 	}
+	
+
+	
+	
 	public function addAction($id = NULL) {
 		$tache = Tache::findFirst ();
 		$today = "20" . date ( "y-m-d" );

@@ -24,6 +24,11 @@ class UseCasesController extends DefaultController {
 		
 		parent::frmAction ( $id );
 	}
+	
+	
+	
+	
+	
 	public function showAction($id = NULL) {
 		$usecase = Usecase::find ( array (
 				"code='" . $id . "'" 

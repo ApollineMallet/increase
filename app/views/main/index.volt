@@ -1,19 +1,28 @@
 {{msg}}
-<table class='table table-striped'>
+<table class='table table-hover table-bordered'>
 	<thead>
+	
 		<tr>
-			<th colspan='3'>{{model}}</th>
+			<div class="alert align-center  alert-info" role="alert">Voici la liste des {{model}}</div>
 		</tr>
 	</thead>
 	<tbody>
+	
+		<tr>
+		<td>Id {{model}}</td>
+		<td>Informations</td>
+		<td>Users</td>
+		</tr>
 		{% for object in objects %}
 		<tr>
-
+			<!--<td>{{object.getUser()}}</td>
+			<td>{{object.getImportant()}}</td> -->
 			<td>{{object.toString()}}</td>
-			<td class='td-center'><a class='btn btn-primary btn-xs update'
-				href='{{url.get(baseHref~"/frm/"~object.getId())}}'
-				data-ajax="{{ baseHref ~ "/frm/" ~ object.getId() }}"><span
-					class='glyphicon glyphicon-edit' aria-hidden='true'></span></a></td>
+			
+			<td class='td-center'>
+			<a class='btn btn-primary btn-xs update' href='{{url.get(baseHref~"/frm/"~object.getId())}}'
+				data-ajax="{{ baseHref ~ "/frm/" ~ object.getId() }}">
+				<span class='glyphicon glyphicon-edit' aria-hidden='true'></span></a></td>
 			<td {{show}} class='td-center'><a
 				href='{{url.get(baseHref~"/show/"~object.getId())}}'
 				data-ajax="{{ baseHref ~ "
