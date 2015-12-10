@@ -8,6 +8,8 @@
 <a class="btn btn-success" href="{{url.get("UseCases")}}" data-ajax="UseCases">UseCases</a>&nbsp;
 <a class="btn btn-info" href="{{url.get("Taches")}}" data-ajax="Taches">Tâches</a>&nbsp;
 <a class="btn btn-warning" href="{{url.get("Messages")}}" data-ajax="Messages">Messages</a>&nbsp;
+<a class="btn btn-warning" href="{{url.get("Acl")}}" data-ajax="Acl">Gestion des droits</a>&nbsp;
+
 
 <div class="btn-group">
 	<button type="button" class="btn btn-'.$style.' dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Connexion en tant que... <span class="caret"></span></button>

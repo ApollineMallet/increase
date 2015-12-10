@@ -99,3 +99,35 @@ body{
 .breadcrumb a{
 	color: #808080;
 }
+
+
+.ul-onglet {
+	list-style-type: none;
+}
+
+.li-onglet {
+}
+
+.li-onglet-1 {
+	display: inline;
+	border-top: 3px solid #ccc;
+	border-left: 3px solid #ccc;
+	border-right: 3px solid #ccc;
+	background:white;
+	padding: 4px 12px 2px 12px;
+	text-align: center;
+	
+}
+
+.li-onglet-2 {
+	display: inline;
+	border-top: 3px solid #ccc;
+	border-right: 3px solid #ccc;
+	background:white;
+	padding: 4px 12px 2px 12px;
+	text-align: center;	
+}
+
+.a-onglet {
+	
+}
