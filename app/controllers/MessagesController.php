@@ -48,6 +48,7 @@ public function projectAction($id = null) {
 					"attr" => "data-ajax" 
 			) );
 			$this->jquery->compile ( $this->view );
+			
 			$this->view->pick ( "users/project" );
 		} else {
 			throw new Exception ( "404 not found", 1 );
