@@ -1,79 +1,100 @@
 @CHARSET "UTF-8";
-body{
+
+body {
 	font-weight: 400;
-    background-color: #F7F7F7;
-    color: #29272a;
+	background-color: #F7F7F7;
+	color: #29272a;
+	
+	overflow-x: hidden;
 }
+
+
+.boutons{
+	
+	margin-left: 143px;
+	
+}
+
 .alert {
-    transition: 1s linear all;
-     opacity: 1;
+	transition: 1s linear all;
+	opacity: 1;
 }
+
 .alert.ng-hide {
-     opacity: 0;
+	opacity: 0;
 }
 
 .alert.ng-show {
-     opacity: 1;
+	opacity: 1;
 }
 
 .bs-docs-header {
-    box-sizing: border-box;
-    color: rgb(129, 181, 221);
-    height: 165px;
-    position: relative;
-    text-align: left;
-    text-shadow: rgba(0, 0, 0, 0.0980392) 0px 1px 0px;
-    perspective-origin: 950.5px 128px;
-    transform-origin: 950.5px 128px;
-    background-color: #444444;
-    border: 0px none rgb(205, 191, 227);
-    font: normal normal normal normal 24px/34.2857170104981px 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;
-    margin: 0px 0px 6px;
-    outline: rgb(205, 191, 227) none 0px;
-    padding: 0px 15px;
-    border-bottom: 3px solid #4775A3;
-}
-.second-header {
- 
-}
-.bs-docs-header .header{
-    background: url(../img/Increase.png) no-repeat left;
-    box-sizing: border-box;
-    margin-left:0px;
-    height: 121px;
-}
-.bs-docs-header h1 {
-    color: #E4E4E4;
-    height: 45px;
-    text-align: left;
-	text-shadow: 1px 1px 1px #4775A3;
-    border:0px none rgb(255, 255, 255);
-    font-size: normal normal 500 normal 60px/60px 'Segoe UI', Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial, sans-serif;
-    font-variant: small-caps;
-    outline: rgb(255, 255, 255) none 0px;
-    padding-left :140px;
-    padding-top: 25px;
+	box-sizing: border-box;
+	color: rgb(129, 181, 221);
+	height: 165px;
+	position: relative;
+	text-align: left;
+	text-shadow: rgba(0, 0, 0, 0.0980392) 0px 1px 0px;
+	perspective-origin: 950.5px 128px;
+	transform-origin: 950.5px 128px;
+	background-color: #444444;
+	border: 0px none rgb(205, 191, 227);
+	font: normal normal normal normal 24px/34.2857170104981px 'Segoe UI',
+		Frutiger, 'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial,
+		sans-serif;
+	margin: 0px 0px 6px;
+	outline: rgb(205, 191, 227) none 0px;
+	padding: 0px 15px;
+	border-bottom: 3px solid #4775A3;
 }
 
-.bs-docs-header p{
+.second-header {
+	
+}
+
+.bs-docs-header .header {
+	background: url(../img/Increase.png) no-repeat left;
+	box-sizing: border-box;
+	margin-left: 0px;
+	height: 121px;
+}
+
+.bs-docs-header h1 {
+	color: #E4E4E4;
+	height: 45px;
+	text-align: left;
+	text-shadow: 1px 1px 1px #4775A3;
+	border: 0px none rgb(255, 255, 255);
+	font-size: normal normal 500 normal 60px/60px 'Segoe UI', Frutiger,
+		'Frutiger Linotype', 'Dejavu Sans', 'Helvetica Neue', Arial,
+		sans-serif;
+	font-variant: small-caps;
+	outline: rgb(255, 255, 255) none 0px;
+	padding-left: 140px;
+	padding-top: 25px;
+}
+
+.bs-docs-header p {
 	color: #9FC6F0;
 	font-weight: 200;
 	font-size: 18px;
 	font-stretch: ultra-expanded;
-	
 	font-variant: small-caps;
-    padding-left :140px;
+	padding-left: 140px;
 }
-.content{
+
+.content {
 	padding: 30px;
 	border: 1px solid #ddd;
 	background: #fff;
-	min-height: 500px;
+	min-height: 650px;
 }
-.content p a{
-	font-weight:bold;
+
+.content p a {
+	font-weight: bold;
 }
-#footer{
+
+#footer {
 	clear: both;
 	width: 100%;
 	float: left;
@@ -84,22 +105,25 @@ body{
 	font-size: 13px;
 	background: #444444;
 	color: #c0c0c0;
-	 
-    border-top: 3px solid #4775A3;
-	
+	border-top: 3px solid #4775A3;
 }
-#footer span{
+
+#footer span {
 	color: #c0c0c0;
 	font-weight: bold;
 }
-.breadcrumb{
+
+.breadcrumb {
 	margin-bottom: 6px;
 	background-color: #fff;
 }
-.breadcrumb a{
+
+.breadcrumb a {
 	color: #808080;
 }
 
+
+/*Apolline */
 
 .ul-onglet {
 	list-style-type: none;
@@ -130,4 +154,244 @@ body{
 
 .a-onglet {
 	
+}
+
+
+/* AntoineC */
+
+h3.nomprojet {
+	margin: 0px;
+	border-left: 5px solid #5B81D8;
+	padding-left: 5px;
+}
+
+h4.detailsprojet, a.detailsprojet {
+	margin: 40px 0px 0px 40px;
+	border: none;
+	border-left: 5px solid #5B81D8;
+	padding: 0px 5px;
+	border-radius: 0px;
+}
+
+div.detailsprojet {
+	border: 1.5px dashed #5B81D8;
+	margin:10px 0px 0px 40px;
+	padding: 10px;
+	overflow: hidden;
+}
+
+
+h4.descri {
+	margin: 0px;
+	color:#5B81D8;
+}
+
+p.descri {
+	margin:10px 0px 0px 0px;
+	font-size: 16px;
+}
+
+h4.date {
+	margin: 10px 0px 5px 0px;
+	display: inline-block;
+	text-align: center;
+	width: 49.5%;
+	color:#5B81D8;
+}
+
+.rien {
+	margin: 0px;
+	padding: 0px;
+}
+
+h4.team {
+	margin: 10px 0px 10px 10px;
+	color:#5B81D8;
+	font-weight: bold;
+}
+a.msg {
+	width:100%;
+	text-align: left;
+	font-size: 16px;
+}
+
+a.msg:hover {
+	color:#5B81D8;
+	font-weight: bold;
+	border-bottom: 1px solid #5B81D8;
+	border-top: 1px solid #5B81D8;
+
+}
+
+div.datemsg {
+	float: right;
+	font-weight: bold;
+}
+
+div.new {
+	margin:10px auto 0px auto;
+	background-color:#5B81D8;
+	cursor:pointer;
+	text-align: center;
+	color: #fff;
+	padding:10px 0px;
+	border-radius: 2px;
+	width: 50%;
+}
+
+span.msg {
+	padding-right: 20px;
+}
+
+textarea.ta {
+	width: 100%;
+	max-width: 100%;
+	margin-top: 10px;
+	height: 100px;
+}
+
+h4.new {
+	margin: 0px 0px 10px 0px;
+	border-left: 5px solid #5B81D8;
+	padding: 0px 5px;
+	border-radius: 0px;
+	display: block;
+}
+div.contenuMess {
+	margin: 0px 12px 0px 49px;
+}
+
+div.msgfill {
+	margin: 20px 0px 20px 49px;
+	border-left: 3px solid #5B81D8;
+	padding-left: 10px;
+}
+
+div.nameuseridfil {
+	color: #5B81D8;
+	font-size: 16px;
+	font-weight: bold;
+	margin:20px 0px 10px 0px;
+}
+
+
+
+textarea.contenuRepMess {
+	width: 100%;
+	max-width:100%;
+	margin: 10px 0px;
+	height: 100px;
+}
+
+.btn_valider, .btn_valider:hover {
+	margin:10px 0px 0px 0px;
+	background-color:#5B81D8;
+	cursor:pointer;
+	text-align: center;
+	color: #fff;
+	padding:10px 0px;
+	border-radius: 2px;
+	display: block;
+	width: 100px;
+	font-size: 16px;
+	border: none;
+	float: right;
+}
+
+div.formu {
+	margin: 0px 0px 50px 49px;
+}
+/* style new template homepage */
+
+.white {
+    color: white;
+}
+
+.btn-lg {
+    font-size: 38px;
+    line-height: 1.33;
+    border-radius: 6px;
+}
+
+.box > .icon {
+    text-align: center;
+    position: relative;
+}
+
+.box > .icon > .image {
+    position: relative;
+    z-index: 2;
+    margin: auto;
+    width: 88px;
+    height: 88px;
+    border: 7px solid white;
+    line-height: 88px;
+    border-radius: 50%;
+    background: #5299eb	;
+    vertical-align: middle;
+}
+
+.box > .icon > .imageCo {
+    position: relative;
+    z-index: 2;
+    margin: auto;
+    width: 88px;
+    height: 88px;
+    border: 7px solid white;
+    line-height: 88px;
+    border-radius: 50%;
+    background: #435263	;
+    vertical-align: middle;
+}
+
+.box > .icon:hover > .image {
+    border: 2px solid black;
+}
+
+.box > .icon > .image > i {
+    font-size: 40px !important;
+    color: #fff !important;
+}
+
+.box > .icon:hover > .image > i {
+    color: white !important;
+}
+
+.box > .icon > .info {
+    margin-top: -24px;
+    background: rgba(0, 0, 0, 0.04);
+    border: 1px solid #e0e0e0;
+    padding: 15px 0 10px 0;
+}
+
+    .box > .icon > .info > h3.title {
+        color: #222;
+        font-weight: 500;
+    }
+
+    .box > .icon > .info > p {
+        color: #666;
+        line-height: 1.5em;
+        margin: 20px;
+    }
+
+.box > .icon:hover > .info > h3.title, .box > .icon:hover > .info > p, .box > .icon:hover > .info > .more > a {
+    color: #222;
+}
+
+.box > .icon > .info > .more a {
+    color: #222;
+    line-height: 12px;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.box > .icon:hover > .info > .more > a {
+    color: #5299eb;
+    padding: 6px 8px;
+    border-bottom: 2px solid black;
+}
+
+.box .space {
+    height: 30px;
 }

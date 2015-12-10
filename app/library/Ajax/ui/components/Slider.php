@@ -7,22 +7,20 @@ use Ajax\common\SimpleComponent;
 
 /**
  * Composant JQuery UI Slider
+ * 
  * @author jc
  * @version 1.001
  */
 class Slider extends SimpleComponent {
-
 	public function __construct(JsUtils $js) {
-		parent::__construct($js);
-		$this->uiName="slider";
-		$this->setParam("value", 0);
+		parent::__construct ( $js );
+		$this->uiName = "slider";
+		$this->setParam ( "value", 0 );
 	}
-
 	public function onChange($jsCode) {
-		return $this->addEvent("change", $jsCode);
+		return $this->addEvent ( "change", $jsCode );
 	}
-
 	public function onSlide($jsCode) {
-		return $this->addEvent("slide", $jsCode);
+		return $this->addEvent ( "slide", $jsCode );
 	}
 }

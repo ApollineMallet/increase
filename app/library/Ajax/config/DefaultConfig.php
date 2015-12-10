@@ -5,9 +5,8 @@ namespace Ajax\config;
 use Ajax\config\Config;
 
 class DefaultConfig extends Config {
-
 	public function __construct() {
-		parent::__construct(array (
+		parent::__construct ( array (
 				"formElementsPrefix" => array (
 						"txt" => "input_text",
 						"btn" => "button",
@@ -19,6 +18,6 @@ class DefaultConfig extends Config {
 						"radio" => "radio",
 						"mail" => "input_email" 
 				) 
-		));
+		) );
 	}
 }

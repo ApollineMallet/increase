@@ -9,29 +9,29 @@ use Phalcon\Acl\Adapter\Memory as AclList;
 
 
 class SecurityPlugin extends Plugin {
+
 	
 	public function beforeExecuteRoute (Event $event, Dispatcher $dispatcher) {
 	
 		// On verifie que l'internaute est connect� :
 		$auth = $this->session->get('user');
 		// Puis on definie son rôle :
+
 		if ($auth != null) {
-			$idRole = $auth->getRole();
+			$idRole = $auth->getRole ();
 			if ($idRole == "1") {
 				$role = 'user';
-			}
-			else if ($idRole == "2") {
+			} else if ($idRole == "2") {
 				$role = 'author';
-			}
-			else if ($idRole == "3") {
+			} else if ($idRole == "3") {
 				$role = 'admin';
 			}
-		
-			 
-			// On cherche le controller et l'action :
-			$controller = $dispatcher->getControllerName();
-			$action = $dispatcher->getActionName();
 			
+			// On cherche le controller et l'action :
+			$controller = $dispatcher->getControllerName ();
+			$action = $dispatcher->getActionName ();
+			
+
 			// On recupere la liste des ACL :
 			$acl = $this->getAcl();
 			
@@ -47,13 +47,14 @@ class SecurityPlugin extends Plugin {
 					)		
 				);
 	
+
 				
 				// On retourne FAUX pour arreter l'operation :
 				return false;
-				
 			}
 		}
 	}
+
 	
 	
 	public function getAcl () {
@@ -62,11 +63,7 @@ class SecurityPlugin extends Plugin {
 		$acl = new AclList();
 		// L'action par defaut est egal à DENY (0) :
 		$acl->setDefaultAction(PhalconAcl::DENY);
-	
-		
-		// On definit les ressources pour chaque zone.
-		// Les noms des controllers sont des ressources.
-		
+
 		$roles = Role::find();
 		$accesslists = Acl::find();
 		$resources = Ressource::find();	
@@ -80,6 +77,7 @@ class SecurityPlugin extends Plugin {
 			$actions=$resource->getActions()->toArray();
 			$actionsNames=array_map(function($e){return $e["nom_action"];}, $actions);
 			$acl->addResource(new Resource($resource->getNom()), $actionsNames);
+
 		}
 		
 		foreach ($accesslists as $accesslist) {
@@ -87,8 +85,5 @@ class SecurityPlugin extends Plugin {
 		}		
 		
 		return $acl;
-				
 	}
-	
-	
 }
