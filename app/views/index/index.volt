@@ -120,7 +120,7 @@
                         Gérer les droits. 
                         </p>
                         <div class="more">
-                          <a class="btn btn-warning" href="{{url.get("Acl")}}" data-ajax="Acl">Gestion des droits</a>&nbsp;
+                          <a class="btn btn-default" href="{{url.get("Acl")}}" data-ajax="Acl">Gestion des droits</a>&nbsp;
                         </div>
                     </div>
                 </div>
