@@ -13,6 +13,10 @@ class MessagesController extends DefaultController {
 				"id" => $id,
 				"user" => $this->session->get("user")
 		));
+
+		$bt=$this->jquery->bootstrap()->htmlButton("btnValidate","Valider","btn_valider");
+		$bt->postFormOnClick("Messages/update","frmMessage",".contenuMess");
+		$this->jquery->compile($this->view);
 	}
 	
 	public function updateAction() {

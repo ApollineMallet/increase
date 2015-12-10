@@ -23,16 +23,22 @@ class UsersController extends DefaultController {
 		) );
 		parent::frmAction ( $id );
 	}
+
+
+
 	public function projectsAction($id = null) {
 		$user = $this->getInstance ( $id );
-		$objects = Projet::find ( array (
-				"idClient=" . $user->getId () 
-		) );
+
+		if ($user->getRole() == 3) {
+			$projets = Projet::find();
+		}
+		else {
+			$projets = Projet::find ( array ("idClient=" . $user->getId () ) );
+		}
+
+		$projets = Projet::find ( array ("idClient=" . $user->getId () ) );
 		
-		// Sélectionne tous les projets du client
-		$projets = call_user_func ( "Projet::find", array (
-				"idClient=" . $user->getId () 
-		) );
+		
 		// date d'aujourd'hui
 		$today = date ( "Y-m-d" );
 		// convertit la date d'aujourd'hui en secondes
@@ -103,9 +109,10 @@ class UsersController extends DefaultController {
 				"baseHref" => $this->dispatcher->getControllerName () 
 		) );
 		
-		$this->jquery->getOnClick ( ".open", "", "#content", array (
-				"attr" => "data-ajax" 
+		$this->jquery->getOnClick ( ".open", "", "#details", array (
+				"attr" => "data-ajax" ,"jsCallback"=>$this->jquery->hide("#mainContent")
 		) );
+
 		$this->jquery->compile ( $this->view );
 		$this->view->pick ( "users/projects" );
 	}
@@ -130,7 +137,8 @@ class UsersController extends DefaultController {
 			$this->view->setVars ( array (
 					"pro" => $projet,
 					"user" => $user,
-					"nbmsg" => $nbmsg 
+					"nbmsg" => $nbmsg,
+					"siteUrl" => $this->url->getBaseUri (),
 			) );
 			
 			$this->jquery->getOnClick ( "#equipe", "", "#detailProject", array (
@@ -139,6 +147,8 @@ class UsersController extends DefaultController {
 			$this->jquery->getOnClick ( "#btnMessages", "", "#divMessages", array (
 					"attr" => "data-ajax" 
 			) );
+			$this->jquery->doJqueryOn("click","#btClose","#details","hide");
+			$this->jquery->doJqueryOn("click","#btClose","#mainContent","show");
 			$this->jquery->compile ( $this->view );
 			$this->view->pick ( "users/project" );
 		//} else {

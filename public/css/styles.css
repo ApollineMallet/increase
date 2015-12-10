@@ -274,7 +274,18 @@ div.nameuseridfil {
 	margin:20px 0px 10px 0px;
 }
 
+.blue {
+	background-color: #5B81D8;
+	border-color:#5B81D8;
+	color: #fff;
+	font-size: 15px;
+}
 
+.blue:hover, .blue:active, .blue:focus {
+	background-color: #3B61D8;
+	border-color:#3B61D8;
+	color: #fff;
+}
 
 textarea.contenuRepMess {
 	width: 100%;
@@ -292,7 +303,7 @@ textarea.contenuRepMess {
 	padding:10px 0px;
 	border-radius: 2px;
 	display: block;
-	width: 100px;
+	padding: 5px 20px;
 	font-size: 16px;
 	border: none;
 	float: right;

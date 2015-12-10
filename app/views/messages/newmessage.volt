@@ -16,7 +16,7 @@
 			
 			
 			<div class="form-group">
-				<input type="submit" value="Valider" class="btn_valider">
+				{{q["btnValidate"]}}
 			</div>
 		</fieldset>
 	</form>

@@ -43,7 +43,9 @@
 	</a>
 	<div id='divMessages'></div>
 
-
+	<a class="btn btn_valider" id="btClose" href="{{siteUrl}}users/projects/{{user.getId()}}">
+		<h4>Fermer le projet</h4>
+	</a>
 {% endfor %}
 
 {{script_foot}}
