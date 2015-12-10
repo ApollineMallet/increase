@@ -7,7 +7,7 @@ class UsersController extends DefaultController {
 	}
 	public function frmAction($id = NULL) {
 		$user = $this->getInstance ( $id );
-		$select = new HtmlSelect ( "role", "Rôle", "Sélectionnez un rôle..." );
+		$select = new HtmlSelect ( "role", "Rï¿½le", "Sï¿½lectionnez un rï¿½le..." );
 		$select->fromArray ( array (
 				"admin",
 				"user",
@@ -109,6 +109,8 @@ class UsersController extends DefaultController {
 		$this->jquery->compile ( $this->view );
 		$this->view->pick ( "users/projects" );
 	}
+	
+	
 	public function projectAction($id = null) {
 		if ($this->request->isAjax ()) {
 			
@@ -141,6 +143,7 @@ class UsersController extends DefaultController {
 			) );
 			$this->jquery->compile ( $this->view );
 			$this->view->pick ( "users/project" );
+		
 		} else {
 			throw new Exception ( "404 not found", 1 );
 		}

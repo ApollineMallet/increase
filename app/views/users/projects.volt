@@ -13,7 +13,9 @@
 
 			<td style="vertical-align: middle; padding-left: 2%; width: 13%;">
 				{{object.getnom()}}</td>
-
+			
+			
+			
 			<td style="vertical-align: middle; width: 56%;">
 				{{progressbar[object.getId()]}}</td>
 

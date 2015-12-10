@@ -12,8 +12,8 @@
 			value="{{p.getId()}}"> <label>Changez le nom :</label><input
 			type="text" name="nom" id="nom" value="{{p.getNom()}}"
 			placeholder="Entrez le nom" class="form-control"><br>
-		<label>Changez la date finale :</label><input type="date" name="date"
-			id="date" value="{{p.getDateFinPrevue()}}" 
+		<label>Changez la date finale :</label><input type="date" name="dateFinPrevue"
+			id="dateFinPrevue" value="{{p.getDateFinPrevue()}}" 
 			class="form-control"><br> 
 			
 			<label>Changez la description :</label><input

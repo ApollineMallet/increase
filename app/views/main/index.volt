@@ -1,25 +1,56 @@
+<script type="text/javascript">
+	$(document).ready(function () {
+		
+			(function ($) {
+		
+				$('#filter').keyup(function () {
+		
+					var rex = new RegExp($(this).val(), 'i');
+					$('.searchable tr').hide();
+					$('.searchable tr').filter(function () {
+						return rex.test($(this).text());
+					}).show();
+		
+				})
+		
+			}(jQuery));
+		
+		});
+
+</script>
+
+
 {{msg}}
-<table class='table table-hover table-bordered'>
-	<thead>
+
+<thead>
+<td>
+<h2 class="titreindex">{{model}}</h2>
+<td>
+<br>
+</thead>
 	
-		<tr>
-			<div class="alert align-center  alert-info" role="alert">Voici la liste des {{model}}</div>
-		</tr>
-	</thead>
-	<tbody>
+<div class="input-group"> <span class="input-group-addon">Filtre</span>
+
+    <input id="filter" type="text" class="form-control" placeholder="Le filtre c'est pas que dans les clopes, tente ta chance">
+</div>
+<br>
+
+<table class='table table-hover table-bordered '>
+
 	
-		<tr>
-		<td>Id {{model}}</td>
-		<td>Informations</td>
-		<td>Users</td>
-		</tr>
+	<tbody class="searchable">
+	
 		{% for object in objects %}
 		<tr>
-			<!--<td>{{object.getUser()}}</td>
-			<td>{{object.getImportant()}}</td> -->
+		{% if model == "Tache" or model == "Usecase" or model == "Projet" %}
+			<td style="vertical-align: middle; width: 16%;">
+				{{pb[object.getId()]}}</td>
+		{% endif %}
 			<td>{{object.toString()}}</td>
 			
+			
 			<td class='td-center'>
+			
 			<a class='btn btn-primary btn-xs update' href='{{url.get(baseHref~"/frm/"~object.getId())}}'
 				data-ajax="{{ baseHref ~ "/frm/" ~ object.getId() }}">
 				<span class='glyphicon glyphicon-edit' aria-hidden='true'></span></a></td>
