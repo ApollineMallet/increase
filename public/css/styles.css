@@ -122,6 +122,196 @@ body {
 	color: #808080;
 }
 
+
+/*Apolline */
+
+.ul-onglet {
+	list-style-type: none;
+}
+
+.li-onglet {
+}
+
+.li-onglet-1 {
+	display: inline;
+	border-top: 3px solid #ccc;
+	border-left: 3px solid #ccc;
+	border-right: 3px solid #ccc;
+	background:white;
+	padding: 4px 12px 2px 12px;
+	text-align: center;
+	
+}
+
+.li-onglet-2 {
+	display: inline;
+	border-top: 3px solid #ccc;
+	border-right: 3px solid #ccc;
+	background:white;
+	padding: 4px 12px 2px 12px;
+	text-align: center;	
+}
+
+.a-onglet {
+	
+}
+
+
+/* AntoineC */
+
+h3.nomprojet {
+	margin: 0px;
+	border-left: 5px solid #5B81D8;
+	padding-left: 5px;
+}
+
+h4.detailsprojet, a.detailsprojet {
+	margin: 40px 0px 0px 40px;
+	border: none;
+	border-left: 5px solid #5B81D8;
+	padding: 0px 5px;
+	border-radius: 0px;
+}
+
+div.detailsprojet {
+	border: 1.5px dashed #5B81D8;
+	margin:10px 0px 0px 40px;
+	padding: 10px;
+	overflow: hidden;
+}
+
+
+h4.descri {
+	margin: 0px;
+	color:#5B81D8;
+}
+
+p.descri {
+	margin:10px 0px 0px 0px;
+	font-size: 16px;
+}
+
+h4.date {
+	margin: 10px 0px 5px 0px;
+	display: inline-block;
+	text-align: center;
+	width: 49.5%;
+	color:#5B81D8;
+}
+
+.rien {
+	margin: 0px;
+	padding: 0px;
+}
+
+h4.team {
+	margin: 10px 0px 10px 10px;
+	color:#5B81D8;
+	font-weight: bold;
+}
+a.msg {
+	width:100%;
+	text-align: left;
+	font-size: 16px;
+}
+
+a.msg:hover {
+	color:#5B81D8;
+	font-weight: bold;
+	border-bottom: 1px solid #5B81D8;
+	border-top: 1px solid #5B81D8;
+
+}
+
+div.datemsg {
+	float: right;
+	font-weight: bold;
+}
+
+div.new {
+	margin:10px auto 0px auto;
+	background-color:#5B81D8;
+	cursor:pointer;
+	text-align: center;
+	color: #fff;
+	padding:10px 0px;
+	border-radius: 2px;
+	width: 50%;
+}
+
+span.msg {
+	padding-right: 20px;
+}
+
+textarea.ta {
+	width: 100%;
+	max-width: 100%;
+	margin-top: 10px;
+	height: 100px;
+}
+
+h4.new {
+	margin: 0px 0px 10px 0px;
+	border-left: 5px solid #5B81D8;
+	padding: 0px 5px;
+	border-radius: 0px;
+	display: block;
+}
+div.contenuMess {
+	margin: 0px 12px 0px 49px;
+}
+
+div.msgfill {
+	margin: 20px 0px 20px 49px;
+	border-left: 3px solid #5B81D8;
+	padding-left: 10px;
+}
+
+div.nameuseridfil {
+	color: #5B81D8;
+	font-size: 16px;
+	font-weight: bold;
+	margin:20px 0px 10px 0px;
+}
+
+.blue {
+	background-color: #5B81D8;
+	border-color:#5B81D8;
+	color: #fff;
+	font-size: 15px;
+}
+
+.blue:hover, .blue:active, .blue:focus {
+	background-color: #3B61D8;
+	border-color:#3B61D8;
+	color: #fff;
+}
+
+textarea.contenuRepMess {
+	width: 100%;
+	max-width:100%;
+	margin: 10px 0px;
+	height: 100px;
+}
+
+.btn_valider, .btn_valider:hover {
+	margin:10px 0px 0px 0px;
+	background-color:#5B81D8;
+	cursor:pointer;
+	text-align: center;
+	color: #fff;
+	padding:10px 0px;
+	border-radius: 2px;
+	display: block;
+	padding: 5px 20px;
+	font-size: 16px;
+	border: none;
+	float: right;
+}
+
+div.formu {
+	margin: 0px 0px 50px 49px;
+}
 /* style new template homepage */
 
 .white {
@@ -216,6 +406,7 @@ body {
 .box .space {
     height: 30px;
 }
+<<<<<<< HEAD
 
 
 
@@ -235,3 +426,5 @@ border-bottom-right-radius: 5px;
 	
 color : #5299eb;
 }
+=======
+>>>>>>> origin/base

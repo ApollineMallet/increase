@@ -1,3 +1,4 @@
+<div id="mainContent">
 <table class='table table-striped'>
 	<thead>
 		<tr>
@@ -25,7 +26,7 @@
 
 			<td title="Ouvrir le projet."
 				style="vertical-align: middle; text-align: center; width: 18%;">
-				<a class='btn btn-success open'
+				<a class='btn blue open'
 				href='{{url.get("users/project/") ~ object.getId()}}'
 				data-ajax='{{baseHref ~ "/project/" ~ object.getId()}}'>
 					Ouvrir... </a>
@@ -36,5 +37,6 @@
 
 	</tbody>
 </table>
-
+</div>
+<div id="details"></div>
 {{script_foot}}

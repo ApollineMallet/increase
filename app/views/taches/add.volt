@@ -1,3 +1,13 @@
+<script type="text/javascript">
+function validateForm() {
+    var x = document.forms["myForm"]["fname"].value;
+    if (x == null || x == "") {
+        alert("Champs requis");
+        return false;
+    }
+}
+</script>
+
 {{ form("Taches/insert", "method": "post", "name":"frmObject", "id":"frmObject") }}
 
 <fieldset>
@@ -14,7 +24,7 @@
 	<label>Date de début de tâche</label><input type="date" name="date"
 		id="date" value={{today}} class="form-control disabled"><br>
 
-	<form class="form-inline">
+	<form class="form-inline" name="myForm" action="demo_form.asp" onsubmit="return validateForm()" method="post">
 		<div class="form-group disabled	">
 			<label class="sr-only" for="poids"></label>
 			<div class="input-group">

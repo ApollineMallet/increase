@@ -13,9 +13,13 @@ class MessagesController extends DefaultController {
 				"id" => $id,
 				"user" => $this->session->get("user")
 		));
+
+		$bt=$this->jquery->bootstrap()->htmlButton("btnValidate","Valider","btn_valider");
+		$bt->postFormOnClick("Messages/update","frmMessage",".contenuMess");
+		$this->jquery->compile($this->view);
 	}
 	
-	
+
 	
 public function projectAction($id = null) {
 		if ($this->request->isAjax ()) {
@@ -54,4 +58,24 @@ public function projectAction($id = null) {
 			throw new Exception ( "404 not found", 1 );
 		}
 	}
+
+	
+	public function updateAction() {
+		if ($this->request->isPost ()) {
+			$object = $this->getInstance ( @$_POST ["id"] );
+			$this->setValuesToObject ( $object );
+			if ($_POST ["idProjet"]) {
+				try {
+					$object->save ();
+					$this->jquery->getOnClick("#btnValidate", "/projects/messagefil/".$object->getIdFil(), ".message".$object->getIdFil());
+					
+
+				} catch ( \Exception $e ) {
+					$msg = new DisplayedMessage ( "Impossible de modifier l'instance de " . $this->model, "danger" );
+				}
+			}
+		}
+	}
+	
+
 }

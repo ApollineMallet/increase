@@ -2,6 +2,10 @@
 
 <link rel="icon" type="image/png" href="assets/img/favicon.ico" />
 
+
+
+
+
  <div class="row col-xs-12 col-sm-6 col-md-2 col-lg-11">
   		{% if user != null %}
          <div class="alert align-center  alert-info" role="alert">{{user}}</div>
@@ -106,6 +110,26 @@
             </div>
         </div>
         
+        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+            <div class="box">
+                <div class="icon">
+                    <div class="image"><span class="glyphicon glyphicon-cog btn-lg white"></span></div>
+                    <div class="info">
+                        <h3 class="title">Gestion des droits</h3>
+                        <p>
+                        Gérer les droits. 
+                        </p>
+                        <div class="more">
+                          <a class="btn btn-default" href="{{url.get("Acl")}}" data-ajax="Acl">Gestion des droits</a>&nbsp;
+                        </div>
+                    </div>
+                </div>
+                <div class="space"></div>
+            </div>
+        </div>
+        </div>
+        <div class ="row">
+         <div class="col-md-4"></div>
          <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
             <div class="box">
                 <div class="icon">
@@ -141,6 +165,7 @@
                       
                     
                 </div>
+               
                 <div class="space"></div>
             </div>
         </div>
