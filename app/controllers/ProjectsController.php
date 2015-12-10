@@ -176,6 +176,11 @@ class ProjectsController extends DefaultController {
 		
 		$today = date ( "Y-m-d H:i:s" );
 		
+		$bt=$this->jquery->bootstrap()->htmlButton("btnValidate","Valider","btn_valider");
+		$bt->postFormOnClick("Messages/update","frmMessage",".contenuMess");
+		
+
+		
 		$this->view->setVars ( array (
 				"content" => $content,
 				"user" => $usermsg,
@@ -183,8 +188,8 @@ class ProjectsController extends DefaultController {
 				"today" => $today,
 				"idmsgparent" => $id,
 				"idp" => $idp
-		) );
+		));
+		
+		$this->jquery->compile($this->view);
 	}
 }
-
-

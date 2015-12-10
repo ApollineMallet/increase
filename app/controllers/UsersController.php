@@ -110,7 +110,7 @@ class UsersController extends DefaultController {
 		$this->view->pick ( "users/projects" );
 	}
 	public function projectAction($id = null) {
-		if ($this->request->isAjax ()) {
+		//if ($this->request->isAjax ()) {
 			
 			$projet = call_user_func ( "Projet::find", array (
 					"id=" . $id 
@@ -141,9 +141,9 @@ class UsersController extends DefaultController {
 			) );
 			$this->jquery->compile ( $this->view );
 			$this->view->pick ( "users/project" );
-		} else {
-			throw new Exception ( "404 not found", 1 );
-		}
+		//} else {
+		//	throw new Exception ( "404 not found", 1 );
+		//}
 	}
 }
 

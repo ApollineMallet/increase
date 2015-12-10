@@ -14,4 +14,22 @@ class MessagesController extends DefaultController {
 				"user" => $this->session->get("user")
 		));
 	}
+	
+	public function updateAction() {
+		if ($this->request->isPost ()) {
+			$object = $this->getInstance ( @$_POST ["id"] );
+			$this->setValuesToObject ( $object );
+			if ($_POST ["idProjet"]) {
+				try {
+					$object->save ();
+					$this->jquery->getOnClick("#btnValidate", "/projects/messagefil/".$object->getIdFil(), ".message".$object->getIdFil());
+					
+
+				} catch ( \Exception $e ) {
+					$msg = new DisplayedMessage ( "Impossible de modifier l'instance de " . $this->model, "danger" );
+				}
+			}
+		}
+	}
+	
 }
