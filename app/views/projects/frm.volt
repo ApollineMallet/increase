@@ -1,3 +1,6 @@
+<script type="text/javascript">
+$('#myForm').validator()
+</script>
  {{ form("Projects/update", "method": "post", "name":"frmObject",
 "id":"frmObject") }}
 <fieldset>
@@ -7,17 +10,17 @@
 	<div class="alert alert-info">Modification du projet :
 		{{p.getNom()}}</div>
 
-	<div class="form-group">
+	<form id="myForm" role="form" data-toggle="validator">
 		<label></label><input type="hidden" name="id" id="id"
 			value="{{p.getId()}}"> <label>Changez le nom :</label><input
-			type="text" name="nom" id="nom" value="{{p.getNom()}}"
+			type="text" required name="nom" id="nom" value="{{p.getNom()}}"
 			placeholder="Entrez le nom" class="form-control"><br>
-		<label>Changez la date finale :</label><input type="date" name="dateFinPrevue"
+		<label>Changez la date finale :</label><input type="date" required name="dateFinPrevue"
 			id="dateFinPrevue" value="{{p.getDateFinPrevue()}}" 
 			class="form-control"><br> 
 			
 			<label>Changez la description :</label><input
-			type="text" name="description" id="description" value="{{p.getDescription()}}"
+			type="text" required name="description" id="description" value="{{p.getDescription()}}"
 			placeholder="Entrez une description" class="form-control"><br>	
 			
 			
@@ -29,7 +32,7 @@
 		    <option value="{{u.getId()}}">{{u.getIdentite()}} :  {{u.getId()}}</option>
 		  {% endfor%}
 	</select>
-			
+			<br>
 	</div>
 	<div class="form-group">
 		<input type="submit" value="Valider" class="btn btn-default validate">

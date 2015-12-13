@@ -1,10 +1,7 @@
-{{ form("Taches/insert", "method": "post", "name":"frmObject", "id":"frmObject") }}
-
 <script type="text/javascript">
 $('#myForm').validator()
 </script>
-
-
+{{ form("Taches/update", "method": "post", "name":"frmObject", "id":"frmObject") }}
 
 <fieldset>
 
@@ -51,7 +48,7 @@ $('#myForm').validator()
 		<a class="btn btn-default cancel" href="{{url.get("
 			Index")}}" data-ajax="{{ baseHref ~ "/index"}}">Annuler</a>
 	</div>
-</form>
-</fieldset>
 
+</fieldset>
+</form>
 {{ script_foot }}
