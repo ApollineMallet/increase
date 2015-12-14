@@ -66,6 +66,7 @@ class TachesController extends DefaultController {
 				"show" => $show,
 				"pb" =>$pb,
 				"objects" => $tache,
+				"user" => $users
 		) );
 		$this->jquery->getOnClick ( ".update, .add", "", "#content", array (
 				"attr" => "data-ajax"

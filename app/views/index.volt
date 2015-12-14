@@ -9,13 +9,40 @@ javascript_include('js/bootstrap.min.js') }}
 </head>
 <meta charset="UTF-8">
 <body>
-	<div class="second-header"></div>
+<!-- /.navbar-header -->
+{% if user != null %}			
+  <div class="container-fluid">
+ 
+    <div class="navbar-header">
+    
+      
+      <a class="navbar-brand" href="#">Bonjour, {{user}}</a>
+      
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+     
+      <ul class="nav navbar-nav navbar-right">
+      
+      <li><a class="tool" href="{{url.get("Connexion")}}" data-ajax="Connexion/deconnexion">Déconnexion</a></li>
+     
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+
+{% endif %}
+
 	<div class="bs-docs-header">
 		<div class="container">
 			<div class="header">
 				<h1>Increase - Triple a</h1>
 				<p>Manage the progress of your projects, improve communication
 					with customers.</p>
+					
+					
+						
+					
 			</div>
 		</div>
 	</div>
