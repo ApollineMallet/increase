@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 03 Décembre 2015 à 10:36
+-- Généré le :  Jeu 10 Décembre 2015 à 12:07
 -- Version du serveur :  5.5.39
 -- Version de PHP :  5.4.31
 
@@ -19,8 +19,7 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `increase`
 --
-CREATE DATABASE IF NOT EXISTS `increase` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `increase`;
+
 -- --------------------------------------------------------
 
 --
@@ -33,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `acl` (
   `nom_ressource` varchar(50) NOT NULL,
   `nom_action` varchar(50) NOT NULL,
   `allowed` tinyint(1) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=128 ;
 
 --
 -- Contenu de la table `acl`
@@ -41,8 +40,104 @@ CREATE TABLE IF NOT EXISTS `acl` (
 
 INSERT INTO `acl` (`id`, `idRole`, `nom_ressource`, `nom_action`, `allowed`) VALUES
 (3, 1, 'index', 'index', 1),
-(4, 1, 'messages', 'update', 0),
-(5, 1, 'messages', 'index', 0);
+(6, 2, 'index', 'index', 1),
+(7, 3, 'index', 'index', 1),
+(8, 1, 'Connexion', 'connexion', 1),
+(9, 2, 'Connexion', 'connexion', 1),
+(10, 3, 'Connexion', 'connexion', 1),
+(11, 1, 'Connexion', 'deconnexion', 1),
+(12, 2, 'Connexion', 'deconnexion', 1),
+(13, 3, 'Connexion', 'deconnexion', 1),
+(14, 1, 'Connexion', 'index', 1),
+(15, 2, 'Connexion', 'index', 1),
+(16, 3, 'Connexion', 'index', 1),
+(17, 1, 'Default', 'asAdmin', 1),
+(18, 2, 'Default', 'asAdmin', 1),
+(19, 3, 'Default', 'asAdmin', 1),
+(20, 1, 'Default', 'asAuthor', 1),
+(21, 2, 'Default', 'asAuthor', 1),
+(22, 3, 'Default', 'asAuthor', 1),
+(23, 1, 'Default', 'asUser', 1),
+(24, 2, 'Default', 'asUser', 1),
+(25, 3, 'Default', 'asUser', 1),
+(26, 1, 'Default', 'delete', 1),
+(27, 2, 'Default', 'delete', 1),
+(28, 3, 'Default', 'delete', 1),
+(29, 1, 'Default', 'frm', 1),
+(30, 2, 'Default', 'frm', 1),
+(31, 3, 'Default', 'frm', 1),
+(32, 1, 'Default', 'index', 1),
+(33, 2, 'Default', 'index', 1),
+(34, 3, 'Default', 'index', 1),
+(35, 1, 'Default', 'update', 1),
+(36, 2, 'Default', 'update', 1),
+(37, 3, 'Default', 'update', 1),
+(38, 1, 'Default', '_delete', 1),
+(39, 2, 'Default', '_delete', 1),
+(40, 3, 'Default', '_delete', 1),
+(65, 1, 'Messages', 'index', 1),
+(66, 2, 'Messages', 'index', 1),
+(67, 3, 'Messages', 'index', 1),
+(68, 1, 'Messages', 'messagefil', 1),
+(69, 2, 'Messages', 'messagefil', 1),
+(70, 3, 'Messages', 'messagefil', 1),
+(71, 1, 'projects', 'equipe', 1),
+(72, 2, 'projects', 'equipe', 1),
+(73, 3, 'projects', 'equipe', 1),
+(74, 1, 'projects', 'index', 1),
+(75, 2, 'projects', 'index', 1),
+(76, 3, 'projects', 'index', 1),
+(77, 1, 'projects', 'messagefil', 1),
+(78, 2, 'projects', 'messagefil', 2),
+(79, 3, 'projects', 'messagefil', 1),
+(80, 1, 'projects', 'messages', 1),
+(81, 2, 'projects', 'messages', 1),
+(82, 3, 'projects', 'messages', 1),
+(83, 1, 'Taches', 'add', 1),
+(84, 2, 'Taches', 'add', 1),
+(85, 3, 'Taches', 'add', 1),
+(86, 1, 'Taches', 'delete', 1),
+(87, 2, 'Taches', 'delete', 1),
+(88, 3, 'Taches', 'delete', 1),
+(89, 1, 'Taches', 'frm', 1),
+(90, 2, 'Taches', 'frm', 1),
+(91, 3, 'Taches', 'frm', 1),
+(92, 1, 'Taches', 'index', 1),
+(93, 2, 'Taches', 'index', 1),
+(94, 3, 'Taches', 'index', 1),
+(95, 1, 'Taches', 'show', 1),
+(96, 2, 'Taches', 'show', 1),
+(97, 3, 'Taches', 'show', 1),
+(98, 1, 'Taches', 'update', 1),
+(99, 2, 'Taches', 'update', 1),
+(100, 3, 'Taches', 'update', 1),
+(101, 1, 'Taches', '_delete', 1),
+(102, 2, 'Taches', '_delete', 1),
+(103, 3, 'Taches', '_delete', 1),
+(104, 1, 'UseCases', 'add', 1),
+(105, 2, 'UseCases', 'add', 1),
+(106, 3, 'UseCases', 'add', 1),
+(107, 1, 'UseCases', 'frm', 1),
+(108, 2, 'UseCases', 'frm', 1),
+(109, 3, 'UseCases', 'frm', 1),
+(110, 1, 'UseCases', 'index', 1),
+(111, 2, 'UseCases', 'index', 1),
+(112, 3, 'UseCases', 'index', 1),
+(113, 1, 'UseCases', 'show', 1),
+(114, 2, 'UseCases', 'show', 1),
+(115, 3, 'UseCases', 'show', 1),
+(116, 1, 'users', 'frm', 1),
+(117, 2, 'users', 'frm', 1),
+(118, 3, 'users', 'frm', 1),
+(119, 1, 'users', 'index', 1),
+(120, 2, 'users', 'index', 1),
+(121, 3, 'users', 'index', 1),
+(122, 1, 'users', 'project', 1),
+(123, 2, 'users', 'project', 1),
+(124, 3, 'users', 'project', 1),
+(125, 1, 'users', 'projects', 1),
+(126, 2, 'users', 'projects', 1),
+(127, 3, 'users', 'projects', 1);
 
 -- --------------------------------------------------------
 
@@ -60,9 +155,39 @@ CREATE TABLE IF NOT EXISTS `action` (
 --
 
 INSERT INTO `action` (`nom_action`, `nom_ressource`) VALUES
+('connexion', 'Connexion'),
+('deconnexion', 'Connexion'),
+('index', 'Connexion'),
+('asAdmin', 'Default'),
+('asAuthor', 'Default'),
+('asUser', 'Default'),
+('delete', 'Default'),
+('frm', 'Default'),
+('index', 'Default'),
+('update', 'Default'),
+('_delete', 'Default'),
 ('index', 'index'),
-('index', 'messages'),
-('update', 'messages');
+('index', 'Messages'),
+('messagefil', 'Messages'),
+('equipe', 'projects'),
+('index', 'projects'),
+('messagefil', 'projects'),
+('messages', 'projects'),
+('add', 'Taches'),
+('delete', 'Taches'),
+('frm', 'Taches'),
+('index', 'Taches'),
+('show', 'Taches'),
+('update', 'Taches'),
+('_delete', 'Taches'),
+('add', 'UseCases'),
+('frm', 'UseCases'),
+('index', 'UseCases'),
+('show', 'UseCases'),
+('frm', 'users'),
+('index', 'users'),
+('project', 'users'),
+('projects', 'users');
 
 -- --------------------------------------------------------
 
@@ -129,8 +254,14 @@ CREATE TABLE IF NOT EXISTS `ressource` (
 --
 
 INSERT INTO `ressource` (`nom`, `description`) VALUES
+('Connexion', ''),
+('Default', ''),
 ('index', 'index'),
-('messages', '');
+('Messages', ''),
+('projects', ''),
+('Taches', ''),
+('UseCases', ''),
+('users', '');
 
 -- --------------------------------------------------------
 
@@ -308,7 +439,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `acl`
 --
 ALTER TABLE `acl`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=128;
 --
 -- AUTO_INCREMENT pour la table `message`
 --

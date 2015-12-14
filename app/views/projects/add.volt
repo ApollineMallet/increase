@@ -1,3 +1,7 @@
+<script type="text/javascript">
+$('#myForm').validator()
+</script>
+
 	{{ form("Projects/update", "method": "post", "name":"frmObject", "id":"frmObject") }}
 <fieldset>
 	
@@ -6,10 +10,10 @@
 	
 		<div class="alert alert-info">Ajout d'un projet</div>
 
-<div class="form-group">
+<form id="myForm" role="form" data-toggle="validator">
 		<input type="hidden" name="id" id="id">	
-		<label>Nom</label><input type="text" required="required" name="nom" id="nom" placeholder="Saisissez un nom" class="form-control"/><br>
-		<label>Description :</label><input type="text" required="required" name="description" id="description" placeholder="Saisissez une description" class="form-control"/>
+		<label>Nom</label><input type="text" required name="nom" id="nom" placeholder="Saisissez un nom" class="form-control"/><br>
+		<label>Description :</label><input type="text" required" name="description" id="description" placeholder="Saisissez une description" class="form-control"/>
 				
 		
 		   

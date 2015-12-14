@@ -1,0 +1,25 @@
+increase : ce qu'il reste à faire --> Bubu
+
+code de usecase automatique lors d'un ajout selon l'idprojet, l'user et la date
+
+champs obligatoire pour l'ajout.
+
+recuperer la page de Clavel pour l'integrer via les boutons d'accueil
+
+design css et ergo
+
+notifications sur la page d'accueil
+
+code couleur selon nouveau/anciens
+
+changer le design des form (ajout/modif)
+
+changer design de la form connexion
+
+respecter les droits:
+
+Admin : tout est possible
+author : tout est possible sur son projet
+user: ne voit que son projet
+
+

@@ -113,7 +113,7 @@
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
             <div class="box">
                 <div class="icon">
-                    <div class="image"><span class="glyphicon glyphicon-user btn-lg white"></span></div>
+                    <div class="image"><span class="glyphicon glyphicon-cog btn-lg white"></span></div>
                     <div class="info">
                         <h3 class="title">Gestion des droits</h3>
                         <p>
@@ -127,7 +127,9 @@
                 <div class="space"></div>
             </div>
         </div>
-        
+        </div>
+        <div class ="row">
+         <div class="col-md-4"></div>
          <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
             <div class="box">
                 <div class="icon">
@@ -163,6 +165,7 @@
                       
                     
                 </div>
+               
                 <div class="space"></div>
             </div>
         </div>

@@ -140,6 +140,7 @@ body {
 	background:white;
 	padding: 4px 12px 2px 12px;
 	text-align: center;
+	cursor:pointer;
 	
 }
 
@@ -150,6 +151,7 @@ body {
 	background:white;
 	padding: 4px 12px 2px 12px;
 	text-align: center;	
+	cursor:pointer;
 }
 
 .a-onglet {
@@ -433,3 +435,25 @@ div.formu {
 .box .space {
     height: 30px;
 }
+<<<<<<< HEAD
+
+
+
+.tableindex
+{
+		
+	
+	border-radius: 30px;
+border-top-right-radius: 5px;
+border-bottom-right-radius: 5px;
+	
+	
+}
+
+.titreindex{
+	
+	
+color : #5299eb;
+}
+=======
+>>>>>>> origin/base

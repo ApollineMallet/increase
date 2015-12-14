@@ -75,6 +75,62 @@ class UseCasesController extends DefaultController {
 
 
 	
+	public function indexAction($message = NULL) {
+		
+
+		
+		$msg = "";
+		$show = "";
+		
+		$usecase = Usecase::find ();
+		$users = User::find ();
+		if (isset ( $message )) {
+			if (is_string ( $message )) {
+				$message = new DisplayedMessage ( $message );
+			}
+			$message->setTimerInterval ( $this->messageTimerInterval );
+			$msg = $this->_showDisplayedMessage ( $message );
+		}
+		if ($this->model != "Usecase" & "Tache") {
+				
+			$show = "class='hidden'";
+		} else {
+			$show = "";
+		}
+	
+		$pb=array();
+		
+		foreach ( $usecase as $t ) {
+			$avancement = $t->getAvancement ();
+			$pb[$t->getId()] = $this->jquery->bootstrap ()->htmlProgressbar ( "pb3", "info", $avancement )->setStriped ( true )->setActive ( true )->showcaption ( true );
+			
+		}
+			
+	
+		$objects = call_user_func ( $this->model . "::find" );
+		$this->view->setVars ( array (
+				"objects" => $objects,
+				"siteUrl" => $this->url->getBaseUri (),
+				"baseHref" => $this->dispatcher->getControllerName (),
+				"model" => $this->model,
+				"msg" => $msg,
+				"show" => $show,
+				"pb" =>$pb,
+				"objects" => $usecase,
+				
+		) );
+		$this->jquery->getOnClick ( ".update, .add", "", "#content", array (
+				"attr" => "data-ajax"
+		) );
+		$this->jquery->getOnClick ( ".delete", "", "#message", array (
+				"attr" => "data-ajax"
+		) );
+		$this->jquery->compile ( $this->view );
+		$this->view->pick ( "main/index" );
+	}
+	
+	
+	
 	}	
 	
 	

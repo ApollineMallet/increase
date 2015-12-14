@@ -7,7 +7,9 @@ class UsersController extends DefaultController {
 	}
 	public function frmAction($id = NULL) {
 		$user = $this->getInstance ( $id );
+
 		$select = new HtmlSelect ( "role", "Rôle", "Sélectionnez un rôle..." );
+
 		$select->fromArray ( array (
 				"admin",
 				"user",
@@ -158,9 +160,13 @@ class UsersController extends DefaultController {
 			$this->jquery->doJqueryOn("click","#btClose","#mainContent","show");
 			$this->jquery->compile ( $this->view );
 			$this->view->pick ( "users/project" );
+
 		} else {
 			throw new Exception ( "404 not found", 1 );
 		}
+
+
+
 	}
 }
 

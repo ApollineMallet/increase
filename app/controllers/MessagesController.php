@@ -23,7 +23,9 @@ class MessagesController extends DefaultController {
 		}
 	}
 	
+
 	public function updateAction($id=null) {
+
 		if ($this->request->isPost ()) {
 			$object = $this->getInstance ( @$_POST ["id"] );
 			$this->setValuesToObject ( $object );
@@ -43,4 +45,5 @@ class MessagesController extends DefaultController {
 		}
 	}
 	
+
 }

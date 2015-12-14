@@ -1,8 +1,7 @@
 {{msg}}
 <!DOCTYPE html>
 <html>
-{{ form("Connexion/connexion", "method": "post", "name":"frmObject",
-"id":"frmObject") }}
+{{ form("Connexion/connexion", "method": "post", "name":"frmObject","id":"frmObject") }}
 <h1>
 	<center>Connexion</center>
 </h1>

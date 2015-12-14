@@ -16,6 +16,7 @@
 				{{object.getnom()}}</td>
 
 			<td class="affipb">
+
 				{{progressbar[object.getId()]}}</td>
 
 			<td title="Jours restants avant la fin du projet." class="affinbj">
