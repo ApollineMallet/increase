@@ -1,4 +1,4 @@
-{{ form("Messages/update", "method": "post", "name":"frmObject", "id":"frmObject") }}
+{{ form("Messages/update", "method": "post", "name":"frmMessage", "id":"frmMessage") }}
 
 <div class="detailsprojet cinquante">
 	<h4 class="new">
@@ -12,7 +12,7 @@
 				
 			<input type="hidden" name="date" id="date" value="{{today}}">
 			<input type="hidden" name="idProjet" id="idProjet" value="{{id}}">
-			<input type="hidden" name="idUser" id="idUser" value="1">
+			<input type="hidden" name="idUser" id="idUser" value="{{user.getId()}}">
 			
 			
 			<div class="form-group">
@@ -21,3 +21,4 @@
 		</fieldset>
 	</form>
 </div>
+{{script_foot}}

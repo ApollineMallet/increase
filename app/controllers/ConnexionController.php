@@ -40,8 +40,11 @@ class ConnexionController extends DefaultController {
 			$userPass = $user->getPassword ();
 			
 			if ($userPass == $password) {
-				$this->session->set ( "user", $user );
+				$this->session->set("user", $user );
+
+
 				$this->response->redirect ( 'index/index' );
+
 			} else {
 				$msg = new DisplayedMessage ( "Il y a une erreur dans votre mail ou votre mot de passe.", "danger" );
 				$this->dispatcher->forward ( array (

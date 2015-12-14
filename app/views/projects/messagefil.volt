@@ -35,7 +35,7 @@
 				<input type="hidden" name="date" id="date" value="{{today}}">
 				<input type="hidden" name="idFil" id="idFil" value="{{idmsgparent}}">
 				<input type="hidden" name="idProjet" id="idProjet" value="{{idp}}">
-				<input type="hidden" name="idUser" id="idUser" value="1">
+				<input type="hidden" name="idUser" id="idUser" value="{{u.getId()}}">
 				
 				<div class="form-group">
 				{{q["btnValidate"]}}
