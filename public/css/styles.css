@@ -140,6 +140,7 @@ body {
 	background:white;
 	padding: 4px 12px 2px 12px;
 	text-align: center;
+	cursor:pointer;
 	
 }
 
@@ -150,6 +151,7 @@ body {
 	background:white;
 	padding: 4px 12px 2px 12px;
 	text-align: center;	
+	cursor:pointer;
 }
 
 .a-onglet {
