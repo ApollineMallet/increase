@@ -1,6 +1,7 @@
 {{msg}}
 <!DOCTYPE html>
 <html>
+	
 {{ form("Connexion/connexion", "method": "post", "name":"frmObject",
 "id":"frmObject") }}
 
@@ -27,6 +28,7 @@
             </a>
         </div><!-- /card-container -->
     </div><!-- /container -->
+
 
 
 

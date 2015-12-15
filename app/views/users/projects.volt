@@ -2,7 +2,7 @@
 <table class='table table-striped'>
 	<thead>
 		<tr>
-			<th colspan='3'><h3 style='margin-top: 0px;'>Mes projects
+			<th colspan='3'><h3 class="sansmarge">Mes projects
 					[{{user.getIdentite()}}]</h3></th>
 		</tr>
 	</thead>
@@ -12,23 +12,18 @@
 		{% for object in objects %}
 		<tr>
 
-			<td style="vertical-align: middle; padding-left: 2%; width: 13%;">
+			<td class="affinom">
 				{{object.getnom()}}</td>
-			
-			
-			
-			<td style="vertical-align: middle; width: 56%;">
+
+			<td class="affipb">
+
 				{{progressbar[object.getId()]}}</td>
 
-			<td title="Jours restants avant la fin du projet."
-				style="vertical-align: middle; text-align: center; width: 13%;">
+			<td title="Jours restants avant la fin du projet." class="affinbj">
 				{{NbJourAvantFinProjet[object.getId()]}}</td>
 
-			<td title="Ouvrir le projet."
-				style="vertical-align: middle; text-align: center; width: 18%;">
-				<a class='btn blue open'
-				href='{{url.get("users/project/") ~ object.getId()}}'
-				data-ajax='{{baseHref ~ "/project/" ~ object.getId()}}'>
+			<td title="Ouvrir le projet." class="affiopen">
+				<a class='btn blue open' href='{{url.get("users/project/") ~ object.getId()}}' data-ajax='{{baseHref ~ "/project/" ~ object.getId()}}'>
 					Ouvrir... </a>
 			</td>
 

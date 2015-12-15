@@ -139,6 +139,7 @@ body {
 	background:white;
 	padding: 4px 12px 2px 12px;
 	text-align: center;
+	cursor:pointer;
 	
 }
 
@@ -149,6 +150,7 @@ body {
 	background:white;
 	padding: 4px 12px 2px 12px;
 	text-align: center;	
+	cursor:pointer;
 }
 
 .a-onglet {
@@ -157,6 +159,33 @@ body {
 
 
 /* AntoineC */
+
+h3.sansmarge {
+	margin-top: 0px;
+}
+
+td.affinom {
+	vertical-align: middle;
+	padding-left: 2%;
+	width: 13%;
+}
+
+td.affipb {
+	vertical-align: middle;
+	width: 56%;
+}
+
+td.affinbj {
+	vertical-align: middle;
+	text-align: center;
+	width: 13%;
+}
+
+td.affiopen {
+	vertical-align: middle;
+	text-align: center;
+	width: 18%;
+}
 
 h3.nomprojet {
 	margin: 0px;
