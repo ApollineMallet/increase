@@ -60,7 +60,7 @@ class DefaultController extends ControllerBase {
 			) );
 		}
 	}
-	}
+	
 	/**
 	 * Retourne une instance de $model<br>
 	 * si $id est nul, un nouvel objet est retourn�<br>
@@ -180,6 +180,9 @@ class DefaultController extends ControllerBase {
 					$msg = new DisplayedMessage ( "Impossible d'ajouter l'instance de " . $this->model, "danger" );
 				}
 			}
+
+			
+			
 			
 		
 			$this->dispatcher->forward ( array (
