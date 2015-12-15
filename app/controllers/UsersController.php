@@ -29,7 +29,7 @@ class UsersController extends DefaultController {
 
 
 	public function projectsAction($id = null) {
-		if ($this->session->get("user")->getId() == $id) {
+		
 
 			$user = $this->getInstance ( $id );
 
@@ -119,9 +119,7 @@ class UsersController extends DefaultController {
 			$this->jquery->compile ( $this->view );
 			$this->view->pick ( "users/projects" );
 	
-		} else {
-			throw new Exception ( "404 not found", 1 );
-		}
+		
 	}
 
 

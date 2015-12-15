@@ -7,13 +7,20 @@ class IndexController extends ControllerBase {
 		}
 	}
 	public function indexAction() {
+		
 		$this->jquery->getOnClick ( "a.tool", "", "#content", array (
 				"attr" => "data-ajax" 
 		) );
 		$this->jquery->compile ( $this->view );
 		$this->view->setVars ( array (
-				"user" => $this->session->get ( "user", "" ) 
+				"user" => $this->session->get ( "user", "" ),
+				
 		) );
 	}
+	
+	
+	
+	
+	
 }
 

@@ -39,7 +39,10 @@ class ConnexionController extends DefaultController {
 		$mail = $_POST ['mail'];
 		$mdp = $_POST ['mdp'];
 		$user = User::findFirst ( "mail='" . $mail . "'" );
-			
+		$this->view->setVars ( array (
+				"user" => $this->session->get ( "user", "" ),
+		
+		) );
 		if ($user != null) {
 			$password = $this->javaToPhpSha ( $mdp );
 			$userPass = $user->getPassword ();
@@ -48,7 +51,7 @@ class ConnexionController extends DefaultController {
 
 				$this->session->set("user", $user );
 
-
+					
 				$this->response->redirect ( 'index/index' );
 
 			} else {
@@ -59,6 +62,7 @@ class ConnexionController extends DefaultController {
 						"params" => array (
 								$msg 
 						) 
+						
 				) );
 			}
 		} else {
@@ -77,9 +81,11 @@ class ConnexionController extends DefaultController {
 	
 
 		$this->view->setRenderLevel ( View::LEVEL_ACTION_VIEW );
-
+		
 		$this->session->destroy ();
-
-		$this->response->redirect ( "index" );
+		
+		$this->response->redirect ("connexion");
+		
+		
 	}
 }

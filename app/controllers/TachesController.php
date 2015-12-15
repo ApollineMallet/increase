@@ -81,8 +81,16 @@ class TachesController extends DefaultController {
 	
 	
 	public function showAction($id = NULL) {
+		
+		
 		$tache = Tache::find ( "id=" . $id );
 		$usecases = Usecase::find ();
+		$user = User::findFirst ( "mail='" . $mail . "'" );
+		$this->view->setVars ( array (
+				"user" => $this->session->get ( "user", "" ),
+		
+		) );
+		
 		foreach ( $tache as $t ) { 
 			
 			$avancement = $t->getAvancement ();
@@ -99,7 +107,8 @@ class TachesController extends DefaultController {
 				"dev" => $NomDev,
 				"poid" => $PoidsDev,
 				"color" => $color,
-				"pb" => $pb 
+				"pb" => $pb,
+				
 		) );
 		
 		parent::frmAction ( $id );

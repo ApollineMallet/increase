@@ -11,6 +11,7 @@ class DefaultController extends ControllerBase {
 	public function indexAction($message = NULL) {
 		$msg = "";
 		$show = "";
+		
 		if (isset ( $message )) {
 			if (is_string ( $message )) {
 				$message = new DisplayedMessage ( $message );

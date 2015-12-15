@@ -33,7 +33,11 @@ class UseCasesController extends DefaultController {
 		$usecase = Usecase::find ( array (
 				"code='" . $id . "'" 
 		) );
-		$users = User::find ();
+		$user = User::findFirst ( "mail='" . $mail . "'" );
+		$this->view->setVars ( array (
+				"user" => $this->session->get ( "user", "" ),
+		
+		) );
 		
 		foreach ( $usecase as $t ) {
 			$avancement = $t->getAvancement ();
