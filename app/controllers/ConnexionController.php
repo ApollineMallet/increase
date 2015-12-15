@@ -70,8 +70,12 @@ class ConnexionController extends DefaultController {
 		}
 	}
 	public function deconnexionAction() {
+	
+
 		$this->view->setRenderLevel ( View::LEVEL_ACTION_VIEW );
+
 		$this->session->destroy ();
+
 		$this->response->redirect ( "index" );
 	}
 }
