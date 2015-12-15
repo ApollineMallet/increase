@@ -51,8 +51,14 @@ class ConnexionController extends DefaultController {
 
 				$this->session->set("user", $user );
 
-					
-				$this->response->redirect ( 'index/index' );
+				if ($this->session->get("user")->getRole() == 1) {
+					$this->response->redirect ( 'users/projects/'.$this->session->get("user")->getId());	
+				}
+				else {
+					$this->response->redirect ( 'index');
+				}
+
+				
 
 			} else {
 				$msg = new DisplayedMessage ( "Il y a une erreur dans votre mail ou votre mot de passe.", "danger" );
@@ -82,7 +88,7 @@ class ConnexionController extends DefaultController {
 
 		$this->view->setRenderLevel ( View::LEVEL_ACTION_VIEW );
 		
-		$this->session->destroy ();
+		$this->session->destroy();
 		
 		$this->response->redirect ("connexion");
 		

@@ -27,9 +27,13 @@ javascript_include('js/bootstrap.min.js') }}
      
       <ul class="nav navbar-nav navbar-right">
       
-      <li><a class="tool" href="{{url.get("Connexion")}}" data-ajax="Connexion/deconnexion">Déconnexion</a></li>
+      <li><a href="{{url.get("Connexion")}}" data-ajax="Connexion/deconnexion">Déconnexion</a></li>
      
       </ul>
+
+
+
+
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 

@@ -8,14 +8,23 @@ class IndexController extends ControllerBase {
 	}
 	public function indexAction() {
 		
-		$this->jquery->getOnClick ( "a.tool", "", "#content", array (
-				"attr" => "data-ajax" 
-		) );
-		$this->jquery->compile ( $this->view );
-		$this->view->setVars ( array (
-				"user" => $this->session->get ( "user", "" ),
-				
-		) );
+		if ($this->session->get("user")) {
+			
+			$this->jquery->getOnClick ( "a.tool", "", "#content", array ("attr" => "data-ajax" ) );
+			$this->jquery->compile ( $this->view );
+			$this->view->setVars ( array ("user" => $this->session->get ( "user", "" ),) );
+		}
+		else
+		{
+			$this->dispatcher->forward ( array (
+					"controller" => "connexion",
+					"action" => "index",
+					"params" => array (
+							$msg 
+					) 
+			) );
+		}
+
 	}
 	
 	
