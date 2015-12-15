@@ -30,6 +30,10 @@ javascript_include('js/bootstrap.min.js') }}
       <li><a href="{{url.get("Connexion")}}" data-ajax="Connexion/deconnexion">Déconnexion</a></li>
      
       </ul>
+
+
+
+
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 

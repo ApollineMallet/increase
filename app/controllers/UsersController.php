@@ -31,7 +31,7 @@ class UsersController extends DefaultController {
 	public function projectsAction($id = null) {
 		
 
-			$user = $this->getInstance ( $id );
+			$user = $this->session->get("user");
 
 			if ($user->getRole() == 3) {
 				$projets = Projet::find();
