@@ -28,8 +28,8 @@ $('#myForm').validator()
 
 <br>
  	<div class="form-group">
-		<input type="submit" value="Valider" class="btn btn-default validate">
-		<a class="btn btn-default cancel" href="{{url.get("Index")}}" data-ajax="{{ baseHref ~ "/index"}}">Annuler</a>
+		<input type="submit" value="Valider" class="btn btn-default validate tool">
+		<a class="btn btn-default cancel tool" href="{{url.get("Index")}}" data-ajax="{{ baseHref ~ "/index"}}">Annuler</a>
 	</div>
 	
 </div>

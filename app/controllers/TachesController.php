@@ -9,13 +9,14 @@ class TachesController extends DefaultController {
 	public function frmAction($id = NULL) {
 		$tache = Tache::find ( "id=" . $id );
 		$usecases = Usecase::find ();
-
+		
 		
 		$this->view->setVars ( array (
 		"tache" => $tache,
 		"siteUrl" => $this->url->getBaseUri (),
 		"baseHref" => $this->dispatcher->getControllerName (),
 		"usecases" => $usecases,
+		
 		
 
 		) );
@@ -66,7 +67,7 @@ class TachesController extends DefaultController {
 				"show" => $show,
 				"pb" =>$pb,
 				"objects" => $tache,
-				"user" => $users
+				"user" => $this->session->get ( "user"),
 		) );
 		$this->jquery->getOnClick ( ".update, .add", "", "#content", array (
 				"attr" => "data-ajax"

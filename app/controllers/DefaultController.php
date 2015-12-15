@@ -60,7 +60,7 @@ class DefaultController extends ControllerBase {
 			) );
 		}
 	}
-	}
+	
 	/**
 	 * Retourne une instance de $model<br>
 	 * si $id est nul, un nouvel objet est retourn�<br>
@@ -162,6 +162,7 @@ class DefaultController extends ControllerBase {
 	 * @see DefaultController::setValuesToObject()
 	 */
 	public function updateAction() {
+		
 		if ($this->request->isPost ()) {
 			$object = $this->getInstance ( @$_POST ["id"] );
 			$this->setValuesToObject ( $object );

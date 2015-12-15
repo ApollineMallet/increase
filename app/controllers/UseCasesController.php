@@ -16,9 +16,10 @@ class UseCasesController extends DefaultController {
 		
 		$this->view->setVars ( array (
 				"usecase" => $usecase,
-				"users" => $users,
+				
 				"siteUrl" => $this->url->getBaseUri (),
 				"baseHref" => $this->dispatcher->getControllerName (),
+				"users" => $users
 				
 		) );
 		
@@ -26,18 +27,13 @@ class UseCasesController extends DefaultController {
 	}
 	
 	
-	
-	
-	
+
 	public function showAction($id = NULL) {
 		$usecase = Usecase::find ( array (
 				"code='" . $id . "'" 
 		) );
 		$user = User::findFirst ( "mail='" . $mail . "'" );
-		$this->view->setVars ( array (
-				"user" => $this->session->get ( "user", "" ),
 		
-		) );
 		
 		foreach ( $usecase as $t ) {
 			$avancement = $t->getAvancement ();
@@ -51,7 +47,8 @@ class UseCasesController extends DefaultController {
 				"siteUrl" => $this->url->getBaseUri (),
 				"baseHref" => $this->dispatcher->getControllerName (),
 				"avancement" => $avancement,
-				"pb" => $pb 
+				"pb" => $pb,
+				"user" => $this->session->get ( "user", "" ),
 		) );
 		
 		parent::frmAction ( $id );
@@ -63,7 +60,6 @@ class UseCasesController extends DefaultController {
 				
 		
 	
-				
 		$this->view->setVars ( array (
 				"usecase" => $usecase,
 				"users" => $users,
@@ -81,13 +77,13 @@ class UseCasesController extends DefaultController {
 	
 	public function indexAction($message = NULL) {
 		
-
-		
 		$msg = "";
 		$show = "";
 		
 		$usecase = Usecase::find ();
 		$users = User::find ();
+		
+		if ($this->session->get("user")->getRole() != 1) {
 		if (isset ( $message )) {
 			if (is_string ( $message )) {
 				$message = new DisplayedMessage ( $message );
@@ -110,10 +106,9 @@ class UseCasesController extends DefaultController {
 			
 		}
 			
-	
 		$objects = call_user_func ( $this->model . "::find" );
 		$this->view->setVars ( array (
-				"objects" => $objects,
+				
 				"siteUrl" => $this->url->getBaseUri (),
 				"baseHref" => $this->dispatcher->getControllerName (),
 				"model" => $this->model,
@@ -121,6 +116,7 @@ class UseCasesController extends DefaultController {
 				"show" => $show,
 				"pb" =>$pb,
 				"objects" => $usecase,
+				"user" => $this->session->get ("user"),
 				
 		) );
 		$this->jquery->getOnClick ( ".update, .add", "", "#content", array (
@@ -132,7 +128,7 @@ class UseCasesController extends DefaultController {
 		$this->jquery->compile ( $this->view );
 		$this->view->pick ( "main/index" );
 	}
-	
+	}
 	
 	
 	}	
