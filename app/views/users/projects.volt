@@ -5,9 +5,12 @@
 			<th colspan='3'><h3 class="sansmarge">Mes projects
 					[{{user.getIdentite()}}]</h3></th>
 		</tr>
+
+		
+
 	</thead>
 	<tbody>
-
+		
 
 		{% for object in objects %}
 		<tr>
@@ -32,6 +35,7 @@
 
 	</tbody>
 </table>
+<h1>{{joke}}</h1>
 </div>
 <div id="details"></div>
 {{script_foot}}

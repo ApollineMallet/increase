@@ -17,8 +17,10 @@ javascript_include('js/bootstrap.min.js') }}
  
     <div class="navbar-header">
     
+		 <a class="navbar-brand" href="#">Bonjour, {{user}}</a>
+	
       
-      <a class="navbar-brand" href="#">Bonjour, {{user}}</a>
+     
       
     </div>
 
