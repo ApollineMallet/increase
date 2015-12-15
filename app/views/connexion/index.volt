@@ -16,16 +16,12 @@
                 <input type="email" id="mail" name="mail" class="form-control" placeholder="Email" required autofocus>
                 <input type="password" id="mdp" name="mdp" class="form-control" placeholder="Mot de passe" required>
                 <div id="remember" class="checkbox">
-                    <label>
-                        <input type="checkbox" value="remember-me"> Se souvenir de moi
-                    </label>
+                  
                 </div>
                 <button class="btn btn-lg btn-primary btn-block btn-signin tool" data-ajax="{{url.get("
 		index")}}" type="submit">Sign in</button>
             </form><!-- /form -->
-            <a href="#" class="forgot-password">
-                Mot de passe oublié?
-            </a>
+           
         </div><!-- /card-container -->
     </div><!-- /container -->
 

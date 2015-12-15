@@ -12,6 +12,8 @@ class DefaultController extends ControllerBase {
 		$msg = "";
 		$show = "";
 		
+	if 	($this->session->get("user")->getRole() != 1){
+		
 		if (isset ( $message )) {
 			if (is_string ( $message )) {
 				$message = new DisplayedMessage ( $message );
@@ -43,6 +45,7 @@ class DefaultController extends ControllerBase {
 		) );
 		$this->jquery->compile ( $this->view );
 		$this->view->pick ( "main/index" );
+	}
 	}
 	/**
 	 * Retourne une instance de $model<br>
