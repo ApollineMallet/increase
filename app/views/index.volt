@@ -10,14 +10,14 @@ javascript_include('js/bootstrap.min.js') }}
 <meta charset="UTF-8">
 <body>
 <!-- /.navbar-header -->
-{% if user != null %}			
+		
+{% if user != null %}
+
   <div class="container-fluid">
  
     <div class="navbar-header">
     
-      
-      <a class="navbar-brand" href="#">Bonjour, {{user}}</a>
-      
+		 <a class="navbar-brand" href="#">Bonjour, {{user}}</a>      
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -32,7 +32,6 @@ javascript_include('js/bootstrap.min.js') }}
   </div><!-- /.container-fluid -->
 
 {% endif %}
-
 	<div class="bs-docs-header">
 		<div class="container">
 			<div class="header">
