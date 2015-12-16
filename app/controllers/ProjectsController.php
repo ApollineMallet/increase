@@ -20,9 +20,8 @@ class ProjectsController extends DefaultController {
 				"siteUrl" => $this->url->getBaseUri (),
 				"baseHref" => $this->dispatcher->getControllerName (),
 				"usecases" => $usecases,
-				"users" => $users
-	
-	
+				"users" => $users,
+				"user" => $this->session->get("user")	
 		) );
 	
 		parent::frmAction ( $id );
@@ -45,9 +44,8 @@ class ProjectsController extends DefaultController {
 				"baseHref" => $this->dispatcher->getControllerName () ,
 				"projet" =>$projet,
 				"today" => $today,
-				"code" =>$code
-				
-	
+				"code" =>$code,
+				"user" => $this->session->get("user")
 		) );
 	
 		parent::frmAction ( $id );
@@ -149,7 +147,7 @@ class ProjectsController extends DefaultController {
 				"model" => $this->model,
 				"msg" => $msg,
 				"show" => $show,
-				"user" => $user,
+				"user" => $this->session->get("user"),
 				"objects" => $projets,
 				"NbJourAvantFinProjet" => $NbJourAvantFinProjet,
 				"pb" => $progressbar,
@@ -199,13 +197,7 @@ class ProjectsController extends DefaultController {
 							}
 						}
 						$PoidsDev [$NomDev [$u->getIdentite ()]] = floor ( ($PoidsDev [$NomDev [$u->getIdentite ()]] / $PoidTotal) * 100 ) . "%";
-						if ($colorDev == 0) {
-							$color [$NomDev [$u->getIdentite ()]] = "#E2ECFF";
-							$colorDev = 1;
-						} else {
-							$color [$NomDev [$u->getIdentite ()]] = "#A3C0FF";
-							$colorDev = 0;
-						}
+						
 					}
 				}
 			}
