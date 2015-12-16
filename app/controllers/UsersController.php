@@ -161,6 +161,25 @@ class UsersController extends DefaultController {
 		} else {
 			throw new Exception ( "404 not found", 1 );
 		}
+		
+	}
+	
+	public function updateroleAction () {
+		if($this->request->isPost()){
+			$object=$this->getInstance(@$_POST["id"]);
+			if(@$_POST["id"]){
+				try{
+					$users = User::find("id=".@$_POST["id"]);
+					foreach ($users as $u){
+						$u->setRole(@$_POST["role"]);
+						$u->save();
+					}
+				}catch(\Exception $e){
+					$msg=new DisplayedMessage("Impossible de mettre à jour le rôle !","danger");
+				}
+			}
+		}
+		$this->response->redirect ('Acl/index');
 	}
 	
 }

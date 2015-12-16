@@ -14,6 +14,7 @@ class AclController extends DefaultController{
 		$this->jquery->getOnClick("#updatedroit", "", "#update", array("attr"=>"data-ajax"));
 		$this->jquery->compile($this->view);
 		$this->view->pick("acl/index");
+		$this->view->setVars ( array ("user" => $this->session->get ( "user")) );
 	}
 	
 	public function updateroleAction () {
@@ -35,26 +36,56 @@ class AclController extends DefaultController{
 		$this->view->pick("Acl/updaterole");	
 	}
 	
-	public function modifroleAction () {
-		$role = $_POST["role"];
-		$utilisateurs = $_POST["utilisateur"];
-	
-		if ($role == "user") {
-			$idRole = '1';
-		}
-		else if ($role == "author") {
-			$idRole = '2';
-		}
-		else if ($role == "admin") {
-			$idRole = '3';
-		}
-	
-			
-	
+	public function updateAction() {
+		if ($this->request->isPost ()) {
+			$objects = $this->getInstance ( @$_POST ["id"] );
+			foreach ($objects as $object) {
+				$this->setValuesToObject ( $object );
+				if ($_POST ["id"]) {
+					try {
+						$object->save ();
+						$msg = new DisplayedMessage ( $this->model . " `{$object->toString()}` mis à jour" );
+					} catch ( \Exception $e ) {
+						$msg = new DisplayedMessage ( "Impossible de modifier l'instance de " . $this->model, "danger" );
+					}
+				} else {
+					try {
+						$object->save ();
+						$msg = new DisplayedMessage ( "Instance de " . $this->model . " `{$object->toString()}` ajoutée" );
+					} catch ( \Exception $e ) {
+						$msg = new DisplayedMessage ( "Impossible d'ajouter l'instance de " . $this->model, "danger" );
+					}
+				}
 		
-		
-	
+				$this->dispatcher->forward ( array (
+						"controller" => $this->dispatcher->getControllerName (),
+						"action" => "index",
+						"params" => array (
+								$msg
+						) ,
+						"user" => $this->session->get("user")
+				) );
+			}
+		}
 	}
+	
+	protected function setValuesToObject(&$objects) {
+		$objects->assign ( $_POST );
+	}
+	
+	public function getInstance($id = NULL) {
+		foreach($objects as $object) {
+			if (isset ( $id )) {
+				$this->model= 'User';
+				$object = call_user_func ( $this->model . "::findfirst", $id );
+			} else {
+				$className = 'User';
+				$object = new $className ();
+			}
+			return $object;
+		}
+	}
+	
 	
 	public function updatedroitAction() {}
 }
