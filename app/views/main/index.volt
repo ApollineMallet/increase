@@ -42,6 +42,19 @@
 	
 		{% for object in objects %}
 		<tr>
+		{% if model == "Tache" %}
+			<td style="vertical-align: middle; width: 40px;">
+				{% if time[object.getId()] > 1512000 %}
+					{{oklm}}
+				{% else %}
+					{{oklm2}}
+				{% endif %}
+			</td>
+		{% endif %}
+
+
+
+
 		{% if model == "Tache" or model == "Usecase" or model == "Projet" %}
 			<td style="vertical-align: middle; width: 16%;">
 				{{pb[object.getId()]}}</td>

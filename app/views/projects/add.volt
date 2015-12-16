@@ -2,7 +2,7 @@
 $('#myForm').validator()
 </script>
 
-	{{ form("Projects/update", "method": "post", "name":"frmObject", "id":"frmObject") }}
+	{{ form("projects/update", "method": "post", "name":"frmObject", "id":"frmObject") }}
 <fieldset>
 	
 	 	

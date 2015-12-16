@@ -49,12 +49,17 @@ class TachesController extends DefaultController {
 			}
 		
 			$pb=array();
+			$o=array();
 		
 			foreach ( $tache as $t ) {
 				$avancement = $t->getAvancement ();
 				$pb[$t->getId()] = $this->jquery->bootstrap ()->htmlProgressbar ( "pb3", "info", $avancement )->setStriped ( true )->setActive ( true )->showcaption ( true );
-					
+				$o[$t->getId()] = strtotime(date("Y-m-d")) - strtotime($t->getDate());
 			}
+
+
+			$oklm = $this->jquery->bootstrap ()->htmlProgressbar ( "pb3", "warning", 100)->setStriped ( true )->setActive ( true );
+			$oklm2 = $this->jquery->bootstrap ()->htmlProgressbar ( "pb3", "success", 100 )->setStriped(true)->setActive(true);
 				
 		
 			$objects = call_user_func ( $this->model . "::find" );
@@ -68,7 +73,10 @@ class TachesController extends DefaultController {
 					"pb" =>$pb,
 					"objects" => $tache,
 					"users" => $users,
-					"user" => $this->session->get("user")
+					"user" => $this->session->get("user"),
+					"oklm" => $oklm,
+					"oklm2" => $oklm2,
+					"time" => $o
 			) );
 			$this->jquery->getOnClick ( ".update, .add", "", "#content", array (
 					"attr" => "data-ajax"

@@ -4,12 +4,12 @@
 
     <div class="row boutons">
         <div class="col-xs-12 col-sm-6 col-md-2 col-lg-3">
-       		
+          
         
             <div class="box">
             
-                <div class="icon">	
-                    <div class="image">	<a class="tool" href="{{url.get("Taches")}}" data-ajax="Taches">
+                <div class="icon">  
+                    <div class="image"> <a class="tool" href="{{url.get("Taches")}}" data-ajax="Taches">
                     <span class="glyphicon glyphicon-list-alt btn-lg white"></span>
                     </a></div>
                     <div class="info">
@@ -27,17 +27,17 @@
                 <div class="space"></div>
             </div>
         </div>
-        <div class="col-xs-12 col-sm-6 col-md-2 col-lg-3">
+        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
             <div class="box">
                 <div class="icon">
-                    <div class="image"><a class="tool" href="{{url.get("Messages")}}" data-ajax="Messages"><span class="glyphicon glyphicon-envelope btn-lg white"></span></a></div>
+                    <div class="image"><a class="tool" href="{{url.get("projects")}}" data-ajax="projects"><span class="glyphicon glyphicon-play-circle btn-lg white"></span></a></div>
                     <div class="info">
-                        <h3 class="title">Messages</h3>
+                        <h3 class="title">Projets</h3>
                         <p>
-                          Les messages relatifs aux projets	
+                        Tous vos projets Increase ainsi que leur messages.
                         </p>
                         <div class="more">
-                            <a class="btn btn-default tool" href="{{url.get("Messages")}}" data-ajax="Messages">Messages</a>&nbsp;
+                           <a class="btn btn-default tool" href="{{url.get("projects")}}" data-ajax="projects">Projets</a>&nbsp;
                         </div>
                     </div>
                 </div>
@@ -64,26 +64,10 @@
      </div>
     
      <div class="row boutons">
-        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-            <div class="box">
-                <div class="icon">
-                    <div class="image"><a class="tool" href="{{url.get("projects")}}" data-ajax="projects"><span class="glyphicon glyphicon-play-circle btn-lg white"></span></a></div>
-                    <div class="info">
-                        <h3 class="title">Projets</h3>
-                        <p>
-                        Tous vos projets Increase.   
-                        </p>
-                        <div class="more">
-                           <a class="btn btn-default tool" href="{{url.get("projects")}}" data-ajax="projects">Projets</a>&nbsp;
-                        </div>
-                    </div>
-                </div>
-                <div class="space"></div>
-            </div>
-        </div>
-        
-       
-         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+
+      <div class="col-xs-12 col-sm-6 col-md-1 col-lg-1">
+      </div>
+       <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
             <div class="box">
                 <div class="icon">
                     <div class="image"><a class="tool" href="{{url.get("users")}}" data-ajax="users"><span class="glyphicon glyphicon-user btn-lg white"></span></a></div>
@@ -101,6 +85,10 @@
             </div>
         </div>
         
+       
+         
+        <div class="col-xs-12 col-sm-6 col-md-1 col-lg-">
+      </div>
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
             <div class="box">
                 <div class="icon">
@@ -118,63 +106,33 @@
                 <div class="space"></div>
             </div>
         </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3"> 
         </div>
-        <div class ="row">
-         <div class="col-md-4"></div>
-         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-            <div class="box">
-                <div class="icon">
-                    <div class="imageCo"><a class="tool" href="{{url.get("Connexion")}}" data-ajax="Connexion"><span class="glyphicon glyphicon-off btn-lg white"></span></a></div>
-                    {% if user == null %}
-                    <div class="info">
-                        <h3 class="title">Connexion</h3>
-                        <p>
- 
-							 
-						    Connectez-vous
-                        </p>
-                        <div class="more">
-                          <a class="btn btn-default tool" href="{{url.get("Connexion")}}" data-ajax="Connexion">Connexion</a>&nbsp;
-                        </div>
-                    </div>
-                    
-                    {% else %}
-                    
-                    <div class="info">
-                        <h3 class="title">Deconnexion</h3>
-                        <p>
- 
-						
-						    Deconnectez-vous.
-                        </p>
-                        <div class="more">
-                          <a class="btn btn-default tool" href="{{url.get("Connexion")}}" data-ajax="Connexion/deconnexion">Déconnexion</a>
-							&nbsp;
-                        </div>
-                    </div>
-                    {% endif %}
-                      
-                    
-                </div>
-               
-                <div class="space"></div>
-            </div>
-        </div>
-    </div>
-    </div>
+
+        
+      </div>
+        
+      
+     
+     
+
+
+
+<br>
     <div class="btn-group">
-	<button type="button" class="btn btn-'.$style.' dropdown-toggle"
-		data-toggle="dropdown" aria-expanded="false">
-		Connexion en tant que... <span class="caret"></span>
-	</button>
-	<ul class="dropdown-menu" role="menu">
-		<li><a href={{url.get( "Default/asAdmin")}} data-ajax="Default"><span
-				class="glyphicon glyphicon-king" aria-hidden="true"></span>&nbsp;Administrateur</a></li>
-		<li><a href={{url.get( "Default/asUser")}} data-ajax="Default"><span
-				class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Utilisateur</a></li>
-		<li><a href={{url.get( "Default/asAuthor")}} data-ajax="Default"><span
-				class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Auteur</a></li>
-	</ul>
+  <button type="button" class="btn btn-'.$style.' dropdown-toggle"
+    data-toggle="dropdown" aria-expanded="false">
+    Connexion en tant que... <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href={{url.get( "Default/asAdmin")}} data-ajax="Default"><span
+        class="glyphicon glyphicon-king" aria-hidden="true"></span>&nbsp;Administrateur</a></li>
+    <li><a href={{url.get( "Default/asUser")}} data-ajax="Default"><span
+        class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Utilisateur</a></li>
+    <li><a href={{url.get( "Default/asAuthor")}} data-ajax="Default"><span
+        class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Auteur</a></li>
+  </ul>
 </div>
     
     
