@@ -67,14 +67,14 @@
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
             <div class="box">
                 <div class="icon">
-                    <div class="image"><a class="tool" href="{{url.get("Projects")}}" data-ajax="Projects"><span class="glyphicon glyphicon-play-circle btn-lg white"></span></a></div>
+                    <div class="image"><a class="tool" href="{{url.get("projects")}}" data-ajax="projects"><span class="glyphicon glyphicon-play-circle btn-lg white"></span></a></div>
                     <div class="info">
                         <h3 class="title">Projets</h3>
                         <p>
                         Tous vos projets Increase.   
                         </p>
                         <div class="more">
-                           <a class="btn btn-default tool" href="{{url.get("Projects")}}" data-ajax="Projects">Projets</a>&nbsp;
+                           <a class="btn btn-default tool" href="{{url.get("projects")}}" data-ajax="projects">Projets</a>&nbsp;
                         </div>
                     </div>
                 </div>
@@ -86,14 +86,14 @@
          <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
             <div class="box">
                 <div class="icon">
-                    <div class="image"><a class="tool" href="{{url.get("Users")}}" data-ajax="Users"><span class="glyphicon glyphicon-user btn-lg white"></span></a></div>
+                    <div class="image"><a class="tool" href="{{url.get("users")}}" data-ajax="users"><span class="glyphicon glyphicon-user btn-lg white"></span></a></div>
                     <div class="info">
                         <h3 class="title">Utilisateurs</h3>
                         <p>
                         Les différents utilisateurs. 
                         </p>
                         <div class="more">
-                          <a class="btn btn-default tool" href="{{url.get("Users")}}" data-ajax="Users">Utilisateurs</a>&nbsp;
+                          <a class="btn btn-default tool" href="{{url.get("users")}}" data-ajax="users">Utilisateurs</a>&nbsp;
                         </div>
                     </div>
                 </div>

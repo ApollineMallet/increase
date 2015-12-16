@@ -12,7 +12,6 @@ class DefaultController extends ControllerBase {
 		$msg = "";
 		$show = "";
 		
-
 		if ($this->session->get("user")->getRole() != 1) {
 		
 			if (isset ( $message )) {
@@ -27,7 +26,6 @@ class DefaultController extends ControllerBase {
 				$show = "class='hidden'";
 			} else {
 				$show = "";
-
 			}
 			
 			$objects = call_user_func ( $this->model . "::find" );
@@ -71,9 +69,20 @@ class DefaultController extends ControllerBase {
 	 */
 	public function getInstance($id = NULL) {
 		if (isset ( $id )) {
-			$object = call_user_func ( $this->model . "::findfirst", $id );
+			if ($this->model == 'Acl') {
+				$this->model = 'User';
+				$object = call_user_func ( $this->model . "::findfirst", $id );
+			}
+			else {
+				$object = call_user_func ( $this->model . "::findfirst", $id );
+			}
 		} else {
-			$className = $this->model;
+			if ($this->model == 'Acl') {
+				$className = 'User';
+			}
+			else {
+				$className = $this->model;
+			}
 			$object = new $className ();
 		}
 		return $object;
@@ -88,15 +97,12 @@ class DefaultController extends ControllerBase {
 	 * @param string $id        	
 	 */
 	
-
 	
 	public function frmAction($id = NULL) {
 		echo "A surd�finir...<br>Sans oublier l'appel de la m�thode parent en fin.";
 		$this->jquery->postFormOnClick ( ".validate", $this->dispatcher->getControllerName () . "/update", "frmObject", "#content" );
-
 		$this->jquery->getOnClick ( ".cancel", "", "#content", array (
 				"attr" => "data-ajax" 
-
 		) );
 		$this->jquery->compile ( $this->view );
 		$this->view->setVar("baseHref", $this->dispatcher-> getControllerName());
@@ -115,7 +121,6 @@ class DefaultController extends ControllerBase {
 		$user = User::findFirst( "role='2'" );
 		$this->session->set( "user", $user );
 		$this->response->redirect( "index" );
-
 	}
 	
 	/**
@@ -181,6 +186,7 @@ class DefaultController extends ControllerBase {
 					$msg = new DisplayedMessage ( "Impossible d'ajouter l'instance de " . $this->model, "danger" );
 				}
 			}
+
 
 		
 			$this->dispatcher->forward ( array (
@@ -286,4 +292,3 @@ class DefaultController extends ControllerBase {
 		$this->_showMessage ( $message, "info", $timerInterval, $dismissable );
 	}
 }
-

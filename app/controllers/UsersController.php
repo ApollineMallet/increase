@@ -7,9 +7,7 @@ class UsersController extends DefaultController {
 	}
 	public function frmAction($id = NULL) {
 		$user = $this->getInstance ( $id );
-
 		$select = new HtmlSelect ( "role", "Rôle", "Sélectionnez un rôle..." );
-
 		$select->fromArray ( array (
 				"admin",
 				"user",
@@ -25,9 +23,6 @@ class UsersController extends DefaultController {
 		) );
 		parent::frmAction ( $id );
 	}
-
-
-
 	public function projectsAction($id = null) {
 		
 
@@ -39,7 +34,6 @@ class UsersController extends DefaultController {
 			else {
 				$projets = Projet::find ( array ("idClient=" . $user->getId () ) );
 			}
-
 			
 			
 			// date d'aujourd'hui
@@ -56,7 +50,7 @@ class UsersController extends DefaultController {
 				$flagy = 1;
 				// convertit en secondes la date de fin de ce projet
 				$fin_ts = strtotime ( $elt->getDateFinPrevue () );
-				// calcul le nombre de secondes restantes jusqu'Ã  la fin du projet
+				// calcul le nombre de secondes restantes jusqu'Ã  la fin du projet
 				$diff = $fin_ts - $debut_ts;
 				// convertit en jour
 				$nbjours = round ( $diff / 86400 );
@@ -87,8 +81,8 @@ class UsersController extends DefaultController {
 				// on calcul l'avanceent du projet en % en terme de jours
 				$cond = 100 - (($nbjours / $TpsTotal) * 100);
 				
-				// on attribu une couleur Ã  la variable $couleur en fonction de
-				// l'avancement en % du projet en terme de travail accompli comparÃ© Ã  l'avancement en % en terme de jours du projet passÃ©
+				// on attribu une couleur Ã  la variable $couleur en fonction de
+				// l'avancement en % du projet en terme de travail accompli comparÃ© Ã  l'avancement en % en terme de jours du projet passÃ©
 				if ($cond >= 100) {
 					// si la date de fin de projet est dÃ©passÃ©
 					$couleur = "danger";
@@ -122,14 +116,11 @@ class UsersController extends DefaultController {
 			$this->jquery->getOnClick ( ".open", "", "#details", array (
 					"attr" => "data-ajax" ,"jsCallback"=>$this->jquery->hide("#mainContent")
 			) );
-
 			$this->jquery->compile ( $this->view );
 			$this->view->pick ( "users/projects" );
 	
 		
 	}
-
-
 	public function projectAction($id = null) {
 		if ($this->request->isAjax ()) {
 			
@@ -165,13 +156,8 @@ class UsersController extends DefaultController {
 			$this->jquery->doJqueryOn("click","#btClose","#mainContent","show");
 			$this->jquery->compile ( $this->view );
 			$this->view->pick ( "users/project" );
-
 		} else {
 			throw new Exception ( "404 not found", 1 );
 		}
-
-
-
 	}
 }
-

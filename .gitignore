@@ -49,3 +49,4 @@ public/css/bootstrap.min-old.css
 app/config/config.php
 app/vendor/
 app/composer.lock
+app/views/index.volt
