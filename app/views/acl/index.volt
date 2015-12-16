@@ -8,7 +8,7 @@
   <br>
 
 
-</ul>
+</ul></center>
 <div id="update"></div>
 </div>
 {{script_foot}}

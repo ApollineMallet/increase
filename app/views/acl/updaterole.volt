@@ -1,5 +1,5 @@
 {{ form("users/updaterole", "method": "post", "name":"frmObject","id":"frmObject") }}
-		
+<div id="updateroleview">		
 	<h3> Administrateurs </h3>
 		{% for admin in admins %}
 			
@@ -30,7 +30,7 @@
 		<br/>
 		<button type="submit" class='btn btn-primary add' data-ajax="{{url.get("Acl/index")}}"> Modifier </button>
 	</div>
-
+</div>
 </form>
 			
 {{script_foot}}
