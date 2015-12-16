@@ -3,20 +3,20 @@
 	<h3> Administrateurs </h3>
 		{% for admin in admins %}
 			
-			<input type="checkbox" name="id" value="{{admin.getId()}}" id="id-admins" data-ajax="Acl/formulairerole"> {{admin}} <br />
+			<input type="checkbox" name="id[]" value="{{admin.getId()}}" id="id-admins" data-ajax="Acl/formulairerole"> {{admin}} <br />
 		{% endfor %}
 		
 	<h3> Auteurs </h3>
 		{% for author in authors %}
 			
-			<input type="checkbox" name="id" value="{{author.getId()}}"  id="id-auteurs" data-ajax="Acl/formulairerole"> {{author}} <br />
+			<input type="checkbox" name="id[]" value="{{author.getId()}}"  id="id-auteurs" data-ajax="Acl/formulairerole"> {{author}} <br />
 		{% endfor %}
 	
 	
 	<h3> Utilisateurs </h3>
 		{% for util in utils %}
 			
-			<input type="checkbox" name="id" value="{{util.getId()}}"  id="id-users" data-ajax="Acl/formulairerole"> {{util}} <br />
+			<input type="checkbox" name="id[]" value="{{util.getId()}}"  id="id-users" data-ajax="Acl/formulairerole"> {{util}} <br />
 		{% endfor %}
 	
 	

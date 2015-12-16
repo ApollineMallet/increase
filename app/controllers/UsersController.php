@@ -26,8 +26,6 @@ class UsersController extends DefaultController {
 	public function projectsAction($id = null) {
 		
 
-			
-
 			$user = $this->session->get("user");
 
 			if ($user->getRole() == 3) {
@@ -124,7 +122,7 @@ class UsersController extends DefaultController {
 		
 	}
 	public function projectAction($id = null) {
-		if ($this->request->isAjax() or $this->session->get("user")->getRole != 1) {
+		if ($this->request->isAjax ()) {
 			
 			$projet = call_user_func ( "Projet::find", array (
 					"id=" . $id 
@@ -166,20 +164,21 @@ class UsersController extends DefaultController {
 	
 	public function updateroleAction () {
 		if($this->request->isPost()){
-			$object=$this->getInstance(@$_POST["id"]);
-			if(@$_POST["id"]){
-				try{
-					$users = User::find("id=".@$_POST["id"]);
-					foreach ($users as $u){
-						$u->setRole(@$_POST["role"]);
-						$u->save();
+			foreach (@$_POST["id"] as $id) {
+				$object=$this->getInstance($id);
+				if($id){
+					try{
+						$users = User::find("id=".$id);
+						foreach ($users as $u){
+							$u->setRole(@$_POST["role"]);
+							$u->save();
+						}
+					}catch(\Exception $e){
+						$msg=new DisplayedMessage("Impossible de mettre à jour le rôle !","danger");
 					}
-				}catch(\Exception $e){
-					$msg=new DisplayedMessage("Impossible de mettre à jour le rôle !","danger");
 				}
 			}
 		}
 		$this->response->redirect ('Acl/index');
 	}
-	
 }
