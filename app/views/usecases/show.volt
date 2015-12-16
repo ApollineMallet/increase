@@ -1,6 +1,6 @@
 
 <fieldset>
-
+<div class="card">
 	<legend>Visualisation d'une tâche</legend>
 	{% for a in usecase %}
 	<div class="alert alert-info">Visualisation de la Usecase :
@@ -27,6 +27,7 @@
 				Index")}}" data-ajax="{{ baseHref ~ "/index"}}">Retour</a>
 		</div>
 		{% endfor %}
+		</div>
 </fieldset>
 </form>
 {{ script_foot }}

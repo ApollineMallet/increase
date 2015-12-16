@@ -1,6 +1,7 @@
  {{ form("Users/update", "method": "post", "name":"frmObject",
 "id":"frmObject") }}
 <fieldset>
+<div class="card">
 	<legend>Ajouter/modifier un utilisateur</legend>
 	<div class="alert alert-info">Utilisateur : {{user.toString()}}</div>
 	<div class="form-group">
@@ -19,6 +20,7 @@
 		<input type="submit" value="Valider" class="btn btn-default validate">
 		<a class="btn btn-default cancel" href="{{url.get("
 			Users")}}" data-ajax="{{ baseHref ~ "/index"}}">Annuler</a>
+	</div>
 	</div>
 </fieldset>
 </form>

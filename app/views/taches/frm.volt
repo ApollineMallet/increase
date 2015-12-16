@@ -5,6 +5,7 @@ $('#myForm').validator()
  {{ form("Taches/update", "method": "post", "name":"frmObject",
 "id":"frmObject") }}
 <fieldset>
+<div class="card">
 <form id="myForm" role="form" data-toggle="validator">
 	<legend>Modifiez les taches</legend>
 	{% for a in tache %}
@@ -31,6 +32,7 @@ $('#myForm').validator()
 	</div>
 	{% endfor %}
 </form>
+</div>
 </fieldset>
 </form>
 {{ script_foot }}

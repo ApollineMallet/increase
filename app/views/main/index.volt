@@ -26,9 +26,9 @@
 <td>
 <h2 class="titreindex">{{model}}</h2>
 <td>
-<br>
+
 </thead>
-	
+<div class="card">
 <div class="input-group"> <span class="input-group-addon">Filtre</span>
 
     <input id="filter" type="text" class="form-control" placeholder="Le filtre c'est pas que dans les clopes">
@@ -94,6 +94,7 @@
 		{% endfor %}
 	</tbody>
 </table>
+
 {% if model != "User" %}
 <a class='btn btn-primary add' href='{{url.get(baseHref~"/add")}}'
 	data-ajax="{{ baseHref ~ "/add/"}}">Ajouter...</a>
@@ -101,3 +102,4 @@
 <a class='btn btn-default cancel' href='{{url.get("index")}}'
 	data-ajax="{{ baseHref ~ "/index"}}">Retour</a>
 {% if script_foot is defined %} {{ script_foot }} {% endif %}
+</div>

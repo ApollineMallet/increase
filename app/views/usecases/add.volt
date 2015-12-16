@@ -3,7 +3,7 @@ $('#myForm').validator()
 </script>
 {{ form("UseCases/update", "method": "post", "name":"frmObject", "id":"frmObject") }}
 <fieldset>
-	
+	<div class="card">
 	 	
 		<legend>Ajoutez une Usecase</legend>
 	
@@ -54,7 +54,7 @@ $('#myForm').validator()
 			<input type="submit" value="Valider" class="btn btn-primary validate">
 			<a class="btn btn-default cancel" href="{{url.get("Index")}}" data-ajax="{{ baseHref ~ "/index"}}">Annuler</a>
 		</div>
-
+</div>
 
 </fieldset>
 </form>

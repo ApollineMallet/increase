@@ -2,7 +2,7 @@
 $('#myForm').validator()
 </script>
 {{ form("Taches/update", "method": "post", "name":"frmObject", "id":"frmObject") }}
-
+<div class="card">
 <fieldset>
 
 	<legend>Ajoutez une tâche</legend>
@@ -42,7 +42,7 @@ $('#myForm').validator()
 	</div>
 
 
-	</div>
+	
 	<div class="form-group">
 		<input type="submit" value="Valider" class="btn btn-primary validate">
 		<a class="btn btn-default cancel" href="{{url.get("
@@ -50,5 +50,6 @@ $('#myForm').validator()
 	</div>
 
 </fieldset>
+</div>
 </form>
 {{ script_foot }}

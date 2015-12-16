@@ -3,9 +3,10 @@ $('#myForm').validator()
 </script>
 
 	{{ form("projects/update", "method": "post", "name":"frmObject", "id":"frmObject") }}
-<fieldset>
 	
-	 	
+		<div class="card">  
+<fieldset>
+		
 		<legend>Ajoutez un projet</legend>
 	
 		<div class="alert alert-info">Ajout d'un projet</div>
@@ -13,11 +14,11 @@ $('#myForm').validator()
 <form id="myForm" role="form" data-toggle="validator">
 		<input type="hidden" name="id" id="id">	
 		<label>Nom</label><input type="text" required name="nom" id="nom" placeholder="Saisissez un nom" class="form-control"/><br>
-		<label>Description :</label><input type="text" required" name="description" id="description" placeholder="Saisissez une description" class="form-control"/>
+		<label>Description :</label><input type="text" required" name="description" id="description" placeholder="Saisissez une description" class="form-control"/><br>
 				
 		
 		   
-</div>
+
 
 		<div class="form-group">
 		 		<label for="identite">Ajoutez l'utilisateur</label>
@@ -50,5 +51,6 @@ $('#myForm').validator()
 
 
 </fieldset>
+</div>
 </form>
 {{ script_foot }}

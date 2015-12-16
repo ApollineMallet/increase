@@ -1,5 +1,5 @@
 {% for o in pro %}
-
+<div class="card">
 	<h3 class="nomprojet">
 		{{o.getNom()}} [{{user.getIdentite()}}]
 	</h3>
@@ -47,5 +47,5 @@
 		<h4>Fermer le projet</h4>
 	</a>
 {% endfor %}
-
+</div>
 {{script_foot}}

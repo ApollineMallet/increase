@@ -4,7 +4,7 @@ $('#myForm').validator()
 	
 {{ form("UseCases/update", "method": "post", "name":"frmObject", "id":"frmObject") }}
 <fieldset>
-
+<div class="card">
 <legend>Modifiez les Usecases</legend>
 {% for a in usecase %}
 <div class="alert alert-info">Modification de la Usecase : {{a.getNom()}}</div>
@@ -36,7 +36,7 @@ $('#myForm').validator()
 
 {% endfor %}
 
-
+</div>
 </fieldset>
 </form>
 {{ script_foot }}
