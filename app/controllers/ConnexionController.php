@@ -20,30 +20,45 @@ class ConnexionController extends DefaultController {
 		return $key;
 	}
 	public function indexAction($msg = NULL) {
+		$user = User::findFirst ( "mail='" . $mail . "'" );
 		if (isset ( $msg )) {
 			$this->view->setVars ( array (
-					"msg" => $msg->compile ( $this->jquery ) 
+					"msg" => $msg->compile ( $this->jquery ),
+					
 			) );
 		} else {
+			
 			$this->view->setVars ( array (
-					"msg" => "" 
+					"msg" => "",
+					"user" => $user
 			) );
 		}
+		
 	}
 	public function connexionAction($msg = null) {
 		$mail = $_POST ['mail'];
 		$mdp = $_POST ['mdp'];
 		$user = User::findFirst ( "mail='" . $mail . "'" );
+		$this->view->setVars ( array (
+				"user" => $this->session->get ( "user", "" ),
 		
+		) );
 		if ($user != null) {
 			$password = $this->javaToPhpSha ( $mdp );
 			$userPass = $user->getPassword ();
 			
 			if ($userPass == $password) {
+
 				$this->session->set("user", $user );
 
+				if ($this->session->get("user")->getRole() == 1) {
+					$this->response->redirect ( 'users/projects/'.$this->session->get("user")->getId());	
+				}
+				else {
+					$this->response->redirect ( 'index');
+				}
 
-				$this->response->redirect ( 'index/index' );
+				
 
 			} else {
 				$msg = new DisplayedMessage ( "Il y a une erreur dans votre mail ou votre mot de passe.", "danger" );
@@ -53,6 +68,7 @@ class ConnexionController extends DefaultController {
 						"params" => array (
 								$msg 
 						) 
+						
 				) );
 			}
 		} else {
@@ -64,11 +80,18 @@ class ConnexionController extends DefaultController {
 							$msg 
 					) 
 			) );
+	
 		}
 	}
 	public function deconnexionAction() {
+	
+
 		$this->view->setRenderLevel ( View::LEVEL_ACTION_VIEW );
-		$this->session->destroy ();
-		$this->response->redirect ( "index" );
+		
+		$this->session->destroy();
+		
+		$this->response->redirect ("connexion");
+		
+		
 	}
 }

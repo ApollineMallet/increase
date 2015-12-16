@@ -25,7 +25,9 @@ class UsersController extends DefaultController {
 	}
 	public function projectsAction($id = null) {
 		
+
 			$user = $this->session->get("user");
+
 			if ($user->getRole() == 3) {
 				$projets = Projet::find();
 			}
@@ -99,6 +101,7 @@ class UsersController extends DefaultController {
 			if ($flagy == 0) {
 					$joke = "HAHAHA tu peux rien faire :D";
 				}
+
 			// Passe toutes les variables nÃ©cessaires dans la vue
 			$this->view->setVars ( array (
 					"user" => $user,

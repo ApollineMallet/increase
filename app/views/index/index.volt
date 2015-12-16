@@ -2,32 +2,23 @@
 
 <link rel="icon" type="image/png" href="assets/img/favicon.ico" />
 
-
-
-
-
- <div class="row col-xs-12 col-sm-6 col-md-2 col-lg-11">
-  		{% if user != null %}
-         <div class="alert align-center  alert-info" role="alert">{{user}}</div>
-         {% endif %}
-        </div>
-	
     <div class="row boutons">
         <div class="col-xs-12 col-sm-6 col-md-2 col-lg-3">
        		
         
             <div class="box">
             
-                <div class="icon">
-                
-                    <div class="image"><span class="glyphicon glyphicon-list-alt btn-lg white"></span></div>
+                <div class="icon">	
+                    <div class="image">	<a class="tool" href="{{url.get("Taches")}}" data-ajax="Taches">
+                    <span class="glyphicon glyphicon-list-alt btn-lg white"></span>
+                    </a></div>
                     <div class="info">
                         <h3 class="title">Tâches</h3>
                         <p>
                            Tâches correspondant aux Usecases des projets.
                         </p>
                         <div class="more">
-                        <a class="btn btn-default" href="{{url.get("Taches")}}" data-ajax="Taches">Tâches</a>&nbsp;
+                        <a class="btn btn-default tool" href="{{url.get("Taches")}}" data-ajax="Taches">Tâches</a>&nbsp;
                            
                             </a>
                         </div>
@@ -39,14 +30,14 @@
         <div class="col-xs-12 col-sm-6 col-md-2 col-lg-3">
             <div class="box">
                 <div class="icon">
-                    <div class="image"><span class="glyphicon glyphicon-envelope btn-lg white"></span></div>
+                    <div class="image"><a class="tool" href="{{url.get("Messages")}}" data-ajax="Messages"><span class="glyphicon glyphicon-envelope btn-lg white"></span></a></div>
                     <div class="info">
                         <h3 class="title">Messages</h3>
                         <p>
                           Les messages relatifs aux projets	
                         </p>
                         <div class="more">
-                            <a class="btn btn-default" href="{{url.get("Messages")}}" data-ajax="Messages">Messages</a>&nbsp;
+                            <a class="btn btn-default tool" href="{{url.get("Messages")}}" data-ajax="Messages">Messages</a>&nbsp;
                         </div>
                     </div>
                 </div>
@@ -56,14 +47,14 @@
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
             <div class="box">
                 <div class="icon">
-                    <div class="image"><span class="glyphicon glyphicon-pencil btn-lg white"></span></div>
+                    <div class="image"><a class="tool" href="{{url.get("UseCases")}}" data-ajax="UseCases"><span class="glyphicon glyphicon-pencil btn-lg white"></span></a></div>
                     <div class="info">
                         <h3 class="title">Usecases</h3>
                         <p>
                          Les différentes usescases et leur progression.   
                         </p>
                         <div class="more">
-                           <a class="btn btn-default" href="{{url.get("UseCases")}}" data-ajax="UseCases">UseCases</a>&nbsp;
+                           <a class="btn btn-default tool" href="{{url.get("UseCases")}}" data-ajax="UseCases">UseCases</a>&nbsp;
                         </div>
                     </div>
                 </div>
@@ -76,14 +67,14 @@
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
             <div class="box">
                 <div class="icon">
-                    <div class="image"><span class="glyphicon glyphicon-play-circle btn-lg white"></span></div>
+                    <div class="image"><a class="tool" href="{{url.get("projects")}}" data-ajax="projects"><span class="glyphicon glyphicon-play-circle btn-lg white"></span></a></div>
                     <div class="info">
                         <h3 class="title">Projets</h3>
                         <p>
                         Tous vos projets Increase.   
                         </p>
                         <div class="more">
-                           <a class="btn btn-default" href="{{url.get("Projects")}}" data-ajax="Projects">Projets</a>&nbsp;
+                           <a class="btn btn-default tool" href="{{url.get("projects")}}" data-ajax="projects">Projets</a>&nbsp;
                         </div>
                     </div>
                 </div>
@@ -95,14 +86,14 @@
          <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
             <div class="box">
                 <div class="icon">
-                    <div class="image"><span class="glyphicon glyphicon-user btn-lg white"></span></div>
+                    <div class="image"><a class="tool" href="{{url.get("users")}}" data-ajax="users"><span class="glyphicon glyphicon-user btn-lg white"></span></a></div>
                     <div class="info">
                         <h3 class="title">Utilisateurs</h3>
                         <p>
                         Les différents utilisateurs. 
                         </p>
                         <div class="more">
-                          <a class="btn btn-default" href="{{url.get("Users")}}" data-ajax="Users">Utilisateurs</a>&nbsp;
+                          <a class="btn btn-default tool" href="{{url.get("users")}}" data-ajax="users">Utilisateurs</a>&nbsp;
                         </div>
                     </div>
                 </div>
@@ -113,14 +104,14 @@
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
             <div class="box">
                 <div class="icon">
-                    <div class="image"><span class="glyphicon glyphicon-cog btn-lg white"></span></div>
+                    <div class="image"><a class="tool" href="{{url.get("Acl")}}" data-ajax="Acl"><span class="glyphicon glyphicon-cog btn-lg white"></span></a></div>
                     <div class="info">
                         <h3 class="title">Gestion des droits</h3>
                         <p>
                         Gérer les droits. 
                         </p>
                         <div class="more">
-                          <a class="btn btn-default" href="{{url.get("Acl")}}" data-ajax="Acl">Gestion des droits</a>&nbsp;
+                          <a class="btn btn-default tool" href="{{url.get("Acl")}}" data-ajax="Acl">Gestion des droits</a>&nbsp;
                         </div>
                     </div>
                 </div>
@@ -133,7 +124,7 @@
          <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
             <div class="box">
                 <div class="icon">
-                    <div class="imageCo"><span class="glyphicon glyphicon-off btn-lg white"></span></div>
+                    <div class="imageCo"><a class="tool" href="{{url.get("Connexion")}}" data-ajax="Connexion"><span class="glyphicon glyphicon-off btn-lg white"></span></a></div>
                     {% if user == null %}
                     <div class="info">
                         <h3 class="title">Connexion</h3>
@@ -143,7 +134,7 @@
 						    Connectez-vous
                         </p>
                         <div class="more">
-                          <a class="btn btn-default" href="{{url.get("Connexion")}}" data-ajax="Connexion">Connexion</a>&nbsp;
+                          <a class="btn btn-default tool" href="{{url.get("Connexion")}}" data-ajax="Connexion">Connexion</a>&nbsp;
                         </div>
                     </div>
                     
@@ -157,7 +148,7 @@
 						    Deconnectez-vous.
                         </p>
                         <div class="more">
-                          <a class="btn btn-default" href="{{url.get("Connexion")}}" data-ajax="Connexion/deconnexion">Déconnexion</a>
+                          <a class="btn btn-default tool" href="{{url.get("Connexion")}}" data-ajax="Connexion/deconnexion">Déconnexion</a>
 							&nbsp;
                         </div>
                     </div>
