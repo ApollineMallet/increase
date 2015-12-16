@@ -69,11 +69,25 @@
 				
 				
 				<span class='glyphicon glyphicon-edit' aria-hidden='true'></span></a></td>
+
+
 			<td {{show}} class='td-center'><a
+
 				href='{{url.get(baseHref~"/show/"~object.getId())}}'
 				data-ajax="{{ baseHref ~ "
 				/show/" ~ object.getId() }}" class="btn btn-xs btn-default"><span
 					class="glyphicon glyphicon-eye-open"></span></a></td>
+
+				{% if model == "Projet" %}
+					href='{{url.get("users/project/"~object.getId())}}' data-ajax='{{url.get("users/project/"~object.getId())}}'
+				{% else %} 
+					href='{{url.get(baseHref~"/show/"~object.getId())}}' 
+					data-ajax='{{ baseHref ~ "/show/" ~ object.getId() }}'
+				{% endif%}
+
+				class="btn btn-xs btn-default">
+				<span class="glyphicon glyphicon-eye-open"></span></a></td>
+
 
 
 			<td class='td-center'><a class='btn btn-warning btn-xs delete'

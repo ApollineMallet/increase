@@ -26,6 +26,8 @@ class UsersController extends DefaultController {
 	public function projectsAction($id = null) {
 		
 
+			
+
 			$user = $this->session->get("user");
 
 			if ($user->getRole() == 3) {
@@ -122,7 +124,7 @@ class UsersController extends DefaultController {
 		
 	}
 	public function projectAction($id = null) {
-		if ($this->request->isAjax ()) {
+		if ($this->request->isAjax() or $this->session->get("user")->getRole != 1) {
 			
 			$projet = call_user_func ( "Projet::find", array (
 					"id=" . $id 
@@ -160,4 +162,5 @@ class UsersController extends DefaultController {
 			throw new Exception ( "404 not found", 1 );
 		}
 	}
+	
 }
