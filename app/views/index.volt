@@ -10,14 +10,17 @@ javascript_include('js/bootstrap.min.js') }}
 <meta charset="UTF-8">
 <body>
 <!-- /.navbar-header -->
-		
-{% if user != null %}
+
+{% if user is not null %}
+
 
   <div class="container-fluid">
  
     <div class="navbar-header">
-    
-		 <a class="navbar-brand" href="#">Bonjour, {{user}}</a>      
+
+		 <a class="navbar-brand" href="#">Bonjour, {{user}}</a>
+	
+      
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -25,9 +28,13 @@ javascript_include('js/bootstrap.min.js') }}
      
       <ul class="nav navbar-nav navbar-right">
       
-      <li><a class="tool" href="{{url.get("Deconnexion")}}" data-ajax="Connexion/deconnexion">Déconnexion</a></li>
+      <li><a href="{{url.get("Connexion")}}" data-ajax="Connexion/deconnexion">Déconnexion</a></li>
      
       </ul>
+
+
+
+
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 

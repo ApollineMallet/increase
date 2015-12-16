@@ -11,38 +11,56 @@ class DefaultController extends ControllerBase {
 	public function indexAction($message = NULL) {
 		$msg = "";
 		$show = "";
-		if (isset ( $message )) {
-			if (is_string ( $message )) {
-				$message = new DisplayedMessage ( $message );
-			}
-			$message->setTimerInterval ( $this->messageTimerInterval );
-			$msg = $this->_showDisplayedMessage ( $message );
-		}
-		if ($this->model != "Usecase" & "Tache") {
-			
-			$show = "class='hidden'";
-		} else {
-			$show = "";
-		}
 		
-		$objects = call_user_func ( $this->model . "::find" );
-		$this->view->setVars ( array (
-				"objects" => $objects,
-				"siteUrl" => $this->url->getBaseUri (),
-				"baseHref" => $this->dispatcher->getControllerName (),
-				"model" => $this->model,
-				"msg" => $msg,
-				"show" => $show 
-		) );
-		$this->jquery->getOnClick ( ".update, .add", "", "#content", array (
-				"attr" => "data-ajax" 
-		) );
-		$this->jquery->getOnClick ( ".delete", "", "#message", array (
-				"attr" => "data-ajax" 
-		) );
-		$this->jquery->compile ( $this->view );
-		$this->view->pick ( "main/index" );
+
+		if ($this->session->get("user")->getRole() != 1) {
+		
+			if (isset ( $message )) {
+				if (is_string ( $message )) {
+					$message = new DisplayedMessage ( $message );
+				}
+				$message->setTimerInterval ( $this->messageTimerInterval );
+				$msg = $this->_showDisplayedMessage ( $message );
+			}
+			if ($this->model != "Usecase" & "Tache") {
+				
+				$show = "class='hidden'";
+			} else {
+				$show = "";
+
+			}
+			
+			$objects = call_user_func ( $this->model . "::find" );
+			$this->view->setVars ( array (
+					"objects" => $objects,
+					"siteUrl" => $this->url->getBaseUri (),
+					"baseHref" => $this->dispatcher->getControllerName (),
+					"model" => $this->model,
+					"msg" => $msg,
+					"show" => $show,
+					"user" => $this->session->get("user")
+			) );
+			$this->jquery->getOnClick ( ".update, .add", "", "#content", array (
+					"attr" => "data-ajax" 
+			) );
+			$this->jquery->getOnClick ( ".delete", "", "#message", array (
+					"attr" => "data-ajax" 
+			) );
+			$this->jquery->compile ( $this->view );
+			$this->view->pick ( "main/index" );
+		}
+		else
+		{
+			$this->dispatcher->forward ( array (
+					"controller" => "users",
+					"action" => "projects",
+					"params" => array (
+							$msg 
+					) 
+			) );
+		}
 	}
+	
 	/**
 	 * Retourne une instance de $model<br>
 	 * si $id est nul, un nouvel objet est retourn�<br>
@@ -173,6 +191,9 @@ class DefaultController extends ControllerBase {
 					$msg = new DisplayedMessage ( "Impossible d'ajouter l'instance de " . $this->model, "danger" );
 				}
 			}
+
+			
+			
 			
 		
 			$this->dispatcher->forward ( array (

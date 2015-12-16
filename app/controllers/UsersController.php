@@ -29,9 +29,9 @@ class UsersController extends DefaultController {
 
 
 	public function projectsAction($id = null) {
-		if ($this->session->get("user")->getId() == $id) {
+		
 
-			$user = $this->getInstance ( $id );
+			$user = $this->session->get("user");
 
 			if ($user->getRole() == 3) {
 				$projets = Projet::find();
@@ -50,8 +50,10 @@ class UsersController extends DefaultController {
 			$NbJourAvantFinProjet = array ();
 			$progressbar = array ();
 			$pourcentprogressbar = array ();
+			$flagy = 0;
 			// Pour chaque projet du client
 			foreach ( $projets as $elt ) {
+				$flagy = 1;
 				// convertit en secondes la date de fin de ce projet
 				$fin_ts = strtotime ( $elt->getDateFinPrevue () );
 				// calcul le nombre de secondes restantes jusqu'Ã  la fin du projet
@@ -102,6 +104,10 @@ class UsersController extends DefaultController {
 				$progressbar [$elt->getId ()] = $this->jquery->bootstrap ()->htmlProgressbar ( "pb5", $couleur, floor ( $avancement ) )->setStriped ( true )->setActive ( true )->showcaption ( true );
 			}
 			
+			if ($flagy == 0) {
+					$joke = "HAHAHA tu peux rien faire :D";
+				}
+
 			// Passe toutes les variables nÃ©cessaires dans la vue
 			$this->view->setVars ( array (
 					"user" => $user,
@@ -109,7 +115,8 @@ class UsersController extends DefaultController {
 					"NbJourAvantFinProjet" => $NbJourAvantFinProjet,
 					"progressbar" => $progressbar,
 					"siteUrl" => $this->url->getBaseUri (),
-					"baseHref" => $this->dispatcher->getControllerName () 
+					"baseHref" => $this->dispatcher->getControllerName (),
+					"joke" => $joke
 			) );
 			
 			$this->jquery->getOnClick ( ".open", "", "#details", array (
@@ -119,9 +126,7 @@ class UsersController extends DefaultController {
 			$this->jquery->compile ( $this->view );
 			$this->view->pick ( "users/projects" );
 	
-		} else {
-			throw new Exception ( "404 not found", 1 );
-		}
+		
 	}
 
 
