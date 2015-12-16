@@ -1,3 +1,4 @@
+<div class="card">
 <div id="mainContent">
 <table class='table table-striped'>
 	<thead>
@@ -38,4 +39,5 @@
 <h1>{{joke}}</h1>
 </div>
 <div id="details"></div>
+</div>
 {{script_foot}}
