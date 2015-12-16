@@ -69,20 +69,9 @@ class DefaultController extends ControllerBase {
 	 */
 	public function getInstance($id = NULL) {
 		if (isset ( $id )) {
-			if ($this->model == 'Acl') {
-				$this->model = 'User';
-				$object = call_user_func ( $this->model . "::findfirst", $id );
-			}
-			else {
-				$object = call_user_func ( $this->model . "::findfirst", $id );
-			}
+			$object = call_user_func ( $this->model . "::findfirst", $id );
 		} else {
-			if ($this->model == 'Acl') {
-				$className = 'User';
-			}
-			else {
-				$className = $this->model;
-			}
+			$className = $this->model;
 			$object = new $className ();
 		}
 		return $object;
