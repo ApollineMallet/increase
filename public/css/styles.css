@@ -587,6 +587,14 @@ div.formu {
 .tab-pane { padding: 15px 0; }
 .tab-content{padding:20px}
 
+#updateroleview{
+	
+	text-align: left;
+}
 
+#updatedroitview{
+	
+	text-align: right;
+}
 
 

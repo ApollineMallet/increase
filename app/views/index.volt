@@ -70,16 +70,7 @@ javascript_include('js/bootstrap.min.js') }}
 					<span>Created with Phalcon</span>
 				</p>
 			</div>
-			<div class="col-md-4">
-				<div class="input-group">
-					<input id="ig-5" name="ig-5" class="form-control" role="input"
-						value="" type="text" aria-describedby="right-ig-5"
-						placeholder="Rechercher...">
-					<div id="right-ig-5" class="input-group-btn">
-						<button id="ig-4-radio" class="btn btn-default" role="button">Go</button>
-					</div>
-				</div>
-			</div>
+			
 		</div>
 	</div>
 </body>
