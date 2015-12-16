@@ -36,56 +36,105 @@ class AclController extends DefaultController{
 		$this->view->pick("Acl/updaterole");	
 	}
 	
-	public function updateAction() {
-		if ($this->request->isPost ()) {
-			$objects = $this->getInstance ( @$_POST ["id"] );
-			foreach ($objects as $object) {
-				$this->setValuesToObject ( $object );
-				if ($_POST ["id"]) {
-					try {
-						$object->save ();
-						$msg = new DisplayedMessage ( $this->model . " `{$object->toString()}` mis Ã  jour" );
-					} catch ( \Exception $e ) {
-						$msg = new DisplayedMessage ( "Impossible de modifier l'instance de " . $this->model, "danger" );
-					}
-				} else {
-					try {
-						$object->save ();
-						$msg = new DisplayedMessage ( "Instance de " . $this->model . " `{$object->toString()}` ajoutÃ©e" );
-					} catch ( \Exception $e ) {
-						$msg = new DisplayedMessage ( "Impossible d'ajouter l'instance de " . $this->model, "danger" );
-					}
-				}
+	public function updateAction() {}
+	
+
+	public function updatedroitAction() {
+		$acls = Acl::find();
+		$this->view->setVars(array("acls" => $acls));
 		
-				$this->dispatcher->forward ( array (
-						"controller" => $this->dispatcher->getControllerName (),
-						"action" => "index",
-						"params" => array (
-								$msg
-						) ,
-						"user" => $this->session->get("user")
-				) );
-			}
-		}
+		$ressources = Ressource::find();
+		$this->view->setVars(array("ressources" => $ressources));
+		
+
+		/*$controllers = array(
+				"Acl" => array(
+						"name" => "Acl",
+						"actions" => array(
+								"index" => "Index",
+								"update" => "Changer les rôles",
+								"updaterole" => "Lister les utilisateurs et les rôles",
+								"updatedroit" => "Lister les droits"
+
+						)
+				),
+				"Connexion" => array(
+						"name" => "Connexion",
+						"actions" => array(
+								"index" => "Acceder à la page d'authentification",
+								"connexion" => "Se connecter",
+								"deconnexion" => "Se deconnecter"
+						)
+				),
+				"Default" => array(
+						"name" => "Par defaut",
+						"actions" => array(
+								"_delete" => "_Supprimer",
+								"delete" => "Supprimer",
+								"frm" => "Modifier",
+								"index" => "Lister",
+								"update" => "Modifier/Ajouter",
+						)
+				),
+				"Index" => array(
+						"name" => "Index",
+						"actions" => array(
+								"index" => "Afficher l'accueil"
+						)
+				),
+				"Messages" => array(
+						"name" => "Message",
+						"actions" => array(
+								"newmessage"=>"Afficher formulaire d'ajout de message",
+								"update" => "Modifier"
+						)
+				),
+				"Projects"=>array(
+						"name" => "Projet",
+						"actions" => array(
+								"add" => "Ajouter",
+								"equipe" => "Afficher l'équipe",
+								"index" => "Lister",
+								"messagefil" =>"Afficher les sous-messages",
+								"messages" => "Afficher les messages"
+						)
+				),
+				"Taches" => array(
+						"name" => "Tache",
+						"actions" => array(
+								"add" => "Ajouter",
+								"frm" => "Modifier",
+								"index" => "Lister",
+								"show" => "Afficher",
+								"update" => "Modifier"
+						)
+				),
+				"UseCases" => array(
+						"name" => "Use Cases",
+						"actions" => array(
+								"frm" => "Modifier",
+								"index" => "Lister",
+								"show" => "Afficher"
+						)
+				),
+				"Users" => array(
+						"name" => "Utilisateur",
+						"actions" => array(
+								"frm" => "Modifier",
+								"project" => "Lister",
+								"projects" => "Afficher un projet",
+								"updaterole" => "Modifier le role"
+						)
+				)
+		);
+		
+		$phql = "SELECT DISTINCT nom_ressource FROM Acl";
+		$controllers = $this->modelsManager->executeQuery($phql);
+		
+		$this->view->setVars(array("controllers"=> $controllers,"siteUrl"=>$this->url->getBaseUri(),"baseHref"=>$this->dispatcher->getControllerName()));
+		
+		*/
+	
+		
 	}
-	
-	protected function setValuesToObject(&$objects) {
-		$objects->assign ( $_POST );
-	}
-	
-	public function getInstance($id = NULL) {
-		foreach($objects as $object) {
-			if (isset ( $id )) {
-				$this->model= 'User';
-				$object = call_user_func ( $this->model . "::findfirst", $id );
-			} else {
-				$className = 'User';
-				$object = new $className ();
-			}
-			return $object;
-		}
-	}
-	
-	
-	public function updatedroitAction() {}
 }
