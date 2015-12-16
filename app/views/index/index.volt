@@ -64,7 +64,11 @@
      </div>
     
      <div class="row boutons">
-
+	{% if user.getRole() == "2" %}
+	 <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2">
+      </div>
+	{% endif %}
+	
       <div class="col-xs-12 col-sm-6 col-md-1 col-lg-1">
       </div>
        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
@@ -85,7 +89,7 @@
             </div>
         </div>
         
-       
+       {% if user.getRole() == "3" %}
          
         <div class="col-xs-12 col-sm-6 col-md-1 col-lg-">
       </div>
@@ -106,7 +110,9 @@
                 <div class="space"></div>
             </div>
         </div>
-
+        
+       
+		{% endif %}
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3"> 
         </div>
 

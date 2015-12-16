@@ -31,7 +31,7 @@
 	
 <div class="input-group"> <span class="input-group-addon">Filtre</span>
 
-    <input id="filter" type="text" class="form-control" placeholder="Le filtre c'est pas que dans les clopes, tente ta chance">
+    <input id="filter" type="text" class="form-control" placeholder="Le filtre c'est pas que dans les clopes">
 </div>
 <br>
 
@@ -70,13 +70,8 @@
 				
 				<span class='glyphicon glyphicon-edit' aria-hidden='true'></span></a></td>
 
-
+{% if model != "User" %}
 			<td {{show}} class='td-center'><a
-
-				href='{{url.get(baseHref~"/show/"~object.getId())}}'
-				data-ajax="{{ baseHref ~ "
-				/show/" ~ object.getId() }}" class="btn btn-xs btn-default"><span
-					class="glyphicon glyphicon-eye-open"></span></a></td>
 
 				{% if model == "Projet" %}
 					href='{{url.get("users/project/"~object.getId())}}' data-ajax='{{url.get("users/project/"~object.getId())}}'
@@ -87,7 +82,7 @@
 
 				class="btn btn-xs btn-default">
 				<span class="glyphicon glyphicon-eye-open"></span></a></td>
-
+{% endif%}
 
 
 			<td class='td-center'><a class='btn btn-warning btn-xs delete'
@@ -99,8 +94,10 @@
 		{% endfor %}
 	</tbody>
 </table>
+{% if model != "User" %}
 <a class='btn btn-primary add' href='{{url.get(baseHref~"/add")}}'
 	data-ajax="{{ baseHref ~ "/add/"}}">Ajouter...</a>
+	{% endif %}
 <a class='btn btn-default cancel' href='{{url.get("index")}}'
 	data-ajax="{{ baseHref ~ "/index"}}">Retour</a>
 {% if script_foot is defined %} {{ script_foot }} {% endif %}

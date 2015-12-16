@@ -21,11 +21,13 @@
 	
 	
 	<div id="formrole" style="display:none">
-		<br /> <br />
-		Modification du rôle : <br />
+		
+		<h3>Modification du rÃ´le : </h3> 
 		{% for role in roles %}
-			<input type= "radio" id="role" name="role" value="{{role.getId()}}"> {{role.getLibelle()}} &nbsp
+			<input type= "radio" id="role" name="role" value="{{role.getId()}}"> {{role.getLibelle()}} 
 		{% endfor %}
+		<br/>
+		<br/>
 		<button type="submit" class='btn btn-primary add' data-ajax="{{url.get("Acl/index")}}"> Modifier </button>
 	</div>
 
