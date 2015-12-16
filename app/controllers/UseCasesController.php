@@ -53,26 +53,8 @@ class UseCasesController extends DefaultController {
 		
 		parent::frmAction ( $id );
 	}
-	public function addAction($id = NULL) {
-		$usecase = Usecase::findFirst ();
-				$users= User::find();
-				$projet= Projet::find();
-				
-		
 	
-		$this->view->setVars ( array (
-				"usecase" => $usecase,
-				"users" => $users,
-				"siteUrl" => $this->url->getBaseUri (),
-				"baseHref" => $this->dispatcher->getControllerName () ,
-				"projet" =>$projet,
-				"code" =>$code
-				
-		) );
-		
-		parent::frmAction ( $id );
-	}
-
+	
 
 	
 	public function indexAction($message = NULL) {
@@ -81,7 +63,7 @@ class UseCasesController extends DefaultController {
 		$show = "";
 		
 		$usecase = Usecase::find ();
-		$users = User::find ();
+		
 		
 		if ($this->session->get("user")->getRole() != 1) {
 		if (isset ( $message )) {
@@ -116,9 +98,9 @@ class UseCasesController extends DefaultController {
 				"show" => $show,
 				"pb" =>$pb,
 				"objects" => $usecase,
-				"user" => $this->session->get ("user"),
-				
+				"user" => $this->session->get ("user"),	
 		) );
+		
 		$this->jquery->getOnClick ( ".update, .add", "", "#content", array (
 				"attr" => "data-ajax"
 		) );
@@ -127,7 +109,9 @@ class UseCasesController extends DefaultController {
 		) );
 		$this->jquery->compile ( $this->view );
 		$this->view->pick ( "main/index" );
+		
 	}
+	
 	}
 	
 	

@@ -182,16 +182,14 @@ class DefaultController extends ControllerBase {
 				}
 			}
 
-			
-			
-			
 		
 			$this->dispatcher->forward ( array (
 					"controller" => $this->dispatcher->getControllerName (),
 					"action" => "index",
 					"params" => array (
 							$msg 
-					) 
+					) ,
+					"user" => $this->session->get("user")
 			) );
 		}
 	}
@@ -217,7 +215,7 @@ class DefaultController extends ControllerBase {
 	public function _deleteAction($id) {
 		try {
 			$object = call_user_func ( $this->model . "::findfirst", $id );
-			if ($object !== NULL) {
+			if ($object != NULL) {
 				$object->delete ();
 				$msg = new DisplayedMessage ( $this->model . " `{$object->toString()}` supprimé(e)" );
 			} else {

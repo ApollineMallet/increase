@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.7.1
+-- version 4.2.11
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 10 Décembre 2015 à 12:07
--- Version du serveur :  5.5.39
--- Version de PHP :  5.4.31
+-- Généré le :  Mer 16 Décembre 2015 à 09:53
+-- Version du serveur :  5.6.21
+-- Version de PHP :  5.6.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `acl` (
   `nom_ressource` varchar(50) NOT NULL,
   `nom_action` varchar(50) NOT NULL,
   `allowed` tinyint(1) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=128 ;
+) ENGINE=InnoDB AUTO_INCREMENT=141 DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `acl`
@@ -137,7 +137,16 @@ INSERT INTO `acl` (`id`, `idRole`, `nom_ressource`, `nom_action`, `allowed`) VAL
 (124, 3, 'users', 'project', 1),
 (125, 1, 'users', 'projects', 1),
 (126, 2, 'users', 'projects', 1),
-(127, 3, 'users', 'projects', 1);
+(127, 3, 'users', 'projects', 1),
+(128, 1, 'Messages', 'update', 1),
+(129, 2, 'Messages', 'update', 1),
+(130, 3, 'Messages', 'update', 1),
+(131, 1, 'Messages', 'newmessage', 1),
+(132, 2, 'Messages', 'newmessage', 1),
+(133, 3, 'Messages', 'newmessage', 1),
+(137, 3, 'UseCases', 'update', 1),
+(138, 3, 'UseCases', '_delete', 1),
+(140, 3, 'UseCases', 'delete', 1);
 
 -- --------------------------------------------------------
 
@@ -155,6 +164,9 @@ CREATE TABLE IF NOT EXISTS `action` (
 --
 
 INSERT INTO `action` (`nom_action`, `nom_ressource`) VALUES
+('index', 'Acl'),
+('updatedroit', 'Acl'),
+('updaterole', 'Acl'),
 ('connexion', 'Connexion'),
 ('deconnexion', 'Connexion'),
 ('index', 'Connexion'),
@@ -169,6 +181,8 @@ INSERT INTO `action` (`nom_action`, `nom_ressource`) VALUES
 ('index', 'index'),
 ('index', 'Messages'),
 ('messagefil', 'Messages'),
+('newmessage', 'Messages'),
+('update', 'Messages'),
 ('equipe', 'projects'),
 ('index', 'projects'),
 ('messagefil', 'projects'),
@@ -181,9 +195,12 @@ INSERT INTO `action` (`nom_action`, `nom_ressource`) VALUES
 ('update', 'Taches'),
 ('_delete', 'Taches'),
 ('add', 'UseCases'),
+('delete', 'UseCases'),
 ('frm', 'UseCases'),
 ('index', 'UseCases'),
 ('show', 'UseCases'),
+('update', 'UseCases'),
+('_delete', 'UseCases'),
 ('frm', 'users'),
 ('index', 'users'),
 ('project', 'users'),
@@ -203,7 +220,7 @@ CREATE TABLE IF NOT EXISTS `message` (
   `idUser` int(11) NOT NULL,
   `idProjet` int(11) NOT NULL,
   `idFil` int(11) DEFAULT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `message`
@@ -211,7 +228,9 @@ CREATE TABLE IF NOT EXISTS `message` (
 
 INSERT INTO `message` (`id`, `objet`, `content`, `date`, `idUser`, `idProjet`, `idFil`) VALUES
 (2, 'Essai', 'Aucun contenu', '2015-03-12 23:00:00', 1, 1, NULL),
-(7, 'Ok', 'Rien à répondre', '2015-03-13 13:33:51', 2, 1, 2);
+(7, 'Ok', 'Rien à répondre', '2015-03-13 13:33:51', 2, 1, 2),
+(8, 'dat', 'raj', '2015-12-15 15:59:10', 10, 1, NULL),
+(9, 'ok', 'lm', '2015-12-15 15:59:19', 10, 1, 8);
 
 -- --------------------------------------------------------
 
@@ -227,14 +246,14 @@ CREATE TABLE IF NOT EXISTS `projet` (
   `dateFinPrevue` date DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
   `idClient` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `projet`
 --
 
 INSERT INTO `projet` (`id`, `nom`, `description`, `dateLancement`, `dateFinPrevue`, `image`, `idClient`) VALUES
-(1, 'Increase', 'A Phalcon web application to manage the progress of projects, and improve communication with the customer', '2015-03-16', '2015-03-29', NULL, 1),
+(1, 'Increase', 'A Phalcon web application to manage the progress of projects, and improve communication with the customer', '2015-03-16', '2017-03-29', NULL, 1),
 (2, 'Open-beer', 'A free, public database, API and web application for beer information.', '2015-03-15', '2015-03-29', NULL, 1),
 (3, 'Essai', 'test&lt;html&gt;la suite', '2015-03-10', '2015-03-09', NULL, 1);
 
@@ -254,6 +273,7 @@ CREATE TABLE IF NOT EXISTS `ressource` (
 --
 
 INSERT INTO `ressource` (`nom`, `description`) VALUES
+('Acl', ''),
 ('Connexion', ''),
 ('Default', ''),
 ('index', 'index'),
@@ -272,7 +292,7 @@ INSERT INTO `ressource` (`nom`, `description`) VALUES
 CREATE TABLE IF NOT EXISTS `role` (
 `id` int(11) NOT NULL,
   `libelle` varchar(50) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `role`
@@ -295,20 +315,18 @@ CREATE TABLE IF NOT EXISTS `tache` (
   `date` date DEFAULT NULL,
   `avancement` smallint(6) DEFAULT NULL,
   `codeUseCase` varchar(15) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `tache`
 --
 
 INSERT INTO `tache` (`id`, `libelle`, `date`, `avancement`, `codeUseCase`) VALUES
-(1, 'Interview client +rédaction', '2015-03-22', 100, 'I-UC1'),
-(2, 'MCD', '2015-03-22', 100, 'I-UC2'),
-(3, 'Génération base', '2015-03-22', 100, 'I-UC3'),
+(3, 'fezfze', '2015-03-25', 100, 'I-UC3'),
 (4, 'Uses cases', '2015-03-23', 100, 'I-UC4'),
-(5, 'Connexion REST', '2015-03-13', 50, 'OB-UC1'),
+(5, 'Connexion REST', '2015-03-13', 100, 'OB-UC1'),
 (6, 'Liste des bières', '2015-03-22', 100, 'OB-UC2'),
-(7, 'Liste des bières par brasserie', '2015-03-22', 10, 'OB-UC2');
+(7, 'Liste des bières par brasserie', '2015-03-22', 100, 'OB-UC2');
 
 -- --------------------------------------------------------
 
@@ -330,8 +348,7 @@ CREATE TABLE IF NOT EXISTS `usecase` (
 --
 
 INSERT INTO `usecase` (`code`, `nom`, `poids`, `avancement`, `idProjet`, `idDev`) VALUES
-('', 'oo', 10, 0, 3, 4),
-('I-UC-Dev1', 'Connexion utilisateur', 5, 0, 1, 4),
+('I-UC-Dev1', 'Connexion utilisateur', 5, 43, 1, 1),
 ('I-UC-Dev2', 'Gestion des ACL', 10, 0, 1, 4),
 ('I-UC-Dev3-Cli', 'Lister mes projets (client)', 5, 0, 1, 4),
 ('I-UC-Dev4-Cli', 'Visualiser avancement projet (client)', 10, 0, 1, 4),
@@ -340,12 +357,13 @@ INSERT INTO `usecase` (`code`, `nom`, `poids`, `avancement`, `idProjet`, `idDev`
 ('I-UC-Dev7', 'Saisir une tâche réalisée', 2, 0, 1, 4),
 ('I-UC-Dev8', 'Se déconnecter', 2, 0, 1, 2),
 ('I-UC-Dev9', 'Lister les messages (nouveaux, archivés...)', 2, 0, 1, 2),
-('I-UC1', 'Règles de gestion', 2, 100, 1, 2),
-('I-UC2', 'Analyse des données', 2, 100, 1, 2),
+('I-UC1', 'Règles de gestion', 2, 32, 1, 1),
+('I-UC2', 'Analyse des données', 2, 50, 1, 2),
 ('I-UC3', 'Base de données', 2, 100, 1, 2),
-('I-UC4', 'Analyse fonctionnelle', 20, 100, 1, 4),
-('OB-UC1', 'Connexion au server REST', 10, 0, 2, 5),
-('OB-UC2', 'Gestion des bières (liste/ajout/modification)', 10, 0, 2, 5);
+('I-UC4', 'Analyse fonctionnelle', 20, 50, 1, 4),
+('OB-UC1', 'Connexion au server REST', 10, 100, 2, 5),
+('OB-UC2', 'Gestion des bières (liste/ajout/modification)', 10, 100, 2, 5),
+('XMAS10', 'dzdz', 3, 0, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -359,7 +377,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password` varchar(255) DEFAULT NULL,
   `identite` varchar(100) DEFAULT NULL,
   `idRole` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `user`
@@ -439,12 +457,12 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `acl`
 --
 ALTER TABLE `acl`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=128;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=141;
 --
 -- AUTO_INCREMENT pour la table `message`
 --
 ALTER TABLE `message`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT pour la table `projet`
 --
@@ -459,7 +477,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 -- AUTO_INCREMENT pour la table `tache`
 --
 ALTER TABLE `tache`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT pour la table `user`
 --
